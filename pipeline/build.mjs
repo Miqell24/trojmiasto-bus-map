@@ -794,6 +794,24 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
   // cells are wider than the naive text estimate.
   const PER_ROW = 5, CELL_W = 3.4, CELL_H = 2.0, BASE_Y = 1.1;
   const EM = 11, PAD = 10; // px: label em size in the band, plus breathing room
+  // Name-row metrics. The frontend wraps names at text-max-width 10 em with
+  // line-height 1.1 (set explicitly in app.js) — roughly 18 chars per line at
+  // ~0.55 em/char — so both the row stacking and the fusion test must use the
+  // WRAPPED height and width: a two-line name laid out on a one-line slot
+  // overprints the row above it, and two neighbouring complexes whose grids
+  // clear each other can still cross name stacks.
+  const NAME_EM = 12, NAME_CHW = 0.55, NAME_WRAP = 18, NAME_LH = 1.1, NAME_BASE = 0.8;
+  const nameRows = (nm) => Math.max(1, Math.ceil(nm.length / NAME_WRAP));
+  const nameWpx = (nm) => Math.min(nm.length, Math.ceil(nm.length / nameRows(nm)) + 2) * NAME_CHW * NAME_EM;
+  // full complex footprint in px: box grid below the anchor + name stack above
+  const rectOf = (c) => {
+    const g = geom(c.lines.length);
+    const stackH = c.names.reduce((s, nm) => s + nameRows(nm) * NAME_LH, 0);
+    const w = Math.max(g.w, ...c.names.map(nameWpx));
+    const top = -(NAME_BASE + stackH) * NAME_EM;
+    const bottom = g.yc + g.h / 2;
+    return { w, cy: (top + bottom) / 2, h: bottom - top };
+  };
   const latMid = anchors.length ? anchors.reduce((s, a) => s + a.lat, 0) / anchors.length : 50;
   const P2 = makeProj(latMid, anchors.length ? anchors[0].lon : 19.94);
   // grid footprint in px for n lines: width, height and the centre's offset below
@@ -820,10 +838,10 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
       for (let i = 0; i < cl.length; i++) {
         for (let j = i + 1; j < cl.length; j++) {
           const A = cl[i], B = cl[j];
-          const ga = geom(A.lines.length), gb = geom(B.lines.length);
+          const ra = rectOf(A), rb = rectOf(B);
           const dx = Math.abs(A.x - B.x);
-          const dy = Math.abs((A.y - ga.yc * mpp) - (B.y - gb.yc * mpp));
-          if (dx >= ((ga.w + gb.w) / 2) * mpp || dy >= ((ga.h + gb.h) / 2) * mpp) continue;
+          const dy = Math.abs((A.y - ra.cy * mpp) - (B.y - rb.cy * mpp));
+          if (dx >= ((ra.w + rb.w) / 2) * mpp || dy >= ((ra.h + rb.h) / 2) * mpp) continue;
           const seen = new Set(A.lines.map((l) => l.line));
           for (const l of B.lines) if (!seen.has(l.line)) A.lines.push(l);
           for (const nm of B.names) if (!A.names.includes(nm)) A.names.push(nm);
@@ -846,13 +864,15 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
       // (Bałtyk at Kaponiera) — and a nameless loop is a hard error on a
       // printed map, so from z13 these rows replace it.
       const modes = [...new Set(lines.map((l) => l.mode))].join(',');
-      c.names.forEach((nm, i) => {
+      let yOff = NAME_BASE;
+      for (const nm of [...c.names].sort((a, b) => b.localeCompare(a))) {
         badgeFeatures.push({
           type: 'Feature',
           geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
-          properties: { name: nm, band, modes, arr: lines.map((l) => l.line), off: [0, -(0.8 + i * 1.1)] },
+          properties: { name: nm, band, modes, arr: lines.map((l) => l.line), off: [0, -Math.round(yOff * 100) / 100] },
         });
-      });
+        yOff += nameRows(nm) * NAME_LH;
+      }
       lines.forEach((l, i) => {
         const row = Math.floor(i / PER_ROW), col = i % PER_ROW;
         const rowLen = Math.min(PER_ROW, lines.length - row * PER_ROW);

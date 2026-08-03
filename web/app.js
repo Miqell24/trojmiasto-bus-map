@@ -393,6 +393,9 @@ async function init() {
         'text-size': ['interpolate', ['linear'], ['zoom'], 13, 11.5, 17, 14.5],
         'text-anchor': 'bottom',
         'text-offset': ['get', 'off'],
+        // pinned so the wrap matches the pipeline's row-height estimate
+        'text-max-width': 10,
+        'text-line-height': 1.1,
         'text-allow-overlap': true,
       },
       paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 2 },
