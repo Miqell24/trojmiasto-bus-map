@@ -349,8 +349,9 @@ async function processMode(cfg) {
       const st = stopsById.get(s.stopId);
       if (!st) return;
       let e = stopAgg.get(s.stopId);
-      if (!e) stopAgg.set(s.stopId, (e = { name: st.name, lat: st.lat, lon: st.lon, lines: new Set(), terminus: 0 }));
+      if (!e) stopAgg.set(s.stopId, (e = { name: st.name, lat: st.lat, lon: st.lon, lines: new Set(), runs: new Set(), terminus: 0 }));
       e.lines.add(r.line);
+      e.runs.add(r);
       if (i === 0 || i === r.stopSeq.length - 1) e.terminus = 1;
     });
   }
@@ -373,6 +374,7 @@ async function processMode(cfg) {
       for (let i = 1; i < g.length; i++) {
         const [id, e] = g[i];
         for (const L of e.lines) base.lines.add(L);
+        for (const R of e.runs) base.runs.add(R);
         base.terminus = base.terminus || e.terminus;
         latS += e.lat; lonS += e.lon;
         stopAgg.delete(id);
@@ -387,8 +389,11 @@ async function processMode(cfg) {
     const [sx, sy] = proj.toXY(e.lat, e.lon);
     const isMetroStop = cfg.mode === 'tram' && [...e.lines].every((l) => l.startsWith('M'));
     let best = null, bestRun = null;
-    for (const r of reps) {
-      if (!e.lines.has(r.line)) continue;
+    // candidates are ONLY the runs that actually call at this pole: on a
+    // double-track street the pole of one direction can lie nearer the
+    // OPPOSITE track — snapping to it drew the half-disc on the wrong side
+    // of the street (user report, Dąb Silesia City Center)
+    for (const r of e.runs) {
       const near = nearestOnPolyline(sx, sy, r.matchedXY);
       if (near && (!best || near.d < best.d)) { best = near; bestRun = r; }
     }
@@ -406,7 +411,15 @@ async function processMode(cfg) {
       const dx = B[0] - A[0], dy = B[1] - A[1];
       const phi = Math.atan2(-dy, dx) * 180 / Math.PI;
       const cross = dx * (sy - best.y) - dy * (sx - best.x);
-      angle = Math.round((phi + (cross < 0 ? 180 : 0)) * 10) / 10;
+      // GTFS pole coordinates are frequently sloppy on double-track streets
+      // (both direction poles of Dąb Silesia City Center share one point, so
+      // both discs flipped the same way) — when the pole sits inside the
+      // track corridor (<6 m off the axis) the coordinate carries no side
+      // signal; use the right-hand rule instead: doors open to the RIGHT of
+      // the direction of travel. Clearly offset poles keep the data's side.
+      const offM = Math.abs(cross) / Math.hypot(dx, dy);
+      const side = offM < 6 ? -1 : Math.sign(cross);
+      angle = Math.round((phi + (side < 0 ? 180 : 0)) * 10) / 10;
     }
     const arr = [...e.lines].sort(numSort);
     stopFeatures.push({
