@@ -362,7 +362,7 @@ async function init() {
       layout: {
         'text-field': ['get', 'line'],
         'text-font': [NARROW_BOLD],
-        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 9, 17, 11.5],
+        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 7.5, 17, 10],
         'text-offset': ['get', 'off'],
         'icon-image': ['concat', 'badge-', ['coalesce', ['get', 'color'], KMK]],
         'icon-text-fit': 'both',
@@ -390,7 +390,7 @@ async function init() {
       layout: {
         'text-field': ['get', 'name'],
         'text-font': [NARROW_BOLD],
-        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 11.5, 17, 14.5],
+        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 9.5, 17, 12.5],
         'text-anchor': 'bottom',
         'text-offset': ['get', 'off'],
         // pinned so the wrap matches the pipeline's row-height estimate

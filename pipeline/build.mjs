@@ -793,14 +793,19 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
   // 3-digit box outgrew a 3.0/1.5 em cell and neighbours overlapped, so the
   // cells are wider than the naive text estimate.
   const PER_ROW = 5, CELL_W = 3.4, CELL_H = 2.0, BASE_Y = 1.1;
-  const EM = 11, PAD = 10; // px: label em size in the band, plus breathing room
+  const EM = 9, PAD = 10; // px: label em size in the band, plus breathing room
   // Name-row metrics. The frontend wraps names at text-max-width 10 em with
   // line-height 1.1 (set explicitly in app.js) — roughly 18 chars per line at
   // ~0.55 em/char — so both the row stacking and the fusion test must use the
   // WRAPPED height and width: a two-line name laid out on a one-line slot
   // overprints the row above it, and two neighbouring complexes whose grids
   // clear each other can still cross name stacks.
-  const NAME_EM = 12, NAME_CHW = 0.55, NAME_WRAP = 18, NAME_LH = 1.1, NAME_BASE = 0.8;
+  const NAME_EM = 10, NAME_CHW = 0.55, NAME_WRAP = 18, NAME_LH = 1.1, NAME_BASE = 0.8;
+  // A complex may carry at most MAX_NAMES terminus names — one huge fused
+  // block (Katowice centre: 11 names, 55 boxes) reads as noise because the
+  // names lose their loops. Clusters that collide but may not fuse are pushed
+  // apart by the separation pass below instead.
+  const MAX_NAMES = 3;
   const nameRows = (nm) => Math.max(1, Math.ceil(nm.length / NAME_WRAP));
   const nameWpx = (nm) => Math.min(nm.length, Math.ceil(nm.length / nameRows(nm)) + 2) * NAME_CHW * NAME_EM;
   // full complex footprint in px: box grid below the anchor + name stack above
@@ -842,6 +847,7 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
           const dx = Math.abs(A.x - B.x);
           const dy = Math.abs((A.y - ra.cy * mpp) - (B.y - rb.cy * mpp));
           if (dx >= ((ra.w + rb.w) / 2) * mpp || dy >= ((ra.h + rb.h) / 2) * mpp) continue;
+          if (new Set([...A.names, ...B.names]).size > MAX_NAMES) continue;
           const seen = new Set(A.lines.map((l) => l.line));
           for (const l of B.lines) if (!seen.has(l.line)) A.lines.push(l);
           for (const nm of B.names) if (!A.names.includes(nm)) A.names.push(nm);
@@ -853,6 +859,34 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
         }
       }
       if (!merged) break;
+    }
+    // Separation: complexes that still overlap (the MAX_NAMES cap stopped the
+    // merge) are nudged apart along the axis needing the smaller correction,
+    // half each. The terminus DOTS are drawn from stops.geojson at the true
+    // loop positions and do not move, so a nudged complex stays next to its
+    // loop and the name→loop association survives.
+    for (let pass = 0; pass < 40; pass++) {
+      let moved = false;
+      for (let i = 0; i < cl.length; i++) {
+        for (let j = i + 1; j < cl.length; j++) {
+          const A = cl[i], B = cl[j];
+          const ra = rectOf(A), rb = rectOf(B);
+          const dxp = (A.x - B.x) / mpp;
+          const dyp = ((A.y - ra.cy * mpp) - (B.y - rb.cy * mpp)) / mpp;
+          const ox = (ra.w + rb.w) / 2 - Math.abs(dxp);
+          const oy = (ra.h + rb.h) / 2 - Math.abs(dyp);
+          if (ox <= 0 || oy <= 0) continue;
+          if (ox < oy) {
+            const s = (dxp >= 0 ? 1 : -1) * (ox / 2 + 2) * mpp;
+            A.x += s; B.x -= s;
+          } else {
+            const s = (dyp >= 0 ? 1 : -1) * (oy / 2 + 2) * mpp;
+            A.y += s; B.y -= s;
+          }
+          moved = true;
+        }
+      }
+      if (!moved) break;
     }
     mergedTotal += anchors.length - cl.length;
     for (const c of cl) {
