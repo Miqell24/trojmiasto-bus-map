@@ -366,7 +366,11 @@ async function init() {
         'text-offset': ['get', 'off'],
         'icon-image': ['concat', 'badge-', ['coalesce', ['get', 'color'], KMK]],
         'icon-text-fit': 'both',
-        'icon-text-fit-padding': [1.5, 3.5, 1.5, 3.5],
+        // top/bottom padding is deliberately uneven: the text box MapLibre fits
+        // the icon around includes descender space digits never use (~0.12 em),
+        // so a symmetric padding leaves the number hugging the TOP edge of the
+        // box — measured on canvas pixels and split back evenly.
+        'icon-text-fit-padding': [2.1, 3.5, 0.9, 3.5],
         // a grid must stay complete — a collision-hidden middle badge would read
         // as a data bug, so badges win overlap unconditionally (the pipeline is
         // what keeps separate grids from landing on top of each other)
@@ -740,7 +744,10 @@ async function init() {
     // the data bbox plus a hair of margin, so badge grids at the edge survive
     const [w, s, e, n] = meta.bbox;
     const dx = (e - w) * 0.015, dy = (n - s) * 0.015;
-    exportBBox([w - dx, s - dy, e + dx, n + dy], btnAll, 'Export PNG — whole map');
+    // boost 1.25: labels grow for legibility when zooming INTO the PNG, and
+    // stay just under the complex-separation margin (band edge z13.0 vs the
+    // poster's ~z13.35+ render — spacing factor 2^0.35 ≈ 1.27).
+    exportBBox([w - dx, s - dy, e + dx, n + dy], btnAll, 'Export PNG — whole map', { boost: 1.25 });
   });
 
   // Raw GTFS trace — for matching QA; lazy-loaded on first toggle
