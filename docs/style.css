@@ -114,3 +114,41 @@ details.lines summary { cursor: pointer; color: var(--kmk-dark); font-weight: 60
 @media (max-width: 560px) {
   #panel { width: calc(100% - 24px); max-height: 45%; }
 }
+
+/* City switcher (family navigation) */
+.city-switch { margin: 6px 0 4px; font-size: 12.5px; }
+.city-switch summary {
+  cursor: pointer;
+  color: var(--kmk);
+  font-weight: 600;
+  padding: 2px 9px;
+  border: 1px solid #ccd6e4;
+  border-radius: 7px;
+  background: #f4f7fb;
+  display: inline-block;
+  user-select: none;
+  list-style: none;
+}
+.city-switch summary::-webkit-details-marker { display: none; }
+.city-switch summary::after { content: ' \25be'; font-size: 10px; }
+.city-switch[open] summary::after { content: ' \25b4'; }
+.city-switch nav {
+  display: grid;
+  gap: 2px;
+  margin-top: 6px;
+  padding: 6px;
+  background: #f4f7fb;
+  border: 1px solid #e0e7f1;
+  border-radius: 9px;
+}
+.city-switch nav a, .city-switch nav .current {
+  display: block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #223;
+  text-decoration: none;
+}
+.city-switch nav a:hover { background: var(--kmk); color: #fff; }
+.city-switch nav .current { background: #dfe8f4; color: var(--kmk-dark); cursor: default; }
+.city-switch nav a.all { margin-top: 3px; padding-top: 6px; border-top: 1px solid #dbe3ef; color: var(--kmk); }
