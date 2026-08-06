@@ -6,52 +6,64 @@ import { candidates, dijkstra, pathTo } from './graph.mjs';
 
 function emission(d, sigma) { return -0.5 * (d / sigma) * (d / sigma); }
 
-function exits(graph, c) {
+// noPen (all four helpers below): soft contraflow multipliers drop to 1 —
+// raw meters only. Hard oneways (infinite pen) stay impossible. Switched on
+// for GTFS shape-gap legs, where the bridge must follow the corridor and a
+// contraflow surcharge otherwise loses to a longer around-the-block detour.
+// Each entry/exit carries `raw` (real meters) beside the penalized `cost`:
+// paths are CHOSEN by cost but SCORED by raw meters — a surcharge read as
+// distance compounds along oneway corridors until a genuine block-circling
+// detour outranks the straight street the shape drives (X499 rectangle).
+function exits(graph, c, noPen) {
   const s = graph.segs[c.segIdx];
   const list = [];
-  if (isFinite(s.fwdPen)) list.push({ node: s.b, cost: (1 - c.t) * s.len * s.fwdPen });
-  if (isFinite(s.bwdPen)) list.push({ node: s.a, cost: c.t * s.len * s.bwdPen });
+  if (isFinite(s.fwdPen)) list.push({ node: s.b, raw: (1 - c.t) * s.len, cost: (1 - c.t) * s.len * (noPen ? 1 : s.fwdPen) });
+  if (isFinite(s.bwdPen)) list.push({ node: s.a, raw: c.t * s.len, cost: c.t * s.len * (noPen ? 1 : s.bwdPen) });
   return list;
 }
 
-function entries(graph, c) {
+function entries(graph, c, noPen) {
   const s = graph.segs[c.segIdx];
   const list = [];
-  if (isFinite(s.fwdPen)) list.push({ node: s.a, cost: c.t * s.len * s.fwdPen });
-  if (isFinite(s.bwdPen)) list.push({ node: s.b, cost: (1 - c.t) * s.len * s.bwdPen });
+  if (isFinite(s.fwdPen)) list.push({ node: s.a, raw: c.t * s.len, cost: c.t * s.len * (noPen ? 1 : s.fwdPen) });
+  if (isFinite(s.bwdPen)) list.push({ node: s.b, raw: (1 - c.t) * s.len, cost: (1 - c.t) * s.len * (noPen ? 1 : s.bwdPen) });
   return list;
 }
 
-// Travel along a shared segment; costs include directional penalties (null = impossible).
-function sameSegDist(graph, a, b) {
+// Travel along a shared segment; cost includes directional penalties (null =
+// impossible), raw is the real meters of the same move.
+function sameSegDist(graph, a, b, noPen) {
   if (a.segIdx !== b.segIdx) return null;
   const s = graph.segs[a.segIdx];
   let best = null;
-  if (isFinite(s.fwdPen) && b.t >= a.t) best = (b.t - a.t) * s.len * s.fwdPen;
+  if (isFinite(s.fwdPen) && b.t >= a.t) {
+    best = { cost: (b.t - a.t) * s.len * (noPen ? 1 : s.fwdPen), raw: (b.t - a.t) * s.len };
+  }
   if (isFinite(s.bwdPen) && b.t <= a.t) {
-    const d = (a.t - b.t) * s.len * s.bwdPen;
-    if (best === null || d < best) best = d;
+    const cost = (a.t - b.t) * s.len * (noPen ? 1 : s.bwdPen);
+    if (best === null || cost < best.cost) best = { cost, raw: (a.t - b.t) * s.len };
   }
   return best;
 }
 
-function routeDistances(graph, a, candsB, cap) {
+// Per B-candidate: { cost, raw } of the min-cost connection, or null.
+function routeDistances(graph, a, candsB, cap, noPen) {
   const sources = new Map();
-  for (const e of exits(graph, a)) {
+  for (const e of exits(graph, a, noPen)) {
     const cur = sources.get(e.node);
-    if (cur === undefined || e.cost < cur) sources.set(e.node, e.cost);
+    if (cur === undefined || e.cost < cur.cost) sources.set(e.node, { cost: e.cost, raw: e.raw });
   }
-  const entryLists = candsB.map((c) => entries(graph, c));
+  const entryLists = candsB.map((c) => entries(graph, c, noPen));
   const targets = new Set();
   for (const list of entryLists) for (const e of list) targets.add(e.node);
-  const { dist } = dijkstra(graph, sources, targets, cap);
+  const { dist, raw } = dijkstra(graph, sources, targets, cap, noPen);
   return candsB.map((b, k) => {
-    let best = sameSegDist(graph, a, b);
+    let best = sameSegDist(graph, a, b, noPen);
     for (const e of entryLists[k]) {
       const d = dist.get(e.node);
       if (d !== undefined) {
-        const total = d + e.cost;
-        if (best === null || total < best) best = total;
+        const cost = d + e.cost;
+        if (best === null || cost < best.cost) best = { cost, raw: raw.get(e.node) + e.raw };
       }
     }
     return best;
@@ -59,16 +71,16 @@ function routeDistances(graph, a, candsB, cap) {
 }
 
 // Geometry of the a→b connection (without the start point). Returns {d, coords, nodesPath|null}.
-function connectPair(graph, a, b, cap) {
-  const ss = sameSegDist(graph, a, b);
+function connectPair(graph, a, b, cap, noPen) {
+  const ss = sameSegDist(graph, a, b, noPen);
   const sources = new Map();
-  for (const e of exits(graph, a)) {
+  for (const e of exits(graph, a, noPen)) {
     const cur = sources.get(e.node);
     if (cur === undefined || e.cost < cur) sources.set(e.node, e.cost);
   }
-  const entryList = entries(graph, b);
+  const entryList = entries(graph, b, noPen);
   const targets = new Set(entryList.map((e) => e.node));
-  const { dist, prev } = dijkstra(graph, sources, targets, cap);
+  const { dist, prev } = dijkstra(graph, sources, targets, cap, noPen);
   let best = null;
   for (const e of entryList) {
     const d = dist.get(e.node);
@@ -77,8 +89,8 @@ function connectPair(graph, a, b, cap) {
       if (!best || total < best.total) best = { total, node: e.node };
     }
   }
-  if (ss !== null && (best === null || ss <= best.total)) {
-    return { d: ss, coords: [[b.x, b.y]], nodesPath: null };
+  if (ss !== null && (best === null || ss.cost <= best.total)) {
+    return { d: ss.cost, coords: [[b.x, b.y]], nodesPath: null };
   }
   if (best === null) return null;
   const nodesPath = pathTo(prev, best.node);
@@ -114,6 +126,9 @@ export function matchShape(graph, pts, opts = {}) {
   const radii = opts.radii ?? [45, 70];
   const maxCand = opts.maxCand ?? 12;
   const perWay = opts.perWay ?? Infinity;
+  // legs longer than this are GTFS shape gaps: bridge them on raw meters
+  // (noPen) so the bridge hugs the corridor instead of dodging soft oneways
+  const gapMin = opts.gapMin ?? Infinity;
 
   const obs = [];
   let skipped = 0;
@@ -140,14 +155,17 @@ export function matchShape(graph, pts, opts = {}) {
     const prevScores = scoresHist[i - 1];
     const dGc = Math.hypot(B.x - A.x, B.y - A.y);
     const cap = Math.max(400, dGc * 4 + 300);
-    const rd = A.cand.map((c, j) => (prevScores[j] === NEG ? null : routeDistances(graph, c, B.cand, cap)));
+    const noPen = dGc > gapMin;
+    const rd = A.cand.map((c, j) => (prevScores[j] === NEG ? null : routeDistances(graph, c, B.cand, cap, noPen)));
     const ns = new Array(B.cand.length).fill(NEG);
     const bp = new Array(B.cand.length).fill(-1);
     for (let k = 0; k < B.cand.length; k++) {
       let best = NEG, bj = -1;
       for (let j = 0; j < A.cand.length; j++) {
         if (!rd[j] || rd[j][k] === null) continue;
-        const s = prevScores[j] - Math.abs(rd[j][k] - dGc) / beta;
+        // scored on RAW meters — the contraflow surcharge steers the path
+        // choice inside dijkstra but must not masquerade as extra distance
+        const s = prevScores[j] - Math.abs(rd[j][k].raw - dGc) / beta;
         if (s > best) { best = s; bj = j; }
       }
       if (bj >= 0) { ns[k] = best + emission(B.cand[k].dist, sigma); bp[k] = bj; }
@@ -179,7 +197,22 @@ export function matchShape(graph, pts, opts = {}) {
   // projected near a corner onto a long perpendicular segment must not drag the whole
   // block into the streets layer ("tails" at turns on a sparse OSM grid).
   const usedLen = new Map();
-  const use = (si, m) => usedLen.set(si, (usedLen.get(si) || 0) + m);
+  // Traveled t-envelope per segment (t along seg a→b). Long straight OSM
+  // segments otherwise draw in FULL once ≥25 m of them is ridden — at spur
+  // tips and route ends that left dangling 70–150 m stubs hanging past the
+  // real turnaround (user report: "torn" line ends on the Al Wafaa spur).
+  const usedIv = new Map();
+  const use = (si, m, t0, t1) => {
+    usedLen.set(si, (usedLen.get(si) || 0) + m);
+    if (t0 !== undefined && t1 > t0) {
+      let iv = usedIv.get(si);
+      if (!iv) usedIv.set(si, (iv = [t0, t1]));
+      else {
+        if (t0 < iv[0]) iv[0] = t0;
+        if (t1 > iv[1]) iv[1] = t1;
+      }
+    }
+  };
   const rawStretches = [];
   let bridged = 0, rawFallbacks = 0, rawMeters = 0, sumDist = 0;
 
@@ -195,28 +228,38 @@ export function matchShape(graph, pts, opts = {}) {
     }
     const isBreak = breaks.has(i);
     const spansSkipped = B.idx - A.idx > 1;
-    let conn = connectPair(graph, a, b, Math.max(500, rawLen * 4 + 300));
-    if (!conn) conn = connectPair(graph, a, b, rawLen * 8 + 2000);
-    // The bridge is judged only on a broken chain / across unassigned points:
-    // if it comes out absurdly longer than the raw trace, the road does not exist
-    // in OSM — draw the GTFS trace instead of fabricating a detour via ramps.
-    const wildDetour = conn && (isBreak || spansSkipped) &&
-      conn.d > Math.max(rawLen * 2.5, rawLen + 150);
+    // same gap classification as the Viterbi loop — the reconstructed path
+    // must be the one the transition scores were computed on
+    const noPen = Math.hypot(B.x - A.x, B.y - A.y) > gapMin;
+    let conn = connectPair(graph, a, b, Math.max(500, rawLen * 4 + 300), noPen);
+    if (!conn) conn = connectPair(graph, a, b, rawLen * 8 + 2000, noPen);
+    // The bridge is judged on a broken chain / across unassigned points — and,
+    // more strictly, on shape-gap legs: if it comes out absurdly longer than
+    // the raw trace, the road does not exist in OSM — draw the GTFS trace
+    // instead of fabricating a detour via ramps. Gap-leg case: the Viterbi may
+    // legitimately target a frontage street whose only graph entry lies around
+    // the block (unstitched parallel ways are routine in OSM) — X499 at El
+    // Kafr drew an 850 m rectangle over a 340 m straight corridor.
+    const wildDetour = conn && (
+      ((isBreak || spansSkipped) && conn.d > Math.max(rawLen * 2.5, rawLen + 150)) ||
+      (noPen && conn.d > Math.max(rawLen * 2.2, rawLen + 150)));
     if (conn && !wildDetour) {
       appendCoords(coords, conn.coords);
       if (conn.nodesPath) {
         const sa = graph.segs[a.segIdx];
         const first = conn.nodesPath[0];
-        use(a.segIdx, first === sa.b ? (1 - a.t) * sa.len : first === sa.a ? a.t * sa.len : 0);
+        if (first === sa.b) use(a.segIdx, (1 - a.t) * sa.len, a.t, 1);
+        else if (first === sa.a) use(a.segIdx, a.t * sa.len, 0, a.t);
         for (let p = 0; p + 1 < conn.nodesPath.length; p++) {
           const si = graph.segByNodes.get(conn.nodesPath[p] + '|' + conn.nodesPath[p + 1]);
-          if (si !== undefined) use(si, graph.segs[si].len);
+          if (si !== undefined) use(si, graph.segs[si].len, 0, 1);
         }
         const sb = graph.segs[b.segIdx];
         const last = conn.nodesPath[conn.nodesPath.length - 1];
-        use(b.segIdx, last === sb.a ? b.t * sb.len : last === sb.b ? (1 - b.t) * sb.len : 0);
+        if (last === sb.a) use(b.segIdx, b.t * sb.len, 0, b.t);
+        else if (last === sb.b) use(b.segIdx, (1 - b.t) * sb.len, b.t, 1);
       } else {
-        use(a.segIdx, Math.abs(b.t - a.t) * graph.segs[a.segIdx].len);
+        use(a.segIdx, Math.abs(b.t - a.t) * graph.segs[a.segIdx].len, Math.min(a.t, b.t), Math.max(a.t, b.t));
       }
       if (isBreak) bridged++;
     } else {
@@ -243,6 +286,7 @@ export function matchShape(graph, pts, opts = {}) {
   return {
     coords,
     usedSegs,
+    usedIv,
     breakPts,
     rawStretches,
     stats: {
@@ -255,6 +299,148 @@ export function matchShape(graph, pts, opts = {}) {
       rawMeters: Math.round(rawMeters),
       meanError: N > 1 ? sumDist / (N - 1) : 0,
       roundaboutSegs: roundaboutSegs,
+      extStart: 0,
+      extEnd: 0,
     },
   };
+}
+
+function pointToPolyline(coords, p) {
+  let best = Infinity;
+  for (let i = 0; i + 1 < coords.length; i++) {
+    const a = coords[i], b = coords[i + 1];
+    const vx = b[0] - a[0], vy = b[1] - a[1];
+    const l2 = vx * vx + vy * vy;
+    let t = l2 ? ((p[0] - a[0]) * vx + (p[1] - a[1]) * vy) / l2 : 0;
+    t = t < 0 ? 0 : t > 1 ? 1 : t;
+    const d = Math.hypot(p[0] - (a[0] + t * vx), p[1] - (a[1] + t * vy));
+    if (d < best) best = d;
+  }
+  return best;
+}
+
+// Segment bookkeeping of one routed leg — same rules as the reconstruction loop
+// above, so an extended stretch enters the streets layer on equal terms.
+function useConn(graph, use, a, conn, b) {
+  if (conn.nodesPath) {
+    const sa = graph.segs[a.segIdx];
+    const first = conn.nodesPath[0];
+    if (first === sa.b) use(a.segIdx, (1 - a.t) * sa.len, a.t, 1);
+    else if (first === sa.a) use(a.segIdx, a.t * sa.len, 0, a.t);
+    for (let p = 0; p + 1 < conn.nodesPath.length; p++) {
+      const si = graph.segByNodes.get(conn.nodesPath[p] + '|' + conn.nodesPath[p + 1]);
+      if (si !== undefined) use(si, graph.segs[si].len, 0, 1);
+    }
+    const sb = graph.segs[b.segIdx];
+    const last = conn.nodesPath[conn.nodesPath.length - 1];
+    if (last === sb.a) use(b.segIdx, b.t * sb.len, 0, b.t);
+    else if (last === sb.b) use(b.segIdx, (1 - b.t) * sb.len, b.t, 1);
+  } else {
+    use(a.segIdx, Math.abs(b.t - a.t) * graph.segs[a.segIdx].len, Math.min(a.t, b.t), Math.max(a.t, b.t));
+  }
+}
+
+// Route through a chain of points, greedily leg by leg. `from` seeds the chain
+// (all its candidates compete on the first leg), every `target` is then reached
+// from the candidate the previous leg settled on. A leg with no road route — or
+// one whose route is an absurd detour — ends the chain: half an extension beats
+// invented geometry.
+function chainThrough(graph, from, targets, use, opts) {
+  const coords = [];
+  let curCands = candidates(graph, from.pt[0], from.pt[1], from.radius, 6);
+  if (!curCands.length) return { coords, reached: 0, meters: 0 };
+  let cur = null, meters = 0, reached = 0;
+  for (const t of targets) {
+    const cands = candidates(graph, t.pt[0], t.pt[1], t.radius, 8);
+    if (!cands.length) break;
+    const src = cur ? [cur] : curCands;
+    const gap = Math.hypot(t.pt[0] - (cur ? cur.x : from.pt[0]), t.pt[1] - (cur ? cur.y : from.pt[1]));
+    if (gap > opts.maxGap) break;
+    const cap = Math.max(400, gap * 2.5 + 300);
+    let best = null;
+    for (const a of src) {
+      for (const b of cands) {
+        const conn = connectPair(graph, a, b, cap, false);
+        // the emission side still matters: a candidate 150 m off the pole that
+        // routes 20 m shorter is not the stop's street
+        if (conn && (!best || conn.d + b.dist * 2 < best.conn.d + best.b.dist * 2)) best = { a, b, conn };
+      }
+    }
+    if (!best) break;
+    if (!cur) coords.push([best.a.x, best.a.y]);
+    appendCoords(coords, best.conn.coords);
+    useConn(graph, use, best.a, best.conn, best.b);
+    meters += best.conn.d;
+    cur = best.b;
+    reached++;
+  }
+  return { coords, reached, meters };
+}
+
+// Terminal repair — the drawn line must reach the stops it serves.
+//
+// Source geometry regularly stops short of a terminus: the Jastrzębie shape of
+// line 303 ends 1.3 km before Kamień Rzędówka, TPBI's tram 1 gives up 3 km before
+// Romprim, and a stop-sequence pseudo-shape silently loses its last observation
+// when the pole coordinate lies off every road (Lyski Rondo sits 115 m into a
+// field, outside the candidate net — user report). Whatever the cause, the line
+// ends in mid-street while the terminus disc, its name and the line badges float
+// away from any route: the most visible defect the map can show.
+//
+// Fix: take the stops at either end that the matched geometry never comes near
+// and chain them onto it through the graph, leg by leg, the way a pseudo match
+// would have drawn them. Guarded: a run that is far from ALL its stops is a
+// broken match, not a short shape, and is left untouched.
+export function extendToStops(graph, res, stopsXY, opts = {}) {
+  const trigger = opts.trigger ?? 120;
+  const radius = opts.radius ?? 160;
+  const maxGap = opts.maxGap ?? 4000;
+  const coords = res.coords;
+  if (!Array.isArray(stopsXY) || stopsXY.length < 2 || coords.length < 2) return null;
+
+  const far = stopsXY.map((p) => pointToPolyline(coords, p) > trigger);
+  let head = 0;
+  while (head < far.length && far[head]) head++;
+  let tail = 0;
+  while (tail < far.length - head && far[far.length - 1 - tail]) tail++;
+  if (!head && !tail) return null;
+  if (head + tail >= far.length) return null;
+
+  const usedLen = new Map();
+  const use = (si, m, t0, t1) => {
+    usedLen.set(si, (usedLen.get(si) || 0) + m);
+    if (t0 !== undefined && t1 > t0) {
+      let iv = res.usedIv.get(si);
+      if (!iv) res.usedIv.set(si, (iv = [t0, t1]));
+      else {
+        if (t0 < iv[0]) iv[0] = t0;
+        if (t1 > iv[1]) iv[1] = t1;
+      }
+    }
+  };
+
+  let startM = 0, endM = 0;
+  if (tail) {
+    const seq = stopsXY.slice(stopsXY.length - tail).map((pt) => ({ pt, radius }));
+    const ch = chainThrough(graph, { pt: coords[coords.length - 1], radius: 30 }, seq, use, { maxGap });
+    if (ch.reached) { appendCoords(coords, ch.coords); endM = ch.meters; }
+  }
+  if (head) {
+    // travel order: the first orphan stop → … → the point the match starts at
+    const seq = [...stopsXY.slice(1, head).map((pt) => ({ pt, radius })), { pt: coords[0], radius: 30 }];
+    const ch = chainThrough(graph, { pt: stopsXY[0], radius }, seq, use, { maxGap });
+    if (ch.reached === seq.length) {
+      const pre = ch.coords;
+      while (pre.length && Math.abs(pre[pre.length - 1][0] - coords[0][0]) < 0.01 &&
+             Math.abs(pre[pre.length - 1][1] - coords[0][1]) < 0.01) pre.pop();
+      coords.unshift(...pre);
+      startM = ch.meters;
+    }
+  }
+  for (const [si, m] of usedLen) {
+    if (m >= Math.min(25, graph.segs[si].len * 0.5)) res.usedSegs.add(si);
+  }
+  res.stats.extStart = Math.round(startM);
+  res.stats.extEnd = Math.round(endM);
+  return { head, tail, startM: Math.round(startM), endM: Math.round(endM) };
 }

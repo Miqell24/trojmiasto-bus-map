@@ -267,6 +267,25 @@ async function init() {
       });
     }
   };
+  // Safety net: a line color the palette misses must never strip a badge of
+  // its box or a station of its dot — generate the icon on demand, deriving
+  // the dark rim from the color itself.
+  const darkenHex = (hex) => '#' + (hex.match(/[0-9a-f]{2}/gi) || [])
+    .map((h) => Math.round(parseInt(h, 16) * 0.45).toString(16).padStart(2, '0')).join('');
+  const addMissingIcon = (m) => (e) => {
+    const g = /^(stop|dot|badge)-(#[0-9a-f]{6})(-t)?$/.exec(e.id);
+    if (!g || m.hasImage(e.id)) return;
+    const [, kind, c, t] = g;
+    if (kind === 'badge') {
+      m.addImage(e.id, badgeBox(c), {
+        pixelRatio: 2,
+        stretchX: [[10, 16]], stretchY: [[8, 12]], content: [6, 4, 20, 16],
+      });
+    } else {
+      m.addImage(e.id, discIcon(t ? c : '#ffffff', t ? darkenHex(c) : c, kind === 'stop'), { pixelRatio: 2 });
+    }
+  };
+  map.on('styleimagemissing', addMissingIcon(map));
   addStopIcons(map);
   map.addLayer({
     id: 'stops-dots', type: 'symbol', source: 'stops',
@@ -353,6 +372,13 @@ async function init() {
   // ranges still draw it exactly once, so a stale badges.geojson degrades to the
   // unfused layout instead of an empty map
   const bandC = (b) => ['any', ['!', ['has', 'band']], ['==', ['get', 'band'], b]];
+  // CONSTANT text size per band layer — never zoom-interpolated. MapLibre fits
+  // the icon-text-fit box at the tile-layout text size but renders the text at
+  // the interpolated size, so at fractional zooms the em grid offsets diverge
+  // and the drift accumulates row by row (and exports always render at
+  // fractional zooms). One number per band = layout and render always agree.
+  const BADGE_EM = [7.7, 8.1, 8.7, 9.5, 10];
+  const NAME_EM = [9.7, 10.3, 11, 11.9, 12.5];
   const BADGE_LAYERS = BADGE_BANDS.map(([z0, z1], b) => {
     const id = 'stops-terminus-badges-' + b;
     map.addLayer({
@@ -362,7 +388,11 @@ async function init() {
       layout: {
         'text-field': ['get', 'line'],
         'text-font': [NARROW_BOLD],
-        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 7.5, 17, 10],
+        // × sc: crowded complexes arrive pre-shrunk from the pipeline — the
+        // per-feature constant keeps layout and render in agreement (the same
+        // guarantee as the per-band constant; only ZOOM-interpolated sizes
+        // drift against icon-text-fit)
+        'text-size': ['*', BADGE_EM[b] ?? 10, ['coalesce', ['get', 'sc'], 1]],
         'text-offset': ['get', 'off'],
         'icon-image': ['concat', 'badge-', ['coalesce', ['get', 'color'], KMK]],
         'icon-text-fit': 'both',
@@ -394,7 +424,7 @@ async function init() {
       layout: {
         'text-field': ['get', 'name'],
         'text-font': [NARROW_BOLD],
-        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 9.5, 17, 12.5],
+        'text-size': ['*', NAME_EM[b] ?? 12.5, ['coalesce', ['get', 'sc'], 1]],
         'text-anchor': 'bottom',
         'text-offset': ['get', 'off'],
         // pinned so the wrap matches the pipeline's row-height estimate
@@ -521,6 +551,11 @@ async function init() {
     if (typeof v === 'number') return v * f;
     if (Array.isArray(v)) {
       if (v[0] === 'interpolate') return v.map((x, i) => (i >= 3 && i % 2 === 0 ? scaleOut(x, f) : x));
+      if (v[0] === '*') {
+        // badge sizes are ['*', const, per-feature sc] — boost the constant
+        const i = v.findIndex((x, j) => j > 0 && typeof x === 'number');
+        return i > 0 ? v.map((x, j) => (j === i ? x * f : x)) : ['*', f, v];
+      }
       if (v[0] === 'case') return v.map((x, i) => ((i >= 2 && i % 2 === 0) || i === v.length - 1 ? scaleOut(x, f) : x));
     }
     return v;
@@ -541,6 +576,19 @@ async function init() {
       if (/^route-/.test(l.id) && l.paint && l.paint['line-width']) {
         l.paint['line-width'] = scaleOut(l.paint['line-width'], f);
       }
+    }
+    // Poster passes only (boostStyle never runs on the WYSIWYG current-view
+    // export): arterial street names move ABOVE the transit numbers. On the
+    // whole-map sheet (~z13.9) the wall-to-wall number labels otherwise win
+    // every collision and the poster ships without a single street name. Stop
+    // names, terminus names and the badge grids still outrank them — only the
+    // endlessly repeating numbers yield.
+    const mi = st.layers.findIndex((l) => l.id === 'highway-name-major');
+    if (mi >= 0) {
+      const [major] = st.layers.splice(mi, 1);
+      let last = -1;
+      st.layers.forEach((l, i) => { if (/^street-numbers/.test(l.id)) last = i; });
+      st.layers.splice(last >= 0 ? last + 1 : st.layers.length, 0, major);
     }
     return st;
   };

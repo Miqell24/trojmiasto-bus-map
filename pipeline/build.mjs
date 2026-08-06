@@ -14,7 +14,7 @@ import { dirname, join } from 'node:path';
 import { iterCsv, readCsv } from './lib/csv.mjs';
 import { makeProj, resample, nearestOnPolyline, polylineLength } from './lib/geo.mjs';
 import { buildGraph } from './lib/graph.mjs';
-import { matchShape } from './lib/hmm.mjs';
+import { matchShape, extendToStops } from './lib/hmm.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 // m — longer jumps between shape points are GTFS data gaps. The Tricity feeds
@@ -278,6 +278,10 @@ async function processMode(cfg) {
 
   // ---------- 7) map matching per line+direction ----------
   const segLines = new Map();
+  // traveled t-envelope per segment across ALL lines — the street stroke of a
+  // long straight segment is later clipped to it at run ends (dangling stubs
+  // past U-turn tips / route ends)
+  const segIv = new Map();
   const rawRunsAll = [];
   for (const r of reps) {
     const xy = r.shapeLatLon.map(([lat, lon]) => proj.toXY(lat, lon));
@@ -300,10 +304,24 @@ async function processMode(cfg) {
       }
       if (gaps) log(`  shape gap ${r.line}/${r.dir}: ${gaps} × >${GAP_MIN} m (max ${Math.round(maxGap)} m) — bridged by routing`);
       sampled = resample(xy, 20, GAP_MIN);
-      opts = {};
+      // gapMin: gap legs bridge on raw meters (soft oneway penalties off) — a
+      // 2.5× contraflow surcharge otherwise out-costs real distance and the
+      // bridge circles the block instead of following the corridor
+      opts = { gapMin: GAP_MIN };
     }
     const res = matchShape(graph, sampled, opts);
     if (!res) { log(`SKIPPED ${r.line}/${r.dir}: matching failed`); continue; }
+    // the drawn line must reach the stops it serves: truncated source shapes and
+    // dropped pseudo observations otherwise leave the terminus disc, its name and
+    // the line badges hanging off the end of the route
+    const stopsXY = r.stopSeq
+      .map((s) => stopsById.get(s.stopId))
+      .filter(Boolean)
+      .map((st) => proj.toXY(st.lat, st.lon));
+    const ext = extendToStops(graph, res, stopsXY);
+    if (ext) log(`  terminal repair ${r.line}/${r.dir}: ` +
+      `${ext.head ? `${ext.head} stop(s) before the shape (+${ext.startM} m) ` : ''}` +
+      `${ext.tail ? `${ext.tail} stop(s) past the shape (+${ext.endM} m)` : ''}`);
     r.matchedXY = res.coords;
     r.usedSegs = res.usedSegs;
     r.stats = res.stats;
@@ -312,6 +330,15 @@ async function processMode(cfg) {
       let set = segLines.get(si);
       if (!set) segLines.set(si, (set = new Set()));
       set.add(r.line);
+      const iv = res.usedIv.get(si);
+      if (iv) {
+        let g = segIv.get(si);
+        if (!g) segIv.set(si, iv.slice());
+        else {
+          if (iv[0] < g[0]) g[0] = iv[0];
+          if (iv[1] > g[1]) g[1] = iv[1];
+        }
+      }
     }
     for (const raw of res.rawStretches) {
       if (raw.length < 2) continue;
@@ -349,10 +376,10 @@ async function processMode(cfg) {
       const st = stopsById.get(s.stopId);
       if (!st) return;
       let e = stopAgg.get(s.stopId);
-      if (!e) stopAgg.set(s.stopId, (e = { name: st.name, lat: st.lat, lon: st.lon, lines: new Set(), runs: new Set(), terminus: 0 }));
+      if (!e) stopAgg.set(s.stopId, (e = { name: st.name, lat: st.lat, lon: st.lon, lines: new Set(), runs: new Set(), term: new Set() }));
       e.lines.add(r.line);
       e.runs.add(r);
-      if (i === 0 || i === r.stopSeq.length - 1) e.terminus = 1;
+      if (i === 0 || i === r.stopSeq.length - 1) e.term.add(r.line);
     });
   }
   // A metro STATION is one place: merge the per-direction (and per-line, at
@@ -375,7 +402,7 @@ async function processMode(cfg) {
         const [id, e] = g[i];
         for (const L of e.lines) base.lines.add(L);
         for (const R of e.runs) base.runs.add(R);
-        base.terminus = base.terminus || e.terminus;
+        for (const L of e.term) base.term.add(L);
         latS += e.lat; lonS += e.lon;
         stopAgg.delete(id);
       }
@@ -385,6 +412,7 @@ async function processMode(cfg) {
   }
   const stopFeatures = [];
   let stopsFar = 0;
+  const farNames = [];
   for (const e of stopAgg.values()) {
     const [sx, sy] = proj.toXY(e.lat, e.lon);
     const isMetroStop = cfg.mode === 'tram' && [...e.lines].every((l) => l.startsWith('M'));
@@ -399,9 +427,17 @@ async function processMode(cfg) {
     }
     // metro gets a wide snap net: station coords in STASY are entrance-based and
     // can sit well off the track axis (Irini: >80 m) — the disc belongs ON the line
-    const useSnap = best && best.d <= (isMetroStop ? 250 : 80);
-    if (!useSnap) stopsFar++;
-    const [lon, lat] = useSnap ? proj.toLonLat(best.x, best.y) : [e.lon, e.lat];
+    // A stop drawn beside its own line reads as a bug, so the disc goes ON the
+    // line even when the pole coordinate is poor — 200 m of rescue covers the
+    // sloppy ones (Lyski Rondo stands 115 m off the roadway in the source data).
+    // Metro gets a wider net still: station coords are entrance-based and can
+    // sit well off the track axis (Irini: >80 m).
+    const useSnap = best && best.d <= (isMetroStop ? 250 : 200);
+    // Beyond that the pole cannot be placed honestly: its own line is drawn
+    // somewhere else entirely. A disc stranded off the network is worse than a
+    // missing stop, so it is left out and logged.
+    if (!useSnap) { stopsFar++; farNames.push(`${e.name} (${Math.round(best ? best.d : -1)} m)`); continue; }
+    const [lon, lat] = proj.toLonLat(best.x, best.y);
     // half-disc orientation: flat edge along the street, bulge toward the pole's
     // side of the roadway (side = sign of the cross product between the street
     // direction and the snap→pole vector; the GTFS pole stands beside the road)
@@ -422,6 +458,7 @@ async function processMode(cfg) {
       angle = Math.round((phi + (side < 0 ? 180 : 0)) * 10) / 10;
     }
     const arr = [...e.lines].sort(numSort);
+    const termArr = [...e.term].sort(numSort);
     stopFeatures.push({
       type: 'Feature',
       geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
@@ -429,7 +466,10 @@ async function processMode(cfg) {
         name: e.name,
         lines: arr.join(', '),
         arr,
-        terminus: e.terminus,
+        terminus: termArr.length ? 1 : 0,
+        // terminating lines only — consumed by the badge-anchor pass below and
+        // stripped before the geojson is written
+        termArr,
         mode: cfg.mode,
         color: colorOf(arr),
         colorDark: colorDarkOf(arr),
@@ -440,7 +480,7 @@ async function processMode(cfg) {
       },
     });
   }
-  if (stopsFar) log(`WARNING: ${stopsFar} stops farther than 80 m from the route (kept at GTFS position)`);
+  if (stopsFar) log(`WARNING: ${stopsFar} stops dropped — farther than 200 m from every line calling there: ${farNames.slice(0, 8).join(', ')}${stopsFar > 8 ? ', …' : ''}`);
 
   // One label per pole group: clustering by name within a 220 m radius.
   const byName = new Map();
@@ -456,11 +496,18 @@ async function processMode(cfg) {
       const [lon, lat] = f.geometry.coordinates;
       const [x, y] = proj.toXY(lat, lon);
       let c = clusters.find((c) => Math.hypot(c.x - x, c.y - y) < 220);
-      if (!c) clusters.push((c = { x, y, best: f }));
+      if (!c) clusters.push((c = { x, y, best: f, term: new Set() }));
       else if (f.properties.terminus > c.best.properties.terminus) c.best = f;
+      // terminating lines of the whole pole group: a line can end at the pole
+      // of one direction while the label rides the other — badges must not
+      // lose it to the label lottery
+      for (const l of f.properties.termArr) c.term.add(l);
       f.properties.label = 0;
     }
-    for (const c of clusters) { c.best.properties.label = 1; labelCount++; }
+    for (const c of clusters) {
+      c.best.properties.label = 1; labelCount++;
+      if (c.best.properties.terminus) c.best.properties.badgeLines = [...c.term].sort(numSort);
+    }
   }
   log(`Stops: ${stopFeatures.length} poles, ${labelCount} labels`);
 
@@ -471,23 +518,32 @@ async function processMode(cfg) {
   const badgeAnchors = [];
   for (const f of stopFeatures) {
     const p = f.properties;
-    if (!p.terminus || !p.label) continue;
-    badgeAnchors.push({
-      lon: f.geometry.coordinates[0],
-      lat: f.geometry.coordinates[1],
-      name: p.name,
-      lines: p.arr.map((line) => ({ line, mode: p.mode, color: colorOf([line]), colorDark: colorDarkOf([line]) })),
-    });
+    // the lines that END here, not every line that calls: a corridor stop where
+    // one route turns back otherwise built a wall of boxes for its through lines
+    if (p.terminus && p.label && p.badgeLines && p.badgeLines.length) {
+      badgeAnchors.push({
+        lon: f.geometry.coordinates[0],
+        lat: f.geometry.coordinates[1],
+        name: p.name,
+        lines: p.badgeLines.map((line) => ({ line, mode: p.mode, color: colorOf([line]), colorDark: colorDarkOf([line]) })),
+      });
+    }
+    delete p.termArr;
+    delete p.badgeLines;
   }
   log(`Termini: ${badgeAnchors.length} loops with line badges`);
 
   // ---------- 9) streets/tracks: runs merged per line set ----------
   const byWay = new Map();
+  const posSeg = new Map();
   for (const [si, lines] of segLines) {
     const s = graph.segs[si];
     let m = byWay.get(s.wayId);
     if (!m) byWay.set(s.wayId, (m = new Map()));
     m.set(s.wayPos, lines);
+    let pm = posSeg.get(s.wayId);
+    if (!pm) posSeg.set(s.wayId, (pm = new Map()));
+    pm.set(s.wayPos, si);
   }
   const runs = [];
   for (const [wayId, posMap] of byWay) {
@@ -500,7 +556,18 @@ async function processMode(cfg) {
         const n = graph.nodes.get(id);
         return [round6(n.lon), round6(n.lat)];
       });
-      if (coords.length >= 2) runs.push({ coords, name: way.name, linesKey, roundabout: way.roundabout ? 1 : 0 });
+      if (coords.length < 2) return;
+      // Clip the run's outer ends to the traveled t-envelope of the first and
+      // last segment: a long straight segment ridden for only its first meters
+      // otherwise draws in full and leaves a dangling stub past the real
+      // turnaround (spur tips, mid-block route ends).
+      const pm = posSeg.get(wayId);
+      const lerp = (A, B, t) => [round6(A[0] + (B[0] - A[0]) * t), round6(A[1] + (B[1] - A[1]) * t)];
+      const iv0 = segIv.get(pm.get(start));
+      if (iv0 && iv0[0] > 0.03) coords[0] = lerp(coords[0], coords[1], iv0[0]);
+      const iv1 = segIv.get(pm.get(end));
+      if (iv1 && iv1[1] < 0.97) coords[coords.length - 1] = lerp(coords[coords.length - 2], coords[coords.length - 1], iv1[1]);
+      runs.push({ coords, name: way.name, linesKey, roundabout: way.roundabout ? 1 : 0 });
     };
     let runStart = positions[0], prevPos = positions[0], runKey = keyOf(positions[0]);
     for (let i = 1; i < positions.length; i++) {
@@ -753,11 +820,18 @@ const metaLines = [];
     if (ang < -90) ang += 180;
     return { c, ang };
   };
+  // A corridor label listing 50 lines is unreadable and kilometers long — the
+  // display caps at 12 + a "+N" tail (`arr` stays complete: the frontend
+  // filters and highlights on it).
+  const capList = (s) => {
+    const a = s.split(', ');
+    return a.length > 14 ? a.slice(0, 12).join(', ') + ' +' + (a.length - 12) : s;
+  };
   for (const g of groups.values()) {
     const p = g.best.f.properties;
     const arr = p.busLines ? [...p.lines.split(', '), ...p.busLines.split(', ')] : p.lines.split(', ');
-    const baseProps = { lines: p.lines, color: p.color, mode: p.mode, arr };
-    if (p.busLines) baseProps.busLines = p.busLines;
+    const baseProps = { lines: capList(p.lines), color: p.color, mode: p.mode, arr };
+    if (p.busLines) baseProps.busLines = capList(p.busLines);
     const anchors = [];
     const emit = (placed, extra) => {
       const props = { ...baseProps, angle: Math.round(placed.ang * 10) / 10 };
@@ -819,14 +893,41 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
   // names lose their loops. Clusters that collide but may not fuse are pushed
   // apart by the separation pass below instead.
   const MAX_NAMES = 3;
+  // MapLibre stores glyph offsets as Int16 (offset px × 32, at the 24 px layout
+  // em): past ±42.6 em the value WRAPS and the numbers of rows 21+ detach from
+  // their boxes, landing ~40 em above the complex. Mega-complexes therefore
+  // grow WIDE instead of tall — target ≤6 rows (squat grids also blot out less
+  // of the street grid on the poster), columns capped at 24 (the x offsets hit
+  // the same wall).
+  const perRowOf = (n) => Math.min(24, Math.max(PER_ROW, Math.ceil(n / 6)));
+  // …and at most MAX_LINES boxes: fused downtown complexes walled over whole
+  // blocks of streets and nobody could tell which loop the lines belonged to.
+  // A single loop that alone carries more lines stays intact — the cap only
+  // stops MERGING.
+  const MAX_LINES = 20;
+  // Crowded complexes SHRINK: past SC_FREE lines the whole grid — boxes,
+  // numbers and name rows — scales down (to 0.7 at the largest loops), so the
+  // poster bands stop hiding the street grid under badge walls. The zoom-in
+  // bands keep full size: there is room at street level, and 0.7 × 10 px would
+  // be squinting territory in the field.
+  const SC_FREE = 12;
+  const scFor = (band, n) => {
+    if (band >= 3 || n <= SC_FREE) return 1;
+    const sc = Math.max(0.7, (SC_FREE / n) ** 0.3);
+    return band === 2 ? Math.max(sc, 0.85) : sc;
+  };
+  // loop names never drop below 0.85 — they carry the name↔loop association
+  const nameScFor = (band, n) => Math.max(scFor(band, n), 0.85);
   const nameRows = (nm) => Math.max(1, Math.ceil(nm.length / NAME_WRAP));
   const nameWpx = (nm) => Math.min(nm.length, Math.ceil(nm.length / nameRows(nm)) + 2) * NAME_CHW * NAME_EM;
   // full complex footprint in px: box grid below the anchor + name stack above
-  const rectOf = (c) => {
-    const g = geom(c.lines.length);
+  const rectOf = (c, band) => {
+    const n = c.lines.length;
+    const g = geom(n, band);
+    const nsc = nameScFor(band, n);
     const stackH = c.names.reduce((s, nm) => s + nameRows(nm) * NAME_LH, 0);
-    const w = Math.max(g.w, ...c.names.map(nameWpx));
-    const top = -(NAME_BASE + stackH) * NAME_EM;
+    const w = Math.max(g.w, ...c.names.map((nm) => nameWpx(nm) * nsc));
+    const top = -(NAME_BASE + stackH) * NAME_EM * nsc;
     const bottom = g.yc + g.h / 2;
     return { w, cy: (top + bottom) / 2, h: bottom - top };
   };
@@ -834,12 +935,13 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
   const P2 = makeProj(latMid, anchors.length ? anchors[0].lon : 19.94);
   // grid footprint in px for n lines: width, height and the centre's offset below
   // the anchor (the grid hangs under the dot)
-  const geom = (n) => {
-    const rows = Math.ceil(n / PER_ROW), cols = Math.min(PER_ROW, n);
+  const geom = (n, band) => {
+    const p = perRowOf(n), sc = scFor(band, n);
+    const rows = Math.ceil(n / p), cols = Math.min(p, n);
     return {
-      w: cols * CELL_W * EM + PAD,
-      h: ((rows - 1) * CELL_H + 1) * EM + PAD,
-      yc: (BASE_Y + ((rows - 1) * CELL_H) / 2) * EM,
+      w: cols * CELL_W * EM * sc + PAD,
+      h: ((rows - 1) * CELL_H + 1) * EM * sc + PAD,
+      yc: (BASE_Y + ((rows - 1) * CELL_H) / 2) * EM * sc,
     };
   };
   let mergedTotal = 0;
@@ -856,13 +958,15 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
       for (let i = 0; i < cl.length; i++) {
         for (let j = i + 1; j < cl.length; j++) {
           const A = cl[i], B = cl[j];
-          const ra = rectOf(A), rb = rectOf(B);
+          const ra = rectOf(A, band), rb = rectOf(B, band);
           const dx = Math.abs(A.x - B.x);
           const dy = Math.abs((A.y - ra.cy * mpp) - (B.y - rb.cy * mpp));
           if (dx >= ((ra.w + rb.w) / 2) * mpp || dy >= ((ra.h + rb.h) / 2) * mpp) continue;
           if (new Set([...A.names, ...B.names]).size > MAX_NAMES) continue;
           const seen = new Set(A.lines.map((l) => l.line));
-          for (const l of B.lines) if (!seen.has(l.line)) A.lines.push(l);
+          const add = B.lines.filter((l) => !seen.has(l.line));
+          if (A.lines.length + add.length > MAX_LINES) continue;
+          for (const l of add) A.lines.push(l);
           for (const nm of B.names) if (!A.names.includes(nm)) A.names.push(nm);
           A.x = (A.x * A.n + B.x * B.n) / (A.n + B.n);
           A.y = (A.y * A.n + B.y * B.n) / (A.n + B.n);
@@ -883,7 +987,7 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
       for (let i = 0; i < cl.length; i++) {
         for (let j = i + 1; j < cl.length; j++) {
           const A = cl[i], B = cl[j];
-          const ra = rectOf(A), rb = rectOf(B);
+          const ra = rectOf(A, band), rb = rectOf(B, band);
           const dxp = (A.x - B.x) / mpp;
           const dyp = ((A.y - ra.cy * mpp) - (B.y - rb.cy * mpp)) / mpp;
           const ox = (ra.w + rb.w) / 2 - Math.abs(dxp);
@@ -911,23 +1015,31 @@ const BADGE_BANDS = [[13, 13.6], [13.6, 14.4], [14.4, 15.5], [15.5, 16.8], [16.8
       // (Bałtyk at Kaponiera) — and a nameless loop is a hard error on a
       // printed map, so from z13 these rows replace it.
       const modes = [...new Set(lines.map((l) => l.mode))].join(',');
+      // per-complex shrink rides along as `sc` — the frontend multiplies the
+      // band's constant text size by it (em offsets follow the font size, so
+      // the whole grid scales as one)
+      const scC = Math.round(scFor(band, lines.length) * 100) / 100;
+      const nscC = Math.round(nameScFor(band, lines.length) * 100) / 100;
       let yOff = NAME_BASE;
       for (const nm of [...c.names].sort((a, b) => b.localeCompare(a))) {
         badgeFeatures.push({
           type: 'Feature',
           geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
-          properties: { name: nm, band, modes, arr: lines.map((l) => l.line), off: [0, -Math.round(yOff * 100) / 100] },
+          properties: { name: nm, band, modes, arr: lines.map((l) => l.line), off: [0, -Math.round(yOff * 100) / 100], ...(nscC < 1 ? { sc: nscC } : {}) },
         });
         yOff += nameRows(nm) * NAME_LH;
       }
+      const pRow = perRowOf(lines.length);
+      if (Math.ceil(lines.length / pRow) > 20) log(`WARNING: badge complex "${c.names[0]}" carries ${lines.length} lines — y offsets nearing the Int16 wrap`);
       lines.forEach((l, i) => {
-        const row = Math.floor(i / PER_ROW), col = i % PER_ROW;
-        const rowLen = Math.min(PER_ROW, lines.length - row * PER_ROW);
+        const row = Math.floor(i / pRow), col = i % pRow;
+        const rowLen = Math.min(pRow, lines.length - row * pRow);
         badgeFeatures.push({
           type: 'Feature',
           geometry: { type: 'Point', coordinates: [round6(lon), round6(lat)] },
           properties: {
             line: l.line, mode: l.mode, color: l.color, colorDark: l.colorDark, band,
+            ...(scC < 1 ? { sc: scC } : {}),
             off: [
               Math.round((col - (rowLen - 1) / 2) * CELL_W * 100) / 100,
               Math.round((BASE_Y + row * CELL_H) * 100) / 100,

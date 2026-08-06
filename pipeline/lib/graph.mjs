@@ -227,13 +227,28 @@ class MinHeap {
 // Multi-source Dijkstra: sources = Map(nodeId -> starting cost).
 // Stops after reaching all targets or exceeding maxDist.
 // Returns {dist: Map, prev: Map} (prev has no entries for start nodes).
-export function dijkstra(graph, sources, targets, maxDist) {
+// noPen: route on RAW meters, ignoring the soft contraflow multiplier (hard
+// oneways stay closed — their edges are absent from the adjacency). Used when
+// bridging GTFS shape gaps: there the objective is geometry that follows the
+// corridor, and a 2.5× contraflow surcharge otherwise beats real distance and
+// sends the bridge around the block (X499 at El Kafr: the Nahia Axis
+// eastbound carriageway is unmapped there).
+// `raw` in the result: REAL meters along each node's min-COST path. The HMM
+// scores transitions on raw meters — the contraflow surcharge picks between
+// comparable paths but must not read as fake distance: scored as distance it
+// compounds along a oneway corridor until a genuine 500 m detour looks
+// cheaper than the straight street the shape actually follows.
+// sources: Map node → cost (raw defaults to cost) or node → { cost, raw }.
+export function dijkstra(graph, sources, targets, maxDist, noPen = false) {
   const dist = new Map();
+  const raw = new Map();
   const prev = new Map();
   const heap = new MinHeap();
-  for (const [n, c] of sources) {
+  for (const [n, v] of sources) {
+    const c = typeof v === 'number' ? v : v.cost;
     if (c <= maxDist && (dist.get(n) ?? Infinity) > c) {
       dist.set(n, c);
+      raw.set(n, typeof v === 'number' ? v : v.raw);
       heap.push(c, n);
     }
   }
@@ -247,16 +262,18 @@ export function dijkstra(graph, sources, targets, maxDist) {
     const edges = graph.out.get(n);
     if (!edges) continue;
     for (const e of edges) {
-      const nd = d + e.len;
+      const rawLen = graph.segs[e.segIdx].len;
+      const nd = d + (noPen ? rawLen : e.len);
       if (nd > maxDist) continue;
       if (nd < (dist.get(e.to) ?? Infinity)) {
         dist.set(e.to, nd);
+        raw.set(e.to, raw.get(n) + rawLen);
         prev.set(e.to, n);
         heap.push(nd, e.to);
       }
     }
   }
-  return { dist, prev };
+  return { dist, raw, prev };
 }
 
 // Reconstructs the node path from a source (a node absent from prev) to `to`.

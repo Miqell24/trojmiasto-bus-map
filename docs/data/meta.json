@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T12:16:13.263Z",
+  "generatedAt": "2026-08-06T16:27:25.577Z",
   "bbox": [
     18.214102,
     54.240732,
@@ -57,7 +57,7 @@
           "variants": 1,
           "tripCount": 354,
           "stops": 6,
-          "lengthKm": 1.96,
+          "lengthKm": 1.95,
           "stats": {
             "observations": 98,
             "matched": 98,
@@ -66,8 +66,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7937015217460294,
-            "roundaboutSegs": 4
+            "meanError": 0.7135802271243051,
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -86,7 +88,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9558301351857871,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -102,7 +106,7 @@
           "variants": 3,
           "tripCount": 157,
           "stops": 32,
-          "lengthKm": 19.51,
+          "lengthKm": 19.5,
           "stats": {
             "observations": 914,
             "matched": 914,
@@ -111,8 +115,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5217363289309238,
-            "roundaboutSegs": 5
+            "meanError": 1.5123761924729668,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -130,8 +136,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3335442683054326,
-            "roundaboutSegs": 24
+            "meanError": 1.3334495308031167,
+            "roundaboutSegs": 24,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -147,7 +155,7 @@
           "variants": 2,
           "tripCount": 216,
           "stops": 28,
-          "lengthKm": 15.54,
+          "lengthKm": 15.55,
           "stats": {
             "observations": 754,
             "matched": 754,
@@ -156,8 +164,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.288364147224965,
-            "roundaboutSegs": 97
+            "meanError": 1.2324530668158187,
+            "roundaboutSegs": 101,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -166,7 +176,7 @@
           "variants": 2,
           "tripCount": 223,
           "stops": 24,
-          "lengthKm": 15.72,
+          "lengthKm": 15.78,
           "stats": {
             "observations": 763,
             "matched": 763,
@@ -175,8 +185,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3233112123962785,
-            "roundaboutSegs": 143
+            "meanError": 1.2711712535304716,
+            "roundaboutSegs": 155,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -201,8 +213,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0300298794570484,
-            "roundaboutSegs": 20
+            "meanError": 1.0126087282119272,
+            "roundaboutSegs": 20,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -220,8 +234,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9654494646535677,
-            "roundaboutSegs": 17
+            "meanError": 0.9651724913158717,
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -246,8 +262,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.6710933384112718,
-            "roundaboutSegs": 33
+            "meanError": 0.6702407117959799,
+            "roundaboutSegs": 33,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -266,7 +284,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9345312772680335,
-            "roundaboutSegs": 33
+            "roundaboutSegs": 33,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -291,8 +311,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8387058110367466,
-            "roundaboutSegs": 0
+            "meanError": 0.8327477526906748,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -310,8 +332,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.973979531910485,
-            "roundaboutSegs": 0
+            "meanError": 0.9734253242446113,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -327,7 +351,7 @@
           "variants": 3,
           "tripCount": 339,
           "stops": 45,
-          "lengthKm": 28.31,
+          "lengthKm": 28.3,
           "stats": {
             "observations": 1343,
             "matched": 1343,
@@ -336,8 +360,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3230670631004546,
-            "roundaboutSegs": 12
+            "meanError": 1.3194709176009631,
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -356,7 +382,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.3358687720293585,
-            "roundaboutSegs": 25
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -382,7 +410,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8847857108479054,
-            "roundaboutSegs": 25
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -400,8 +430,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7314078101973279,
-            "roundaboutSegs": 20
+            "meanError": 0.7242678112466514,
+            "roundaboutSegs": 20,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -417,7 +449,7 @@
           "variants": 2,
           "tripCount": 826,
           "stops": 35,
-          "lengthKm": 16.35,
+          "lengthKm": 16.34,
           "stats": {
             "observations": 817,
             "matched": 817,
@@ -426,8 +458,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0402300797083541,
-            "roundaboutSegs": 22
+            "meanError": 1.0302246873410106,
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -436,7 +470,7 @@
           "variants": 8,
           "tripCount": 662,
           "stops": 38,
-          "lengthKm": 16.49,
+          "lengthKm": 16.51,
           "stats": {
             "observations": 826,
             "matched": 826,
@@ -445,8 +479,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.092422389460433,
-            "roundaboutSegs": 33
+            "meanError": 1.0801622997678655,
+            "roundaboutSegs": 40,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -462,7 +498,7 @@
           "variants": 2,
           "tripCount": 391,
           "stops": 13,
-          "lengthKm": 7.3,
+          "lengthKm": 7.29,
           "stats": {
             "observations": 358,
             "matched": 358,
@@ -471,8 +507,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9262564010512117,
-            "roundaboutSegs": 10
+            "meanError": 0.9337019972453843,
+            "roundaboutSegs": 10,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -490,8 +528,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.946226206005941,
-            "roundaboutSegs": 5
+            "meanError": 0.9385872034273788,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -516,8 +556,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9452849646858923,
-            "roundaboutSegs": 31
+            "meanError": 0.947020227078439,
+            "roundaboutSegs": 31,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -536,7 +578,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8513037105606879,
-            "roundaboutSegs": 22
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -552,7 +596,7 @@
           "variants": 1,
           "tripCount": 470,
           "stops": 8,
-          "lengthKm": 3.75,
+          "lengthKm": 3.77,
           "stats": {
             "observations": 189,
             "matched": 189,
@@ -561,8 +605,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2694902404036854,
-            "roundaboutSegs": 0
+            "meanError": 1.2314648899686784,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -571,7 +617,7 @@
           "variants": 1,
           "tripCount": 470,
           "stops": 8,
-          "lengthKm": 4.21,
+          "lengthKm": 4.23,
           "stats": {
             "observations": 212,
             "matched": 212,
@@ -580,8 +626,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2679484276233401,
-            "roundaboutSegs": 21
+            "meanError": 1.2256254226334165,
+            "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -607,7 +655,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1911494744368982,
-            "roundaboutSegs": 28
+            "roundaboutSegs": 28,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -616,7 +666,7 @@
           "variants": 2,
           "tripCount": 492,
           "stops": 37,
-          "lengthKm": 17.63,
+          "lengthKm": 17.62,
           "stats": {
             "observations": 811,
             "matched": 811,
@@ -625,8 +675,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1370603744675312,
-            "roundaboutSegs": 26
+            "meanError": 1.1291077269410714,
+            "roundaboutSegs": 26,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -642,7 +694,7 @@
           "variants": 1,
           "tripCount": 427,
           "stops": 29,
-          "lengthKm": 15.07,
+          "lengthKm": 15.06,
           "stats": {
             "observations": 751,
             "matched": 751,
@@ -651,8 +703,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0412413542424106,
-            "roundaboutSegs": 42
+            "meanError": 1.0289124065225665,
+            "roundaboutSegs": 42,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -671,7 +725,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9365209862218434,
-            "roundaboutSegs": 32
+            "roundaboutSegs": 32,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -696,8 +752,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8456015164314837,
-            "roundaboutSegs": 6
+            "meanError": 0.8272694553173361,
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -716,7 +774,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.7943321325620643,
-            "roundaboutSegs": 6
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -741,8 +801,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.671930367133955,
-            "roundaboutSegs": 0
+            "meanError": 0.6703337840520044,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -761,7 +823,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8016567329313268,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -777,7 +841,7 @@
           "variants": 2,
           "tripCount": 203,
           "stops": 27,
-          "lengthKm": 17.26,
+          "lengthKm": 17.27,
           "stats": {
             "observations": 792,
             "matched": 792,
@@ -786,8 +850,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0060840581709478,
-            "roundaboutSegs": 42
+            "meanError": 1.0082241045589224,
+            "roundaboutSegs": 44,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -796,7 +862,7 @@
           "variants": 3,
           "tripCount": 203,
           "stops": 25,
-          "lengthKm": 16.77,
+          "lengthKm": 16.8,
           "stats": {
             "observations": 767,
             "matched": 767,
@@ -805,8 +871,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.150807857554404,
-            "roundaboutSegs": 27
+            "meanError": 1.1279409989786002,
+            "roundaboutSegs": 34,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -822,7 +890,7 @@
           "variants": 5,
           "tripCount": 745,
           "stops": 33,
-          "lengthKm": 15.35,
+          "lengthKm": 15.37,
           "stats": {
             "observations": 766,
             "matched": 766,
@@ -831,8 +899,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0175044126418273,
-            "roundaboutSegs": 23
+            "meanError": 1.0068801792070605,
+            "roundaboutSegs": 29,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -841,7 +911,7 @@
           "variants": 4,
           "tripCount": 746,
           "stops": 33,
-          "lengthKm": 16.21,
+          "lengthKm": 16.23,
           "stats": {
             "observations": 814,
             "matched": 814,
@@ -850,8 +920,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8674448033711386,
-            "roundaboutSegs": 45
+            "meanError": 0.8461334502423158,
+            "roundaboutSegs": 48,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -867,7 +939,7 @@
           "variants": 5,
           "tripCount": 681,
           "stops": 23,
-          "lengthKm": 10.15,
+          "lengthKm": 10.16,
           "stats": {
             "observations": 505,
             "matched": 505,
@@ -876,8 +948,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0017803728768133,
-            "roundaboutSegs": 35
+            "meanError": 0.988422361348556,
+            "roundaboutSegs": 38,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -886,7 +960,7 @@
           "variants": 3,
           "tripCount": 666,
           "stops": 24,
-          "lengthKm": 11.71,
+          "lengthKm": 11.72,
           "stats": {
             "observations": 587,
             "matched": 587,
@@ -895,8 +969,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0381025681246039,
-            "roundaboutSegs": 45
+            "meanError": 1.0125626219647206,
+            "roundaboutSegs": 48,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -922,7 +998,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.894139215806728,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -931,7 +1009,7 @@
           "variants": 2,
           "tripCount": 238,
           "stops": 8,
-          "lengthKm": 3.88,
+          "lengthKm": 3.89,
           "stats": {
             "observations": 194,
             "matched": 194,
@@ -940,8 +1018,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7603416607742511,
-            "roundaboutSegs": 0
+            "meanError": 0.6993519221776039,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -966,8 +1046,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2287610783453202,
-            "roundaboutSegs": 65
+            "meanError": 1.2160865714005396,
+            "roundaboutSegs": 67,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -976,7 +1058,7 @@
           "variants": 3,
           "tripCount": 223,
           "stops": 29,
-          "lengthKm": 16.11,
+          "lengthKm": 16.1,
           "stats": {
             "observations": 803,
             "matched": 803,
@@ -985,8 +1067,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4064049582956168,
-            "roundaboutSegs": 61
+            "meanError": 1.1750874597320422,
+            "roundaboutSegs": 63,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1002,7 +1086,7 @@
           "variants": 1,
           "tripCount": 417,
           "stops": 14,
-          "lengthKm": 5.86,
+          "lengthKm": 5.85,
           "stats": {
             "observations": 294,
             "matched": 294,
@@ -1011,8 +1095,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.6537480740557322,
-            "roundaboutSegs": 6
+            "meanError": 0.6628200120807142,
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1021,7 +1107,7 @@
           "variants": 3,
           "tripCount": 369,
           "stops": 15,
-          "lengthKm": 5.66,
+          "lengthKm": 5.67,
           "stats": {
             "observations": 285,
             "matched": 285,
@@ -1030,8 +1116,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.6983590951724059,
-            "roundaboutSegs": 9
+            "meanError": 0.6664080131851037,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1056,8 +1144,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1561979485360598,
-            "roundaboutSegs": 37
+            "meanError": 1.1479272179676432,
+            "roundaboutSegs": 39,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1066,7 +1156,7 @@
           "variants": 3,
           "tripCount": 93,
           "stops": 25,
-          "lengthKm": 18.07,
+          "lengthKm": 18.16,
           "stats": {
             "observations": 878,
             "matched": 878,
@@ -1075,8 +1165,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5723441572792467,
-            "roundaboutSegs": 65
+            "meanError": 1.514751669742172,
+            "roundaboutSegs": 65,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1101,8 +1193,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1227309339643472,
-            "roundaboutSegs": 62
+            "meanError": 1.085783260693556,
+            "roundaboutSegs": 62,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1111,7 +1205,7 @@
           "variants": 2,
           "tripCount": 345,
           "stops": 21,
-          "lengthKm": 9.75,
+          "lengthKm": 9.76,
           "stats": {
             "observations": 487,
             "matched": 487,
@@ -1120,8 +1214,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.107451391044652,
-            "roundaboutSegs": 77
+            "meanError": 1.098713024665743,
+            "roundaboutSegs": 79,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1147,7 +1243,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.723616740171991,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1166,7 +1264,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.6457153422386651,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1182,7 +1282,7 @@
           "variants": 2,
           "tripCount": 401,
           "stops": 25,
-          "lengthKm": 15.17,
+          "lengthKm": 15.18,
           "stats": {
             "observations": 734,
             "matched": 734,
@@ -1191,8 +1291,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8753060126254348,
-            "roundaboutSegs": 13
+            "meanError": 0.8604892405812216,
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1210,8 +1312,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9010008292359619,
-            "roundaboutSegs": 14
+            "meanError": 0.85226270597202,
+            "roundaboutSegs": 14,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1227,7 +1331,7 @@
           "variants": 4,
           "tripCount": 1000,
           "stops": 15,
-          "lengthKm": 6.91,
+          "lengthKm": 6.9,
           "stats": {
             "observations": 346,
             "matched": 346,
@@ -1236,8 +1340,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9680604393852584,
-            "roundaboutSegs": 14
+            "meanError": 0.9518006982231451,
+            "roundaboutSegs": 14,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1255,8 +1361,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9541249663350886,
-            "roundaboutSegs": 2
+            "meanError": 0.9416666343806833,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1272,7 +1380,7 @@
           "variants": 1,
           "tripCount": 624,
           "stops": 19,
-          "lengthKm": 9.76,
+          "lengthKm": 9.79,
           "stats": {
             "observations": 491,
             "matched": 491,
@@ -1281,8 +1389,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9300180980988316,
-            "roundaboutSegs": 54
+            "meanError": 0.8969307915231485,
+            "roundaboutSegs": 61,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1291,7 +1401,7 @@
           "variants": 2,
           "tripCount": 638,
           "stops": 19,
-          "lengthKm": 9.87,
+          "lengthKm": 9.88,
           "stats": {
             "observations": 497,
             "matched": 497,
@@ -1300,8 +1410,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9587692806442631,
-            "roundaboutSegs": 54
+            "meanError": 0.9377878804045686,
+            "roundaboutSegs": 57,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1317,7 +1429,7 @@
           "variants": 2,
           "tripCount": 154,
           "stops": 14,
-          "lengthKm": 6.98,
+          "lengthKm": 7.01,
           "stats": {
             "observations": 349,
             "matched": 349,
@@ -1326,8 +1438,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3968707286822155,
-            "roundaboutSegs": 41
+            "meanError": 1.3587964331482827,
+            "roundaboutSegs": 48,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1336,7 +1450,7 @@
           "variants": 2,
           "tripCount": 176,
           "stops": 14,
-          "lengthKm": 5.79,
+          "lengthKm": 5.8,
           "stats": {
             "observations": 290,
             "matched": 290,
@@ -1345,8 +1459,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1399973156776628,
-            "roundaboutSegs": 24
+            "meanError": 1.1107497345175206,
+            "roundaboutSegs": 24,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1372,7 +1488,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8858881503811675,
-            "roundaboutSegs": 22
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1381,7 +1499,7 @@
           "variants": 3,
           "tripCount": 423,
           "stops": 25,
-          "lengthKm": 16.24,
+          "lengthKm": 16.25,
           "stats": {
             "observations": 765,
             "matched": 765,
@@ -1390,8 +1508,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0830447600427018,
-            "roundaboutSegs": 14
+            "meanError": 1.066839055278537,
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1407,7 +1527,7 @@
           "variants": 7,
           "tripCount": 504,
           "stops": 20,
-          "lengthKm": 16.41,
+          "lengthKm": 16.44,
           "stats": {
             "observations": 730,
             "matched": 730,
@@ -1416,8 +1536,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7055455952557668,
-            "roundaboutSegs": 43
+            "meanError": 1.683996643562791,
+            "roundaboutSegs": 43,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1435,8 +1557,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2660201597536667,
-            "roundaboutSegs": 26
+            "meanError": 1.2019270746444253,
+            "roundaboutSegs": 26,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1452,7 +1576,7 @@
           "variants": 4,
           "tripCount": 704,
           "stops": 23,
-          "lengthKm": 10.38,
+          "lengthKm": 10.39,
           "stats": {
             "observations": 521,
             "matched": 521,
@@ -1461,8 +1585,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.027114680433099,
-            "roundaboutSegs": 2
+            "meanError": 1.0193494678122863,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1480,8 +1606,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.194286973036905,
-            "roundaboutSegs": 32
+            "meanError": 1.1942637337137947,
+            "roundaboutSegs": 32,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1497,7 +1625,7 @@
           "variants": 3,
           "tripCount": 91,
           "stops": 13,
-          "lengthKm": 6.81,
+          "lengthKm": 6.8,
           "stats": {
             "observations": 326,
             "matched": 326,
@@ -1506,8 +1634,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.871840304379007,
-            "roundaboutSegs": 0
+            "meanError": 0.8484502290131368,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1526,7 +1656,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9046321537704788,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1551,8 +1683,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1229345907869148,
-            "roundaboutSegs": 25
+            "meanError": 1.1164343371969534,
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1561,7 +1695,7 @@
           "variants": 4,
           "tripCount": 557,
           "stops": 34,
-          "lengthKm": 19.81,
+          "lengthKm": 19.84,
           "stats": {
             "observations": 938,
             "matched": 938,
@@ -1570,8 +1704,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1970042782183699,
-            "roundaboutSegs": 48
+            "meanError": 1.1779741438923848,
+            "roundaboutSegs": 54,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1597,7 +1733,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8645898513232785,
-            "roundaboutSegs": 26
+            "roundaboutSegs": 26,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1606,7 +1744,7 @@
           "variants": 2,
           "tripCount": 521,
           "stops": 34,
-          "lengthKm": 17.7,
+          "lengthKm": 17.73,
           "stats": {
             "observations": 860,
             "matched": 860,
@@ -1615,8 +1753,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.002170689105311,
-            "roundaboutSegs": 52
+            "meanError": 0.9865383557748498,
+            "roundaboutSegs": 55,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1632,7 +1772,7 @@
           "variants": 2,
           "tripCount": 196,
           "stops": 18,
-          "lengthKm": 12.92,
+          "lengthKm": 12.94,
           "stats": {
             "observations": 626,
             "matched": 626,
@@ -1641,8 +1781,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.274992998262224,
-            "roundaboutSegs": 35
+            "meanError": 1.2525803790052286,
+            "roundaboutSegs": 39,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1651,7 +1793,7 @@
           "variants": 5,
           "tripCount": 183,
           "stops": 23,
-          "lengthKm": 16.14,
+          "lengthKm": 16.16,
           "stats": {
             "observations": 784,
             "matched": 784,
@@ -1660,8 +1802,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3776822860082805,
-            "roundaboutSegs": 57
+            "meanError": 1.368847287597744,
+            "roundaboutSegs": 57,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1677,7 +1821,7 @@
           "variants": 1,
           "tripCount": 396,
           "stops": 28,
-          "lengthKm": 19.63,
+          "lengthKm": 19.67,
           "stats": {
             "observations": 985,
             "matched": 985,
@@ -1686,8 +1830,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.403252357993394,
-            "roundaboutSegs": 28
+            "meanError": 1.306556894825939,
+            "roundaboutSegs": 34,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1696,7 +1842,7 @@
           "variants": 2,
           "tripCount": 348,
           "stops": 32,
-          "lengthKm": 19.62,
+          "lengthKm": 19.63,
           "stats": {
             "observations": 983,
             "matched": 983,
@@ -1705,8 +1851,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.402380578860873,
-            "roundaboutSegs": 34
+            "meanError": 1.272989947431364,
+            "roundaboutSegs": 34,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1715,7 +1863,7 @@
           "variants": 3,
           "tripCount": 32,
           "stops": 27,
-          "lengthKm": 19.46,
+          "lengthKm": 19.52,
           "stats": {
             "observations": 974,
             "matched": 974,
@@ -1724,8 +1872,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4161627842499793,
-            "roundaboutSegs": 28
+            "meanError": 1.3734497494768365,
+            "roundaboutSegs": 36,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1741,7 +1891,7 @@
           "variants": 3,
           "tripCount": 198,
           "stops": 21,
-          "lengthKm": 10.75,
+          "lengthKm": 10.76,
           "stats": {
             "observations": 538,
             "matched": 538,
@@ -1750,8 +1900,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0855565395737354,
-            "roundaboutSegs": 0
+            "meanError": 1.0797927228758208,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1769,8 +1921,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1721435954268304,
-            "roundaboutSegs": 0
+            "meanError": 1.1579415714273062,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1796,7 +1950,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9807233345434382,
-            "roundaboutSegs": 23
+            "roundaboutSegs": 23,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1815,7 +1971,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.2301663373413272,
-            "roundaboutSegs": 12
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1841,7 +1999,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8603388110239399,
-            "roundaboutSegs": 16
+            "roundaboutSegs": 16,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1850,7 +2010,7 @@
           "variants": 1,
           "tripCount": 242,
           "stops": 15,
-          "lengthKm": 6.46,
+          "lengthKm": 6.47,
           "stats": {
             "observations": 325,
             "matched": 325,
@@ -1859,8 +2019,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0775867134161397,
-            "roundaboutSegs": 33
+            "meanError": 1.0438855691215791,
+            "roundaboutSegs": 35,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1885,8 +2047,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7203614978791987,
-            "roundaboutSegs": 0
+            "meanError": 0.7138851160919225,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1895,7 +2059,7 @@
           "variants": 3,
           "tripCount": 310,
           "stops": 17,
-          "lengthKm": 8.66,
+          "lengthKm": 8.67,
           "stats": {
             "observations": 434,
             "matched": 434,
@@ -1904,8 +2068,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9490633353455692,
-            "roundaboutSegs": 0
+            "meanError": 0.9287586287458,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1921,7 +2087,7 @@
           "variants": 2,
           "tripCount": 384,
           "stops": 13,
-          "lengthKm": 11.62,
+          "lengthKm": 11.67,
           "stats": {
             "observations": 558,
             "matched": 558,
@@ -1930,8 +2096,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.9268368503353346,
-            "roundaboutSegs": 43
+            "meanError": 1.862683742498885,
+            "roundaboutSegs": 51,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1949,8 +2117,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4519280756141135,
-            "roundaboutSegs": 33
+            "meanError": 1.4449643444105216,
+            "roundaboutSegs": 35,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -1966,7 +2136,7 @@
           "variants": 5,
           "tripCount": 77,
           "stops": 19,
-          "lengthKm": 8.93,
+          "lengthKm": 8.94,
           "stats": {
             "observations": 446,
             "matched": 446,
@@ -1975,8 +2145,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7931361469574352,
-            "roundaboutSegs": 10
+            "meanError": 0.7755970448581924,
+            "roundaboutSegs": 10,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -1995,7 +2167,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.0026508849473306,
-            "roundaboutSegs": 17
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2020,8 +2194,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8684405064557453,
-            "roundaboutSegs": 34
+            "meanError": 0.8547447167858847,
+            "roundaboutSegs": 34,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2039,8 +2215,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8944866579341448,
-            "roundaboutSegs": 28
+            "meanError": 0.8737383529000627,
+            "roundaboutSegs": 28,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2056,7 +2234,7 @@
           "variants": 7,
           "tripCount": 305,
           "stops": 34,
-          "lengthKm": 19.25,
+          "lengthKm": 19.21,
           "stats": {
             "observations": 946,
             "matched": 946,
@@ -2065,8 +2243,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7966369783786668,
-            "roundaboutSegs": 7
+            "meanError": 0.7706421101916043,
+            "roundaboutSegs": 7,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2085,7 +2265,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.7979199332381358,
-            "roundaboutSegs": 14
+            "roundaboutSegs": 14,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2101,7 +2283,7 @@
           "variants": 3,
           "tripCount": 519,
           "stops": 17,
-          "lengthKm": 8.77,
+          "lengthKm": 8.76,
           "stats": {
             "observations": 439,
             "matched": 439,
@@ -2110,8 +2292,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0032525873067952,
-            "roundaboutSegs": 17
+            "meanError": 0.9904452569393772,
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2129,8 +2313,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8932983248534491,
-            "roundaboutSegs": 0
+            "meanError": 0.8929926684907544,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2146,7 +2332,7 @@
           "variants": 1,
           "tripCount": 193,
           "stops": 13,
-          "lengthKm": 6.9,
+          "lengthKm": 6.92,
           "stats": {
             "observations": 349,
             "matched": 349,
@@ -2155,8 +2341,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8281368107663039,
-            "roundaboutSegs": 12
+            "meanError": 0.8116406669650923,
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2165,7 +2353,7 @@
           "variants": 1,
           "tripCount": 193,
           "stops": 15,
-          "lengthKm": 6.53,
+          "lengthKm": 6.56,
           "stats": {
             "observations": 330,
             "matched": 330,
@@ -2174,8 +2362,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.867378780943914,
-            "roundaboutSegs": 16
+            "meanError": 0.8227683390047319,
+            "roundaboutSegs": 16,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2191,7 +2381,7 @@
           "variants": 7,
           "tripCount": 620,
           "stops": 42,
-          "lengthKm": 19.75,
+          "lengthKm": 19.77,
           "stats": {
             "observations": 978,
             "matched": 978,
@@ -2200,8 +2390,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7525152627425687,
-            "roundaboutSegs": 33
+            "meanError": 0.7490069282162852,
+            "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2210,7 +2402,7 @@
           "variants": 6,
           "tripCount": 612,
           "stops": 38,
-          "lengthKm": 18.27,
+          "lengthKm": 18.28,
           "stats": {
             "observations": 902,
             "matched": 902,
@@ -2219,8 +2411,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7451278603362639,
-            "roundaboutSegs": 10
+            "meanError": 0.7262493553052723,
+            "roundaboutSegs": 10,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2245,8 +2439,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.087339548133021,
-            "roundaboutSegs": 24
+            "meanError": 1.0548207363702649,
+            "roundaboutSegs": 24,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2255,7 +2451,7 @@
           "variants": 3,
           "tripCount": 285,
           "stops": 21,
-          "lengthKm": 8.9,
+          "lengthKm": 8.91,
           "stats": {
             "observations": 447,
             "matched": 447,
@@ -2264,8 +2460,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0127935027583606,
-            "roundaboutSegs": 26
+            "meanError": 1.0001807791727875,
+            "roundaboutSegs": 26,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2281,7 +2479,7 @@
           "variants": 5,
           "tripCount": 401,
           "stops": 41,
-          "lengthKm": 24.77,
+          "lengthKm": 24.79,
           "stats": {
             "observations": 1201,
             "matched": 1201,
@@ -2290,8 +2488,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2264536103176935,
-            "roundaboutSegs": 103
+            "meanError": 1.2030771889706657,
+            "roundaboutSegs": 109,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2300,7 +2500,7 @@
           "variants": 4,
           "tripCount": 394,
           "stops": 43,
-          "lengthKm": 25.86,
+          "lengthKm": 25.93,
           "stats": {
             "observations": 1216,
             "matched": 1216,
@@ -2309,8 +2509,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0554385186368493,
-            "roundaboutSegs": 69
+            "meanError": 1.0372115057578015,
+            "roundaboutSegs": 73,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2326,7 +2528,7 @@
           "variants": 2,
           "tripCount": 66,
           "stops": 41,
-          "lengthKm": 27.52,
+          "lengthKm": 27.51,
           "stats": {
             "observations": 1303,
             "matched": 1303,
@@ -2335,8 +2537,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2463583608562065,
-            "roundaboutSegs": 12
+            "meanError": 1.242651734696208,
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2355,7 +2559,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.2667858454552892,
-            "roundaboutSegs": 25
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2381,7 +2587,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.6588324102325619,
-            "roundaboutSegs": 4
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2399,8 +2607,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0782179052105885,
-            "roundaboutSegs": 11
+            "meanError": 1.0754361980182887,
+            "roundaboutSegs": 11,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2416,7 +2626,7 @@
           "variants": 3,
           "tripCount": 760,
           "stops": 29,
-          "lengthKm": 16.02,
+          "lengthKm": 16.04,
           "stats": {
             "observations": 801,
             "matched": 801,
@@ -2425,8 +2635,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9153923970253957,
-            "roundaboutSegs": 4
+            "meanError": 0.8870407529574856,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2435,7 +2647,7 @@
           "variants": 3,
           "tripCount": 775,
           "stops": 27,
-          "lengthKm": 15.79,
+          "lengthKm": 15.81,
           "stats": {
             "observations": 791,
             "matched": 791,
@@ -2444,8 +2656,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0494184586429565,
-            "roundaboutSegs": 17
+            "meanError": 1.017996082787813,
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2461,7 +2675,7 @@
           "variants": 1,
           "tripCount": 281,
           "stops": 12,
-          "lengthKm": 7.55,
+          "lengthKm": 7.57,
           "stats": {
             "observations": 373,
             "matched": 373,
@@ -2470,8 +2684,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8438821923140175,
-            "roundaboutSegs": 54
+            "meanError": 0.8309783914780382,
+            "roundaboutSegs": 57,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2480,7 +2696,7 @@
           "variants": 1,
           "tripCount": 281,
           "stops": 11,
-          "lengthKm": 7.21,
+          "lengthKm": 7.22,
           "stats": {
             "observations": 360,
             "matched": 360,
@@ -2489,8 +2705,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.849150022120489,
-            "roundaboutSegs": 46
+            "meanError": 0.850169528061421,
+            "roundaboutSegs": 49,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2506,7 +2724,7 @@
           "variants": 1,
           "tripCount": 457,
           "stops": 11,
-          "lengthKm": 6.34,
+          "lengthKm": 6.36,
           "stats": {
             "observations": 315,
             "matched": 315,
@@ -2515,8 +2733,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7567953552966761,
-            "roundaboutSegs": 34
+            "meanError": 0.7386815974590137,
+            "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2525,7 +2745,7 @@
           "variants": 1,
           "tripCount": 457,
           "stops": 10,
-          "lengthKm": 6,
+          "lengthKm": 6.01,
           "stats": {
             "observations": 300,
             "matched": 300,
@@ -2534,8 +2754,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7588962844795618,
-            "roundaboutSegs": 22
+            "meanError": 0.7555715863164507,
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2551,7 +2773,7 @@
           "variants": 1,
           "tripCount": 99,
           "stops": 27,
-          "lengthKm": 22.01,
+          "lengthKm": 22,
           "stats": {
             "observations": 939,
             "matched": 939,
@@ -2560,8 +2782,10 @@
             "bridged": 0,
             "rawStretchCount": 2,
             "rawMeters": 40,
-            "meanError": 1.6850447162871078,
-            "roundaboutSegs": 42
+            "meanError": 1.5739126736080389,
+            "roundaboutSegs": 42,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2570,7 +2794,7 @@
           "variants": 1,
           "tripCount": 55,
           "stops": 25,
-          "lengthKm": 18.82,
+          "lengthKm": 18.87,
           "stats": {
             "observations": 850,
             "matched": 850,
@@ -2579,8 +2803,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7062990967544285,
-            "roundaboutSegs": 59
+            "meanError": 1.6795681551288224,
+            "roundaboutSegs": 59,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2596,7 +2822,7 @@
           "variants": 3,
           "tripCount": 264,
           "stops": 29,
-          "lengthKm": 15.36,
+          "lengthKm": 15.37,
           "stats": {
             "observations": 759,
             "matched": 759,
@@ -2605,8 +2831,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7321989909587455,
-            "roundaboutSegs": 9
+            "meanError": 0.7281572085428853,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2615,7 +2843,7 @@
           "variants": 4,
           "tripCount": 242,
           "stops": 30,
-          "lengthKm": 15.05,
+          "lengthKm": 15.07,
           "stats": {
             "observations": 743,
             "matched": 743,
@@ -2624,8 +2852,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7487479095029187,
-            "roundaboutSegs": 22
+            "meanError": 0.7325205019508163,
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2650,8 +2880,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3117026402126248,
-            "roundaboutSegs": 21
+            "meanError": 1.3084408669210086,
+            "roundaboutSegs": 23,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2660,7 +2892,7 @@
           "variants": 3,
           "tripCount": 22,
           "stops": 29,
-          "lengthKm": 19.13,
+          "lengthKm": 19.15,
           "stats": {
             "observations": 870,
             "matched": 870,
@@ -2669,8 +2901,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3830412161151875,
-            "roundaboutSegs": 53
+            "meanError": 1.376769550495365,
+            "roundaboutSegs": 56,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2695,8 +2929,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5070734870103595,
-            "roundaboutSegs": 76
+            "meanError": 1.5083409831847019,
+            "roundaboutSegs": 76,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2705,7 +2941,7 @@
           "variants": 2,
           "tripCount": 118,
           "stops": 30,
-          "lengthKm": 21.39,
+          "lengthKm": 21.44,
           "stats": {
             "observations": 974,
             "matched": 974,
@@ -2714,8 +2950,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5173303950363473,
-            "roundaboutSegs": 93
+            "meanError": 1.5012251662307299,
+            "roundaboutSegs": 103,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2731,7 +2969,7 @@
           "variants": 4,
           "tripCount": 141,
           "stops": 17,
-          "lengthKm": 8.23,
+          "lengthKm": 8.26,
           "stats": {
             "observations": 371,
             "matched": 371,
@@ -2740,8 +2978,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3764798636719378,
-            "roundaboutSegs": 61
+            "meanError": 1.33616008469507,
+            "roundaboutSegs": 67,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2750,7 +2990,7 @@
           "variants": 3,
           "tripCount": 123,
           "stops": 15,
-          "lengthKm": 8.4,
+          "lengthKm": 8.43,
           "stats": {
             "observations": 384,
             "matched": 384,
@@ -2759,8 +2999,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.9913927606480355,
-            "roundaboutSegs": 44
+            "meanError": 1.9360806532804937,
+            "roundaboutSegs": 50,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2776,7 +3018,7 @@
           "variants": 2,
           "tripCount": 143,
           "stops": 27,
-          "lengthKm": 12.52,
+          "lengthKm": 12.54,
           "stats": {
             "observations": 626,
             "matched": 626,
@@ -2785,8 +3027,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9151738844770773,
-            "roundaboutSegs": 10
+            "meanError": 0.8801202175028415,
+            "roundaboutSegs": 10,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2804,8 +3048,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9166417490516526,
-            "roundaboutSegs": 17
+            "meanError": 0.9160187564139429,
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2821,7 +3067,7 @@
           "variants": 3,
           "tripCount": 527,
           "stops": 19,
-          "lengthKm": 9.64,
+          "lengthKm": 9.63,
           "stats": {
             "observations": 481,
             "matched": 481,
@@ -2830,8 +3076,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0313488961171593,
-            "roundaboutSegs": 17
+            "meanError": 1.0179318607053027,
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2849,8 +3097,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8932983248534491,
-            "roundaboutSegs": 0
+            "meanError": 0.8929926684907544,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2876,7 +3126,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.7553344438956265,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2895,7 +3147,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.7453796110378316,
-            "roundaboutSegs": 21
+            "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2921,7 +3175,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8749961952530436,
-            "roundaboutSegs": 29
+            "roundaboutSegs": 29,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2930,7 +3186,7 @@
           "variants": 2,
           "tripCount": 262,
           "stops": 8,
-          "lengthKm": 4.27,
+          "lengthKm": 4.28,
           "stats": {
             "observations": 215,
             "matched": 215,
@@ -2939,8 +3195,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7966349159650029,
-            "roundaboutSegs": 7
+            "meanError": 0.7711268313790428,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -2956,7 +3214,7 @@
           "variants": 1,
           "tripCount": 405,
           "stops": 15,
-          "lengthKm": 7.19,
+          "lengthKm": 7.21,
           "stats": {
             "observations": 358,
             "matched": 358,
@@ -2965,8 +3223,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8917130487922236,
-            "roundaboutSegs": 49
+            "meanError": 0.8640402772450432,
+            "roundaboutSegs": 53,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -2984,8 +3244,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8846683958437466,
-            "roundaboutSegs": 91
+            "meanError": 0.885282042270582,
+            "roundaboutSegs": 91,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3011,7 +3273,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.534446843286552,
-            "roundaboutSegs": 7
+            "roundaboutSegs": 7,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3030,7 +3294,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.5564069723953387,
-            "roundaboutSegs": 30
+            "roundaboutSegs": 30,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3046,7 +3312,7 @@
           "variants": 1,
           "tripCount": 32,
           "stops": 12,
-          "lengthKm": 15.27,
+          "lengthKm": 15.26,
           "stats": {
             "observations": 701,
             "matched": 701,
@@ -3055,8 +3321,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3506301054548093,
-            "roundaboutSegs": 31
+            "meanError": 1.3392704104514457,
+            "roundaboutSegs": 31,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3074,8 +3342,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2412435040738168,
-            "roundaboutSegs": 47
+            "meanError": 1.2375467976587702,
+            "roundaboutSegs": 47,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3091,7 +3361,7 @@
           "variants": 3,
           "tripCount": 255,
           "stops": 8,
-          "lengthKm": 14.56,
+          "lengthKm": 14.55,
           "stats": {
             "observations": 661,
             "matched": 661,
@@ -3100,8 +3370,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.419031540942364,
-            "roundaboutSegs": 5
+            "meanError": 1.4117193784267312,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3120,7 +3392,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.769320225667872,
-            "roundaboutSegs": 24
+            "roundaboutSegs": 24,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3136,7 +3410,7 @@
           "variants": 1,
           "tripCount": 20,
           "stops": 29,
-          "lengthKm": 26.95,
+          "lengthKm": 26.98,
           "stats": {
             "observations": 1341,
             "matched": 1341,
@@ -3145,8 +3419,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0145219490198227,
-            "roundaboutSegs": 109
+            "meanError": 1.0052558437734482,
+            "roundaboutSegs": 115,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3155,7 +3431,7 @@
           "variants": 1,
           "tripCount": 20,
           "stops": 24,
-          "lengthKm": 26.65,
+          "lengthKm": 26.66,
           "stats": {
             "observations": 1329,
             "matched": 1329,
@@ -3164,8 +3440,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9704454171691098,
-            "roundaboutSegs": 123
+            "meanError": 0.9381532605552368,
+            "roundaboutSegs": 127,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3191,7 +3469,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.6658358655491029,
-            "roundaboutSegs": 2
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3209,8 +3489,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7685880025436248,
-            "roundaboutSegs": 12
+            "meanError": 0.7679194891958787,
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3236,7 +3518,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.0108236771270949,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3255,7 +3539,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.558674881220174,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3281,7 +3567,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.843977934532817,
-            "roundaboutSegs": 45
+            "roundaboutSegs": 45,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3290,7 +3578,7 @@
           "variants": 1,
           "tripCount": 405,
           "stops": 2,
-          "lengthKm": 2.47,
+          "lengthKm": 2.48,
           "stats": {
             "observations": 82,
             "matched": 82,
@@ -3299,8 +3587,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.2759551821111645,
-            "roundaboutSegs": 41
+            "meanError": 2.1955599268799486,
+            "roundaboutSegs": 41,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3326,7 +3616,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9025487027818635,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3345,7 +3637,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.7649873659103882,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3370,8 +3664,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1542146448280908,
-            "roundaboutSegs": 5
+            "meanError": 1.1322608604898599,
+            "roundaboutSegs": 7,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3380,7 +3676,7 @@
           "variants": 2,
           "tripCount": 1018,
           "stops": 21,
-          "lengthKm": 12.07,
+          "lengthKm": 12.05,
           "stats": {
             "observations": 603,
             "matched": 603,
@@ -3389,8 +3685,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2718229235419767,
-            "roundaboutSegs": 11
+            "meanError": 1.0346250478191135,
+            "roundaboutSegs": 11,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3406,7 +3704,7 @@
           "variants": 16,
           "tripCount": 20,
           "stops": 51,
-          "lengthKm": 36.77,
+          "lengthKm": 36.78,
           "stats": {
             "observations": 1788,
             "matched": 1788,
@@ -3415,8 +3713,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0838382187936109,
-            "roundaboutSegs": 73
+            "meanError": 1.0794857221673266,
+            "roundaboutSegs": 75,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3435,7 +3735,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9021602303863214,
-            "roundaboutSegs": 25
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3451,7 +3753,7 @@
           "variants": 3,
           "tripCount": 60,
           "stops": 51,
-          "lengthKm": 26.49,
+          "lengthKm": 26.5,
           "stats": {
             "observations": 1313,
             "matched": 1313,
@@ -3460,8 +3762,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.103599871973372,
-            "roundaboutSegs": 11
+            "meanError": 1.0863384069929856,
+            "roundaboutSegs": 11,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3470,7 +3774,7 @@
           "variants": 3,
           "tripCount": 60,
           "stops": 50,
-          "lengthKm": 26.43,
+          "lengthKm": 26.42,
           "stats": {
             "observations": 1296,
             "matched": 1296,
@@ -3479,8 +3783,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9858662651025538,
-            "roundaboutSegs": 19
+            "meanError": 0.9766875531165164,
+            "roundaboutSegs": 19,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3496,7 +3802,7 @@
           "variants": 3,
           "tripCount": 30,
           "stops": 13,
-          "lengthKm": 6.67,
+          "lengthKm": 6.66,
           "stats": {
             "observations": 333,
             "matched": 333,
@@ -3505,8 +3811,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8053400404596712,
-            "roundaboutSegs": 20
+            "meanError": 0.7818636069787834,
+            "roundaboutSegs": 20,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3524,8 +3832,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9106966444458103,
-            "roundaboutSegs": 2
+            "meanError": 0.8884026524206313,
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3541,7 +3851,7 @@
           "variants": 3,
           "tripCount": 60,
           "stops": 32,
-          "lengthKm": 17.83,
+          "lengthKm": 17.86,
           "stats": {
             "observations": 891,
             "matched": 891,
@@ -3550,8 +3860,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3083494037931211,
-            "roundaboutSegs": 33
+            "meanError": 1.2955140167045116,
+            "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3570,7 +3882,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.3163791810706889,
-            "roundaboutSegs": 18
+            "roundaboutSegs": 18,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3586,7 +3900,7 @@
           "variants": 3,
           "tripCount": 45,
           "stops": 60,
-          "lengthKm": 33.76,
+          "lengthKm": 33.75,
           "stats": {
             "observations": 1602,
             "matched": 1602,
@@ -3595,8 +3909,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9980282750315488,
-            "roundaboutSegs": 59
+            "meanError": 0.9931599577825452,
+            "roundaboutSegs": 59,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3605,7 +3921,7 @@
           "variants": 3,
           "tripCount": 45,
           "stops": 49,
-          "lengthKm": 31.14,
+          "lengthKm": 31.15,
           "stats": {
             "observations": 1445,
             "matched": 1445,
@@ -3614,8 +3930,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0616862919303727,
-            "roundaboutSegs": 103
+            "meanError": 1.0579120000857565,
+            "roundaboutSegs": 106,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3640,8 +3958,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8445492969826899,
-            "roundaboutSegs": 67
+            "meanError": 0.8385917670678621,
+            "roundaboutSegs": 67,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3650,7 +3970,7 @@
           "variants": 4,
           "tripCount": 60,
           "stops": 52,
-          "lengthKm": 29.21,
+          "lengthKm": 29.22,
           "stats": {
             "observations": 1460,
             "matched": 1460,
@@ -3659,8 +3979,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9717976118538024,
-            "roundaboutSegs": 60
+            "meanError": 0.9564582288437772,
+            "roundaboutSegs": 67,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3676,7 +3998,7 @@
           "variants": 1,
           "tripCount": 105,
           "stops": 22,
-          "lengthKm": 16.1,
+          "lengthKm": 16.09,
           "stats": {
             "observations": 803,
             "matched": 803,
@@ -3685,8 +4007,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2875305255111986,
-            "roundaboutSegs": 58
+            "meanError": 1.2778121016762174,
+            "roundaboutSegs": 58,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3695,7 +4019,7 @@
           "variants": 1,
           "tripCount": 90,
           "stops": 14,
-          "lengthKm": 11.37,
+          "lengthKm": 11.34,
           "stats": {
             "observations": 567,
             "matched": 567,
@@ -3704,8 +4028,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.463601318245673,
-            "roundaboutSegs": 15
+            "meanError": 1.110007841556637,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3730,8 +4056,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9013914848697502,
-            "roundaboutSegs": 56
+            "meanError": 0.8972616341173842,
+            "roundaboutSegs": 56,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3740,7 +4068,7 @@
           "variants": 3,
           "tripCount": 2,
           "stops": 26,
-          "lengthKm": 17.29,
+          "lengthKm": 17.3,
           "stats": {
             "observations": 846,
             "matched": 846,
@@ -3749,8 +4077,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8882088551212133,
-            "roundaboutSegs": 58
+            "meanError": 0.8873164546587926,
+            "roundaboutSegs": 61,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3766,7 +4096,7 @@
           "variants": 5,
           "tripCount": 45,
           "stops": 53,
-          "lengthKm": 28.85,
+          "lengthKm": 28.86,
           "stats": {
             "observations": 1440,
             "matched": 1440,
@@ -3775,8 +4105,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8878693491573051,
-            "roundaboutSegs": 91
+            "meanError": 0.8731615630154094,
+            "roundaboutSegs": 94,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3795,7 +4127,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9224368898142553,
-            "roundaboutSegs": 39
+            "roundaboutSegs": 39,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3811,7 +4145,7 @@
           "variants": 3,
           "tripCount": 15,
           "stops": 19,
-          "lengthKm": 9.06,
+          "lengthKm": 9.08,
           "stats": {
             "observations": 453,
             "matched": 453,
@@ -3820,8 +4154,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.6643038720417924,
-            "roundaboutSegs": 0
+            "meanError": 0.627496495260571,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3830,7 +4166,7 @@
           "variants": 1,
           "tripCount": 30,
           "stops": 19,
-          "lengthKm": 8.65,
+          "lengthKm": 8.66,
           "stats": {
             "observations": 433,
             "matched": 433,
@@ -3839,8 +4175,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7666856005467523,
-            "roundaboutSegs": 0
+            "meanError": 0.7463338923113355,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3856,7 +4194,7 @@
           "variants": 3,
           "tripCount": 60,
           "stops": 30,
-          "lengthKm": 16.47,
+          "lengthKm": 16.45,
           "stats": {
             "observations": 786,
             "matched": 786,
@@ -3865,8 +4203,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1493219824089007,
-            "roundaboutSegs": 0
+            "meanError": 1.0924731325458266,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3884,8 +4224,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0369440012005529,
-            "roundaboutSegs": 0
+            "meanError": 1.0359293113063484,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3901,7 +4243,7 @@
           "variants": 2,
           "tripCount": 75,
           "stops": 16,
-          "lengthKm": 8.39,
+          "lengthKm": 8.38,
           "stats": {
             "observations": 419,
             "matched": 419,
@@ -3910,8 +4252,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9763833137055576,
-            "roundaboutSegs": 3
+            "meanError": 0.957736959840355,
+            "roundaboutSegs": 3,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3929,8 +4273,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8556691696134267,
-            "roundaboutSegs": 0
+            "meanError": 0.8553299156344573,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3946,7 +4292,7 @@
           "variants": 2,
           "tripCount": 30,
           "stops": 43,
-          "lengthKm": 27.56,
+          "lengthKm": 27.55,
           "stats": {
             "observations": 1306,
             "matched": 1306,
@@ -3955,8 +4301,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3086932259166193,
-            "roundaboutSegs": 12
+            "meanError": 1.3028681113619007,
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -3975,7 +4323,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.2800640840727249,
-            "roundaboutSegs": 25
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -3991,7 +4341,7 @@
           "variants": 4,
           "tripCount": 1114,
           "stops": 18,
-          "lengthKm": 11.33,
+          "lengthKm": 11.32,
           "stats": {
             "observations": 552,
             "matched": 552,
@@ -4000,8 +4350,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9828647915456871,
-            "roundaboutSegs": 0
+            "meanError": 0.9690272280443435,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4019,8 +4371,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0674397333512886,
-            "roundaboutSegs": 0
+            "meanError": 0.9573383642265931,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4046,7 +4400,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.836754629785883,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4064,8 +4420,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.6784650455346044,
-            "roundaboutSegs": 0
+            "meanError": 0.6776719489744993,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4081,7 +4439,7 @@
           "variants": 3,
           "tripCount": 134,
           "stops": 27,
-          "lengthKm": 10.91,
+          "lengthKm": 10.92,
           "stats": {
             "observations": 547,
             "matched": 547,
@@ -4090,8 +4448,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7863640146521912,
-            "roundaboutSegs": 6
+            "meanError": 0.7525788298304754,
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4110,7 +4470,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.7765435023390724,
-            "roundaboutSegs": 1
+            "roundaboutSegs": 1,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4136,7 +4498,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.310282325433168,
-            "roundaboutSegs": 4
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4155,7 +4519,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.3754996405700193,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4181,7 +4547,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.0881623033898882,
-            "roundaboutSegs": 2
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4200,7 +4568,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.6914733472511079,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4216,7 +4586,7 @@
           "variants": 3,
           "tripCount": 143,
           "stops": 22,
-          "lengthKm": 9.61,
+          "lengthKm": 9.59,
           "stats": {
             "observations": 480,
             "matched": 480,
@@ -4225,8 +4595,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8682969962582505,
-            "roundaboutSegs": 4
+            "meanError": 0.8547544792774957,
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4235,7 +4607,7 @@
           "variants": 2,
           "tripCount": 138,
           "stops": 22,
-          "lengthKm": 10.2,
+          "lengthKm": 10.21,
           "stats": {
             "observations": 512,
             "matched": 512,
@@ -4244,8 +4616,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9280972213818178,
-            "roundaboutSegs": 16
+            "meanError": 0.9231112595566028,
+            "roundaboutSegs": 16,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4270,8 +4644,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8102442848173825,
-            "roundaboutSegs": 14
+            "meanError": 0.778997002523562,
+            "roundaboutSegs": 14,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4289,8 +4665,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.7153335938306838,
-            "roundaboutSegs": 6
+            "meanError": 0.7124005042311492,
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4315,8 +4693,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1747184804947366,
-            "roundaboutSegs": 15
+            "meanError": 1.154564934883486,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4335,7 +4715,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1746738790677174,
-            "roundaboutSegs": 21
+            "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4361,7 +4743,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8694106292848804,
-            "roundaboutSegs": 1
+            "roundaboutSegs": 1,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4380,7 +4764,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8694106292848804,
-            "roundaboutSegs": 1
+            "roundaboutSegs": 1,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4405,8 +4791,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8984103386056019,
-            "roundaboutSegs": 0
+            "meanError": 0.8967601976683578,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4424,8 +4812,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8192297450061902,
-            "roundaboutSegs": 0
+            "meanError": 0.8193021820219397,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4451,7 +4841,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8427103511003052,
-            "roundaboutSegs": 6
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4470,7 +4862,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8427103511003052,
-            "roundaboutSegs": 6
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4496,7 +4890,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.139506289792716,
-            "roundaboutSegs": 11
+            "roundaboutSegs": 11,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4515,7 +4911,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1470951106005653,
-            "roundaboutSegs": 22
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4531,7 +4929,7 @@
           "variants": 6,
           "tripCount": 61,
           "stops": 31,
-          "lengthKm": 17.1,
+          "lengthKm": 17.08,
           "stats": {
             "observations": 802,
             "matched": 802,
@@ -4540,8 +4938,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0844146320562194,
-            "roundaboutSegs": 8
+            "meanError": 1.0858578219446429,
+            "roundaboutSegs": 8,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4560,7 +4960,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.0101980891639901,
-            "roundaboutSegs": 12
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4586,7 +4988,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8158976072593541,
-            "roundaboutSegs": 4
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4605,7 +5009,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8158976072593541,
-            "roundaboutSegs": 4
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4621,7 +5027,7 @@
           "variants": 3,
           "tripCount": 23,
           "stops": 21,
-          "lengthKm": 9.98,
+          "lengthKm": 9.97,
           "stats": {
             "observations": 500,
             "matched": 500,
@@ -4630,8 +5036,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8632817419939028,
-            "roundaboutSegs": 2
+            "meanError": 0.8371214475580557,
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4650,7 +5058,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.795040977076938,
-            "roundaboutSegs": 1
+            "roundaboutSegs": 1,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4666,7 +5076,7 @@
           "variants": 2,
           "tripCount": 25,
           "stops": 14,
-          "lengthKm": 6.66,
+          "lengthKm": 6.67,
           "stats": {
             "observations": 333,
             "matched": 333,
@@ -4675,8 +5085,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1315424278608097,
-            "roundaboutSegs": 57
+            "meanError": 1.0851150221875472,
+            "roundaboutSegs": 60,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4685,7 +5097,7 @@
           "variants": 1,
           "tripCount": 6,
           "stops": 13,
-          "lengthKm": 7,
+          "lengthKm": 7.01,
           "stats": {
             "observations": 351,
             "matched": 351,
@@ -4694,8 +5106,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.021157652966352,
-            "roundaboutSegs": 60
+            "meanError": 1.0102673528042279,
+            "roundaboutSegs": 60,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4720,8 +5134,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1798184111982548,
-            "roundaboutSegs": 45
+            "meanError": 1.1821507962576245,
+            "roundaboutSegs": 45,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4740,7 +5156,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1763087365060405,
-            "roundaboutSegs": 40
+            "roundaboutSegs": 40,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4766,7 +5184,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9215939499819457,
-            "roundaboutSegs": 16
+            "roundaboutSegs": 16,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4785,7 +5205,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9215939499819457,
-            "roundaboutSegs": 16
+            "roundaboutSegs": 16,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4810,8 +5232,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.527077145253287,
-            "roundaboutSegs": 23
+            "meanError": 1.5225446819641333,
+            "roundaboutSegs": 23,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4820,7 +5244,7 @@
           "variants": 7,
           "tripCount": 3,
           "stops": 22,
-          "lengthKm": 12.16,
+          "lengthKm": 12.19,
           "stats": {
             "observations": 609,
             "matched": 609,
@@ -4829,8 +5253,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.189337674173998,
-            "roundaboutSegs": 56
+            "meanError": 1.1576758533043703,
+            "roundaboutSegs": 64,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4855,8 +5281,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9387752655119572,
-            "roundaboutSegs": 96
+            "meanError": 0.9352852429702392,
+            "roundaboutSegs": 96,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4872,7 +5300,7 @@
           "variants": 2,
           "tripCount": 19,
           "stops": 29,
-          "lengthKm": 11.56,
+          "lengthKm": 11.57,
           "stats": {
             "observations": 580,
             "matched": 580,
@@ -4881,8 +5309,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.897970373853309,
-            "roundaboutSegs": 12
+            "meanError": 0.895869300622295,
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4891,7 +5321,7 @@
           "variants": 2,
           "tripCount": 14,
           "stops": 35,
-          "lengthKm": 15.33,
+          "lengthKm": 15.34,
           "stats": {
             "observations": 768,
             "matched": 768,
@@ -4900,8 +5330,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8267212073579944,
-            "roundaboutSegs": 5
+            "meanError": 0.8230869089096468,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4917,7 +5349,7 @@
           "variants": 2,
           "tripCount": 3,
           "stops": 19,
-          "lengthKm": 10.87,
+          "lengthKm": 10.89,
           "stats": {
             "observations": 529,
             "matched": 529,
@@ -4926,8 +5358,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3010706709397273,
-            "roundaboutSegs": 10
+            "meanError": 0.9448980344841944,
+            "roundaboutSegs": 16,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4943,7 +5377,7 @@
           "variants": 3,
           "tripCount": 67,
           "stops": 46,
-          "lengthKm": 24.53,
+          "lengthKm": 24.59,
           "stats": {
             "observations": 1212,
             "matched": 1212,
@@ -4952,8 +5386,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.356518226094313,
-            "roundaboutSegs": 39
+            "meanError": 1.3150983142198556,
+            "roundaboutSegs": 42,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -4962,7 +5398,7 @@
           "variants": 7,
           "tripCount": 64,
           "stops": 47,
-          "lengthKm": 24.4,
+          "lengthKm": 24.43,
           "stats": {
             "observations": 1191,
             "matched": 1191,
@@ -4971,8 +5407,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2755652998129448,
-            "roundaboutSegs": 26
+            "meanError": 1.2700722626678378,
+            "roundaboutSegs": 26,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -4997,8 +5435,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0337991191533207,
-            "roundaboutSegs": 12
+            "meanError": 1.036439309313587,
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5016,8 +5456,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0068197872959102,
-            "roundaboutSegs": 27
+            "meanError": 1.0023707537740734,
+            "roundaboutSegs": 27,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5043,7 +5485,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.0237920659662023,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5068,8 +5512,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.038608332046499,
-            "roundaboutSegs": 37
+            "meanError": 1.0383777545204356,
+            "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5085,7 +5531,7 @@
           "variants": 2,
           "tripCount": 48,
           "stops": 14,
-          "lengthKm": 8.51,
+          "lengthKm": 8.56,
           "stats": {
             "observations": 419,
             "matched": 419,
@@ -5094,8 +5540,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7996834624296292,
-            "roundaboutSegs": 19
+            "meanError": 1.6310215783396596,
+            "roundaboutSegs": 19,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5104,7 +5552,7 @@
           "variants": 2,
           "tripCount": 43,
           "stops": 16,
-          "lengthKm": 8.58,
+          "lengthKm": 8.6,
           "stats": {
             "observations": 417,
             "matched": 417,
@@ -5113,8 +5561,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7523121823982932,
-            "roundaboutSegs": 22
+            "meanError": 1.7330530205743397,
+            "roundaboutSegs": 24,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5130,7 +5580,7 @@
           "variants": 6,
           "tripCount": 11,
           "stops": 25,
-          "lengthKm": 13.23,
+          "lengthKm": 13.24,
           "stats": {
             "observations": 663,
             "matched": 663,
@@ -5139,8 +5589,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9520755846614833,
-            "roundaboutSegs": 0
+            "meanError": 0.9321822565020282,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5159,7 +5611,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8465197238178362,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5175,7 +5629,7 @@
           "variants": 3,
           "tripCount": 68,
           "stops": 40,
-          "lengthKm": 23.42,
+          "lengthKm": 23.43,
           "stats": {
             "observations": 1159,
             "matched": 1159,
@@ -5184,8 +5638,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3372834266192741,
-            "roundaboutSegs": 41
+            "meanError": 1.1505707435722772,
+            "roundaboutSegs": 41,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5211,7 +5667,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8070696682573227,
-            "roundaboutSegs": 42
+            "roundaboutSegs": 42,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5227,7 +5685,7 @@
           "variants": 2,
           "tripCount": 5,
           "stops": 26,
-          "lengthKm": 14.73,
+          "lengthKm": 14.85,
           "stats": {
             "observations": 739,
             "matched": 739,
@@ -5236,8 +5694,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8752934409913823,
-            "roundaboutSegs": 29
+            "meanError": 0.7882019910617919,
+            "roundaboutSegs": 29,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5246,7 +5706,7 @@
           "variants": 1,
           "tripCount": 3,
           "stops": 26,
-          "lengthKm": 14.73,
+          "lengthKm": 14.85,
           "stats": {
             "observations": 739,
             "matched": 739,
@@ -5255,8 +5715,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8752934409913823,
-            "roundaboutSegs": 29
+            "meanError": 0.7882019910617919,
+            "roundaboutSegs": 29,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5272,7 +5734,7 @@
           "variants": 3,
           "tripCount": 18,
           "stops": 22,
-          "lengthKm": 9.13,
+          "lengthKm": 9.15,
           "stats": {
             "observations": 456,
             "matched": 456,
@@ -5281,8 +5743,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1789703342834428,
-            "roundaboutSegs": 44
+            "meanError": 1.1506072706489174,
+            "roundaboutSegs": 48,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5301,7 +5765,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1118573945174677,
-            "roundaboutSegs": 35
+            "roundaboutSegs": 35,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5327,7 +5793,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.150936620382338,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5346,7 +5814,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.4792711922253765,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5362,7 +5832,7 @@
           "variants": 2,
           "tripCount": 76,
           "stops": 26,
-          "lengthKm": 12.84,
+          "lengthKm": 12.89,
           "stats": {
             "observations": 627,
             "matched": 627,
@@ -5371,8 +5841,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.689585966114843,
-            "roundaboutSegs": 20
+            "meanError": 1.6294930697500885,
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5381,7 +5853,7 @@
           "variants": 1,
           "tripCount": 91,
           "stops": 25,
-          "lengthKm": 12.45,
+          "lengthKm": 12.26,
           "stats": {
             "observations": 599,
             "matched": 599,
@@ -5390,8 +5862,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7045690834319558,
-            "roundaboutSegs": 30
+            "meanError": 1.5939261876694244,
+            "roundaboutSegs": 30,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5407,7 +5881,7 @@
           "variants": 4,
           "tripCount": 112,
           "stops": 31,
-          "lengthKm": 15.11,
+          "lengthKm": 15.12,
           "stats": {
             "observations": 754,
             "matched": 754,
@@ -5416,8 +5890,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4127121498989228,
-            "roundaboutSegs": 16
+            "meanError": 1.2904257875093152,
+            "roundaboutSegs": 16,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5426,7 +5902,7 @@
           "variants": 5,
           "tripCount": 22,
           "stops": 30,
-          "lengthKm": 15.43,
+          "lengthKm": 15.44,
           "stats": {
             "observations": 766,
             "matched": 766,
@@ -5435,8 +5911,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3418715381059432,
-            "roundaboutSegs": 35
+            "meanError": 1.174948230674219,
+            "roundaboutSegs": 35,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5462,7 +5940,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9985872381015677,
-            "roundaboutSegs": 36
+            "roundaboutSegs": 36,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5488,7 +5968,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 2.256344799420438,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5507,7 +5989,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.8806397092902098,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5523,7 +6007,7 @@
           "variants": 6,
           "tripCount": 42,
           "stops": 35,
-          "lengthKm": 20.58,
+          "lengthKm": 20.61,
           "stats": {
             "observations": 986,
             "matched": 986,
@@ -5532,8 +6016,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0537147775020703,
-            "roundaboutSegs": 35
+            "meanError": 1.0408050672555167,
+            "roundaboutSegs": 41,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5552,7 +6038,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.0361547476687263,
-            "roundaboutSegs": 49
+            "roundaboutSegs": 49,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5568,7 +6056,7 @@
           "variants": 2,
           "tripCount": 128,
           "stops": 31,
-          "lengthKm": 16.26,
+          "lengthKm": 16.29,
           "stats": {
             "observations": 792,
             "matched": 792,
@@ -5577,8 +6065,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.956450554223257,
-            "roundaboutSegs": 30
+            "meanError": 1.9404612879313612,
+            "roundaboutSegs": 30,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5587,7 +6077,7 @@
           "variants": 1,
           "tripCount": 135,
           "stops": 30,
-          "lengthKm": 15.79,
+          "lengthKm": 15.59,
           "stats": {
             "observations": 765,
             "matched": 765,
@@ -5596,8 +6086,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.038274482455781,
-            "roundaboutSegs": 28
+            "meanError": 1.9518474953126317,
+            "roundaboutSegs": 28,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5622,8 +6114,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3565463604430645,
-            "roundaboutSegs": 19
+            "meanError": 1.092493225902538,
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5632,7 +6126,7 @@
           "variants": 4,
           "tripCount": 143,
           "stops": 26,
-          "lengthKm": 15.14,
+          "lengthKm": 14.92,
           "stats": {
             "observations": 746,
             "matched": 746,
@@ -5641,8 +6135,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9872884082089805,
-            "roundaboutSegs": 15
+            "meanError": 0.9683869138259769,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5658,7 +6154,7 @@
           "variants": 5,
           "tripCount": 135,
           "stops": 21,
-          "lengthKm": 13.6,
+          "lengthKm": 13.52,
           "stats": {
             "observations": 661,
             "matched": 661,
@@ -5667,8 +6163,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3286310789315665,
-            "roundaboutSegs": 47
+            "meanError": 1.0669125469884686,
+            "roundaboutSegs": 29,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5677,7 +6175,7 @@
           "variants": 4,
           "tripCount": 6,
           "stops": 22,
-          "lengthKm": 13.65,
+          "lengthKm": 13.63,
           "stats": {
             "observations": 683,
             "matched": 683,
@@ -5686,8 +6184,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8824304121858806,
-            "roundaboutSegs": 50
+            "meanError": 0.8736177372864364,
+            "roundaboutSegs": 50,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5703,7 +6203,7 @@
           "variants": 4,
           "tripCount": 36,
           "stops": 18,
-          "lengthKm": 6.54,
+          "lengthKm": 6.57,
           "stats": {
             "observations": 328,
             "matched": 328,
@@ -5712,8 +6212,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.473433322998911,
-            "roundaboutSegs": 0
+            "meanError": 1.387868807293844,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5739,7 +6241,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9844404117716725,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5758,7 +6262,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.92687266756399,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5774,7 +6280,7 @@
           "variants": 4,
           "tripCount": 31,
           "stops": 19,
-          "lengthKm": 10.09,
+          "lengthKm": 10.11,
           "stats": {
             "observations": 490,
             "matched": 490,
@@ -5783,8 +6289,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.6815432716120509,
-            "roundaboutSegs": 7
+            "meanError": 1.6534903390304427,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5793,7 +6301,7 @@
           "variants": 3,
           "tripCount": 31,
           "stops": 17,
-          "lengthKm": 9.73,
+          "lengthKm": 9.55,
           "stats": {
             "observations": 466,
             "matched": 466,
@@ -5802,8 +6310,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7539090614484207,
-            "roundaboutSegs": 7
+            "meanError": 1.61649121277884,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5819,7 +6329,7 @@
           "variants": 1,
           "tripCount": 4,
           "stops": 29,
-          "lengthKm": 14.01,
+          "lengthKm": 14.04,
           "stats": {
             "observations": 696,
             "matched": 696,
@@ -5828,8 +6338,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.522374272425073,
-            "roundaboutSegs": 41
+            "meanError": 1.248916466360775,
+            "roundaboutSegs": 47,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5838,7 +6350,7 @@
           "variants": 1,
           "tripCount": 6,
           "stops": 31,
-          "lengthKm": 15.02,
+          "lengthKm": 15.04,
           "stats": {
             "observations": 744,
             "matched": 744,
@@ -5847,8 +6359,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1708278592215067,
-            "roundaboutSegs": 46
+            "meanError": 1.033560410612943,
+            "roundaboutSegs": 46,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5864,7 +6378,7 @@
           "variants": 4,
           "tripCount": 15,
           "stops": 30,
-          "lengthKm": 16.39,
+          "lengthKm": 16.46,
           "stats": {
             "observations": 775,
             "matched": 775,
@@ -5873,8 +6387,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.725201797867693,
-            "roundaboutSegs": 34
+            "meanError": 1.6680595610780058,
+            "roundaboutSegs": 40,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5883,7 +6399,7 @@
           "variants": 2,
           "tripCount": 3,
           "stops": 29,
-          "lengthKm": 16.05,
+          "lengthKm": 16.08,
           "stats": {
             "observations": 743,
             "matched": 743,
@@ -5892,8 +6408,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7410110790275277,
-            "roundaboutSegs": 28
+            "meanError": 1.705983946498439,
+            "roundaboutSegs": 28,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5909,7 +6427,7 @@
           "variants": 6,
           "tripCount": 48,
           "stops": 56,
-          "lengthKm": 30.3,
+          "lengthKm": 30.34,
           "stats": {
             "observations": 1503,
             "matched": 1503,
@@ -5918,8 +6436,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1307159647633631,
-            "roundaboutSegs": 85
+            "meanError": 1.1208035799651899,
+            "roundaboutSegs": 91,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -5928,7 +6448,7 @@
           "variants": 6,
           "tripCount": 18,
           "stops": 55,
-          "lengthKm": 30.25,
+          "lengthKm": 30.28,
           "stats": {
             "observations": 1512,
             "matched": 1512,
@@ -5937,8 +6457,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1127534900676042,
-            "roundaboutSegs": 85
+            "meanError": 1.0942562707842853,
+            "roundaboutSegs": 88,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5954,7 +6476,7 @@
           "variants": 2,
           "tripCount": 30,
           "stops": 31,
-          "lengthKm": 13.37,
+          "lengthKm": 13.4,
           "stats": {
             "observations": 666,
             "matched": 666,
@@ -5963,8 +6485,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5304243631313896,
-            "roundaboutSegs": 37
+            "meanError": 1.510870927967187,
+            "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -5990,7 +6514,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9525128982398311,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6009,7 +6535,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9385349800542818,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6025,7 +6553,7 @@
           "variants": 2,
           "tripCount": 122,
           "stops": 26,
-          "lengthKm": 13.24,
+          "lengthKm": 13.25,
           "stats": {
             "observations": 662,
             "matched": 662,
@@ -6034,8 +6562,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5944020899040687,
-            "roundaboutSegs": 0
+            "meanError": 1.576104548927002,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6053,8 +6583,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.655410737658121,
-            "roundaboutSegs": 0
+            "meanError": 1.6550589247836283,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6070,7 +6602,7 @@
           "variants": 3,
           "tripCount": 35,
           "stops": 17,
-          "lengthKm": 11.67,
+          "lengthKm": 11.6,
           "stats": {
             "observations": 565,
             "matched": 565,
@@ -6079,8 +6611,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4683703767840928,
-            "roundaboutSegs": 41
+            "meanError": 1.1620992753411385,
+            "roundaboutSegs": 23,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6089,7 +6623,7 @@
           "variants": 1,
           "tripCount": 5,
           "stops": 16,
-          "lengthKm": 10.81,
+          "lengthKm": 10.92,
           "stats": {
             "observations": 541,
             "matched": 541,
@@ -6098,8 +6632,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0705260980969111,
-            "roundaboutSegs": 18
+            "meanError": 0.9554377268908975,
+            "roundaboutSegs": 18,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6115,7 +6651,7 @@
           "variants": 3,
           "tripCount": 24,
           "stops": 29,
-          "lengthKm": 13.2,
+          "lengthKm": 13.21,
           "stats": {
             "observations": 657,
             "matched": 657,
@@ -6124,8 +6660,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2589829763046045,
-            "roundaboutSegs": 102
+            "meanError": 1.2572129974573323,
+            "roundaboutSegs": 102,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6141,7 +6679,7 @@
           "variants": 3,
           "tripCount": 93,
           "stops": 20,
-          "lengthKm": 9.37,
+          "lengthKm": 9.42,
           "stats": {
             "observations": 468,
             "matched": 468,
@@ -6150,8 +6688,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2895194460389314,
-            "roundaboutSegs": 60
+            "meanError": 1.262393845217939,
+            "roundaboutSegs": 60,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6169,8 +6709,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2419348464515567,
-            "roundaboutSegs": 28
+            "meanError": 1.2115701682715168,
+            "roundaboutSegs": 28,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6195,8 +6737,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1213144859520865,
-            "roundaboutSegs": 4
+            "meanError": 1.1073175836861808,
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6215,7 +6759,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1157764731317885,
-            "roundaboutSegs": 5
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6231,7 +6777,7 @@
           "variants": 4,
           "tripCount": 17,
           "stops": 29,
-          "lengthKm": 16.45,
+          "lengthKm": 16.47,
           "stats": {
             "observations": 823,
             "matched": 823,
@@ -6240,8 +6786,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3045741418399535,
-            "roundaboutSegs": 17
+            "meanError": 1.2348723129267618,
+            "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6250,7 +6798,7 @@
           "variants": 3,
           "tripCount": 20,
           "stops": 28,
-          "lengthKm": 16.4,
+          "lengthKm": 16.42,
           "stats": {
             "observations": 819,
             "matched": 819,
@@ -6259,8 +6807,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3207226786661463,
-            "roundaboutSegs": 31
+            "meanError": 1.280032751355325,
+            "roundaboutSegs": 35,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6285,8 +6835,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8470762190046066,
-            "roundaboutSegs": 25
+            "meanError": 0.8406569803332506,
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6302,7 +6854,7 @@
           "variants": 1,
           "tripCount": 6,
           "stops": 37,
-          "lengthKm": 23.76,
+          "lengthKm": 23.8,
           "stats": {
             "observations": 1189,
             "matched": 1189,
@@ -6311,8 +6863,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1921698603998534,
-            "roundaboutSegs": 33
+            "meanError": 1.1467597525291287,
+            "roundaboutSegs": 40,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6321,7 +6875,7 @@
           "variants": 1,
           "tripCount": 6,
           "stops": 36,
-          "lengthKm": 23.16,
+          "lengthKm": 23.18,
           "stats": {
             "observations": 1155,
             "matched": 1155,
@@ -6330,8 +6884,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2552051142356455,
-            "roundaboutSegs": 30
+            "meanError": 1.2278292677793203,
+            "roundaboutSegs": 32,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6347,7 +6903,7 @@
           "variants": 3,
           "tripCount": 121,
           "stops": 16,
-          "lengthKm": 8.9,
+          "lengthKm": 8.91,
           "stats": {
             "observations": 433,
             "matched": 433,
@@ -6356,8 +6912,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.8561782137576202,
-            "roundaboutSegs": 16
+            "meanError": 1.3559222913199152,
+            "roundaboutSegs": 16,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6366,7 +6924,7 @@
           "variants": 3,
           "tripCount": 125,
           "stops": 14,
-          "lengthKm": 8.84,
+          "lengthKm": 8.86,
           "stats": {
             "observations": 439,
             "matched": 439,
@@ -6375,8 +6933,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2986248062442323,
-            "roundaboutSegs": 41
+            "meanError": 1.0611865986876459,
+            "roundaboutSegs": 41,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6392,7 +6952,7 @@
           "variants": 2,
           "tripCount": 3,
           "stops": 30,
-          "lengthKm": 16.5,
+          "lengthKm": 16.53,
           "stats": {
             "observations": 799,
             "matched": 799,
@@ -6401,8 +6961,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1029984855556112,
-            "roundaboutSegs": 21
+            "meanError": 0.8673353877504463,
+            "roundaboutSegs": 27,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6421,7 +6983,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.0968034290233133,
-            "roundaboutSegs": 22
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6437,7 +7001,7 @@
           "variants": 2,
           "tripCount": 32,
           "stops": 28,
-          "lengthKm": 15.46,
+          "lengthKm": 15.49,
           "stats": {
             "observations": 771,
             "matched": 771,
@@ -6446,8 +7010,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1499399480536538,
-            "roundaboutSegs": 25
+            "meanError": 0.9045195184617252,
+            "roundaboutSegs": 31,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6456,7 +7022,7 @@
           "variants": 3,
           "tripCount": 38,
           "stops": 29,
-          "lengthKm": 14.85,
+          "lengthKm": 14.96,
           "stats": {
             "observations": 743,
             "matched": 743,
@@ -6465,8 +7031,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8588030626350428,
-            "roundaboutSegs": 36
+            "meanError": 0.7746279850259773,
+            "roundaboutSegs": 36,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6492,7 +7060,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.4221614075373872,
-            "roundaboutSegs": 4
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6511,7 +7081,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.4164903783319298,
-            "roundaboutSegs": 9
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6537,7 +7109,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8706727369783135,
-            "roundaboutSegs": 33
+            "roundaboutSegs": 33,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6563,7 +7137,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8424726077555912,
-            "roundaboutSegs": 9
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6579,7 +7155,7 @@
           "variants": 1,
           "tripCount": 3,
           "stops": 10,
-          "lengthKm": 5.26,
+          "lengthKm": 5.14,
           "stats": {
             "observations": 243,
             "matched": 243,
@@ -6588,8 +7164,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5949091955615253,
-            "roundaboutSegs": 39
+            "meanError": 0.9312459756340606,
+            "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6607,8 +7185,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9359391556148718,
-            "roundaboutSegs": 44
+            "meanError": 0.9302341425523102,
+            "roundaboutSegs": 44,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6634,7 +7214,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9260536936133575,
-            "roundaboutSegs": 44
+            "roundaboutSegs": 44,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6650,7 +7232,7 @@
           "variants": 1,
           "tripCount": 60,
           "stops": 24,
-          "lengthKm": 14.15,
+          "lengthKm": 14.07,
           "stats": {
             "observations": 689,
             "matched": 689,
@@ -6659,8 +7241,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4182322397990335,
-            "roundaboutSegs": 55
+            "meanError": 1.1671650434582708,
+            "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6669,7 +7253,7 @@
           "variants": 2,
           "tripCount": 68,
           "stops": 26,
-          "lengthKm": 13.87,
+          "lengthKm": 13.88,
           "stats": {
             "observations": 691,
             "matched": 691,
@@ -6678,8 +7262,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2712522819285674,
-            "roundaboutSegs": 41
+            "meanError": 1.122255607309655,
+            "roundaboutSegs": 41,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6695,7 +7281,7 @@
           "variants": 1,
           "tripCount": 3,
           "stops": 20,
-          "lengthKm": 8.55,
+          "lengthKm": 8.53,
           "stats": {
             "observations": 425,
             "matched": 425,
@@ -6704,8 +7290,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0950275476520634,
-            "roundaboutSegs": 52
+            "meanError": 1.0990778087291522,
+            "roundaboutSegs": 52,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6724,7 +7312,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1007005242886936,
-            "roundaboutSegs": 12
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6740,7 +7330,7 @@
           "variants": 3,
           "tripCount": 20,
           "stops": 22,
-          "lengthKm": 18.07,
+          "lengthKm": 18.1,
           "stats": {
             "observations": 901,
             "matched": 901,
@@ -6749,8 +7339,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.769798781305769,
-            "roundaboutSegs": 30
+            "meanError": 1.7434771379906824,
+            "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6768,8 +7360,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7060682711424164,
-            "roundaboutSegs": 9
+            "meanError": 1.7056019483616092,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6785,7 +7379,7 @@
           "variants": 1,
           "tripCount": 65,
           "stops": 15,
-          "lengthKm": 8.95,
+          "lengthKm": 8.85,
           "stats": {
             "observations": 430,
             "matched": 430,
@@ -6794,8 +7388,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.8172420329287629,
-            "roundaboutSegs": 39
+            "meanError": 1.429433439136412,
+            "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6804,7 +7400,7 @@
           "variants": 1,
           "tripCount": 66,
           "stops": 15,
-          "lengthKm": 9.2,
+          "lengthKm": 9.23,
           "stats": {
             "observations": 449,
             "matched": 449,
@@ -6813,8 +7409,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4247814341761458,
-            "roundaboutSegs": 12
+            "meanError": 1.4011268428084447,
+            "roundaboutSegs": 12,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6830,7 +7428,7 @@
           "variants": 2,
           "tripCount": 15,
           "stops": 21,
-          "lengthKm": 9.37,
+          "lengthKm": 9.38,
           "stats": {
             "observations": 452,
             "matched": 452,
@@ -6839,8 +7437,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9809323193971875,
-            "roundaboutSegs": 0
+            "meanError": 0.945149096654209,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6859,7 +7459,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.6960414392791234,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6875,7 +7477,7 @@
           "variants": 2,
           "tripCount": 12,
           "stops": 25,
-          "lengthKm": 12.85,
+          "lengthKm": 12.88,
           "stats": {
             "observations": 613,
             "matched": 613,
@@ -6884,8 +7486,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0118426834605287,
-            "roundaboutSegs": 33
+            "meanError": 0.991829103827608,
+            "roundaboutSegs": 36,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -6904,7 +7508,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.021881346994996,
-            "roundaboutSegs": 32
+            "roundaboutSegs": 32,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6920,7 +7526,7 @@
           "variants": 6,
           "tripCount": 16,
           "stops": 16,
-          "lengthKm": 10.34,
+          "lengthKm": 10.53,
           "stats": {
             "observations": 513,
             "matched": 513,
@@ -6929,8 +7535,10 @@
             "bridged": 0,
             "rawStretchCount": 1,
             "rawMeters": 20,
-            "meanError": 3.017151676467702,
-            "roundaboutSegs": 0
+            "meanError": 2.8792551679187475,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6946,7 +7554,7 @@
           "variants": 19,
           "tripCount": 28,
           "stops": 11,
-          "lengthKm": 4.65,
+          "lengthKm": 4.67,
           "stats": {
             "observations": 231,
             "matched": 231,
@@ -6955,8 +7563,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9267622039799882,
-            "roundaboutSegs": 1
+            "meanError": 0.8917004821318739,
+            "roundaboutSegs": 1,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -6972,7 +7582,7 @@
           "variants": 1,
           "tripCount": 7,
           "stops": 15,
-          "lengthKm": 7.48,
+          "lengthKm": 7.52,
           "stats": {
             "observations": 375,
             "matched": 375,
@@ -6981,8 +7591,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.9738324925231054,
-            "roundaboutSegs": 2
+            "meanError": 0.9296698488025507,
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7008,7 +7620,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.8609422036275198,
-            "roundaboutSegs": 0
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7024,7 +7638,7 @@
           "variants": 2,
           "tripCount": 2,
           "stops": 20,
-          "lengthKm": 10.13,
+          "lengthKm": 10.19,
           "stats": {
             "observations": 492,
             "matched": 492,
@@ -7033,8 +7647,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.9520247173253231,
-            "roundaboutSegs": 20
+            "meanError": 1.868763295420927,
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7050,7 +7666,7 @@
           "variants": 24,
           "tripCount": 16,
           "stops": 10,
-          "lengthKm": 3.89,
+          "lengthKm": 4.01,
           "stats": {
             "observations": 197,
             "matched": 197,
@@ -7059,8 +7675,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2136768110147909,
-            "roundaboutSegs": 2
+            "meanError": 0.8950140172090456,
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7076,7 +7694,7 @@
           "variants": 4,
           "tripCount": 52,
           "stops": 6,
-          "lengthKm": 3.45,
+          "lengthKm": 3.46,
           "stats": {
             "observations": 171,
             "matched": 171,
@@ -7085,8 +7703,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4351827624014168,
-            "roundaboutSegs": 24
+            "meanError": 1.4131934438974902,
+            "roundaboutSegs": 27,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7095,7 +7715,7 @@
           "variants": 1,
           "tripCount": 40,
           "stops": 7,
-          "lengthKm": 3.68,
+          "lengthKm": 3.69,
           "stats": {
             "observations": 181,
             "matched": 181,
@@ -7104,8 +7724,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3826029445560444,
-            "roundaboutSegs": 32
+            "meanError": 1.384299564755588,
+            "roundaboutSegs": 32,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7130,8 +7752,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2933367189133234,
-            "roundaboutSegs": 14
+            "meanError": 1.104563896908653,
+            "roundaboutSegs": 14,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7140,7 +7764,7 @@
           "variants": 1,
           "tripCount": 4,
           "stops": 31,
-          "lengthKm": 23.84,
+          "lengthKm": 23.85,
           "stats": {
             "observations": 1188,
             "matched": 1188,
@@ -7149,8 +7773,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.0185271808712104,
-            "roundaboutSegs": 24
+            "meanError": 0.9097510628420764,
+            "roundaboutSegs": 24,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7175,8 +7801,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.6592453702778474,
-            "roundaboutSegs": 47
+            "meanError": 0.6518673649915296,
+            "roundaboutSegs": 47,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7185,7 +7813,7 @@
           "variants": 1,
           "tripCount": 7,
           "stops": 29,
-          "lengthKm": 18.63,
+          "lengthKm": 18.66,
           "stats": {
             "observations": 917,
             "matched": 917,
@@ -7194,8 +7822,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8996036850164346,
-            "roundaboutSegs": 65
+            "meanError": 0.8701938197799692,
+            "roundaboutSegs": 71,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7211,7 +7841,7 @@
           "variants": 5,
           "tripCount": 29,
           "stops": 26,
-          "lengthKm": 21.43,
+          "lengthKm": 21.51,
           "stats": {
             "observations": 1069,
             "matched": 1069,
@@ -7220,8 +7850,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7231191969121114,
-            "roundaboutSegs": 21
+            "meanError": 1.4886136602231348,
+            "roundaboutSegs": 26,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7230,7 +7862,7 @@
           "variants": 3,
           "tripCount": 34,
           "stops": 26,
-          "lengthKm": 21.63,
+          "lengthKm": 21.75,
           "stats": {
             "observations": 1078,
             "matched": 1078,
@@ -7239,8 +7871,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.6075350438609242,
-            "roundaboutSegs": 37
+            "meanError": 1.5273108807434101,
+            "roundaboutSegs": 39,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7256,7 +7890,7 @@
           "variants": 2,
           "tripCount": 22,
           "stops": 19,
-          "lengthKm": 19.39,
+          "lengthKm": 19.44,
           "stats": {
             "observations": 936,
             "matched": 936,
@@ -7265,8 +7899,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2018252969525278,
-            "roundaboutSegs": 87
+            "meanError": 1.150458598637467,
+            "roundaboutSegs": 90,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7285,7 +7921,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1817722210240624,
-            "roundaboutSegs": 57
+            "roundaboutSegs": 57,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7310,8 +7948,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3209553202841608,
-            "roundaboutSegs": 0
+            "meanError": 1.3210089277915549,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7327,7 +7967,7 @@
           "variants": 4,
           "tripCount": 5,
           "stops": 36,
-          "lengthKm": 18.36,
+          "lengthKm": 18.2,
           "stats": {
             "observations": 894,
             "matched": 894,
@@ -7336,8 +7976,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.8972400740372708,
-            "roundaboutSegs": 47
+            "meanError": 1.7791931564781505,
+            "roundaboutSegs": 49,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7363,7 +8005,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.3254297354607123,
-            "roundaboutSegs": 13
+            "roundaboutSegs": 13,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7372,7 +8016,7 @@
           "variants": 2,
           "tripCount": 2,
           "stops": 57,
-          "lengthKm": 28,
+          "lengthKm": 28.01,
           "stats": {
             "observations": 1399,
             "matched": 1399,
@@ -7381,8 +8025,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.17642860313845,
-            "roundaboutSegs": 53
+            "meanError": 1.1530341384468819,
+            "roundaboutSegs": 56,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7398,7 +8044,7 @@
           "variants": 4,
           "tripCount": 3,
           "stops": 43,
-          "lengthKm": 21.87,
+          "lengthKm": 21.75,
           "stats": {
             "observations": 1083,
             "matched": 1083,
@@ -7407,8 +8053,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1268847713525019,
-            "roundaboutSegs": 69
+            "meanError": 0.9446793130414809,
+            "roundaboutSegs": 56,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7417,7 +8065,7 @@
           "variants": 2,
           "tripCount": 1,
           "stops": 26,
-          "lengthKm": 13.92,
+          "lengthKm": 13.78,
           "stats": {
             "observations": 688,
             "matched": 688,
@@ -7426,8 +8074,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.2382023155707242,
-            "roundaboutSegs": 13
+            "meanError": 1.2403178894806446,
+            "roundaboutSegs": 13,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7443,7 +8093,7 @@
           "variants": 1,
           "tripCount": 2,
           "stops": 28,
-          "lengthKm": 14.7,
+          "lengthKm": 14.72,
           "stats": {
             "observations": 701,
             "matched": 701,
@@ -7452,8 +8102,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.13374341569866,
-            "roundaboutSegs": 70
+            "meanError": 1.1206751485364093,
+            "roundaboutSegs": 73,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7472,7 +8124,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.1724300718785903,
-            "roundaboutSegs": 21
+            "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7488,7 +8142,7 @@
           "variants": 2,
           "tripCount": 3,
           "stops": 34,
-          "lengthKm": 16.55,
+          "lengthKm": 16.58,
           "stats": {
             "observations": 813,
             "matched": 813,
@@ -7497,8 +8151,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.6711488484729908,
-            "roundaboutSegs": 49
+            "meanError": 1.3827523169456448,
+            "roundaboutSegs": 53,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7517,7 +8173,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.9910386592722567,
-            "roundaboutSegs": 4
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7543,7 +8201,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.086788013636075,
-            "roundaboutSegs": 32
+            "roundaboutSegs": 32,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7552,7 +8212,7 @@
           "variants": 1,
           "tripCount": 159,
           "stops": 37,
-          "lengthKm": 26.91,
+          "lengthKm": 26.92,
           "stats": {
             "observations": 1346,
             "matched": 1346,
@@ -7561,8 +8221,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.1555943024163295,
-            "roundaboutSegs": 65
+            "meanError": 1.1312779740603358,
+            "roundaboutSegs": 68,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7578,7 +8240,7 @@
           "variants": 2,
           "tripCount": 123,
           "stops": 30,
-          "lengthKm": 19.12,
+          "lengthKm": 19.11,
           "stats": {
             "observations": 942,
             "matched": 942,
@@ -7587,8 +8249,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8199024211993245,
-            "roundaboutSegs": 2
+            "meanError": 0.8061844769438132,
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7607,7 +8271,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.6867569689049958,
-            "roundaboutSegs": 1
+            "roundaboutSegs": 1,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7632,8 +8298,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 0.8463553132875105,
-            "roundaboutSegs": 2
+            "meanError": 0.8258422552788505,
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7652,7 +8320,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 0.7854416873679728,
-            "roundaboutSegs": 1
+            "roundaboutSegs": 1,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7668,7 +8338,7 @@
           "variants": 4,
           "tripCount": 8,
           "stops": 18,
-          "lengthKm": 16.45,
+          "lengthKm": 16.46,
           "stats": {
             "observations": 813,
             "matched": 813,
@@ -7677,8 +8347,10 @@
             "bridged": 0,
             "rawStretchCount": 1,
             "rawMeters": 20,
-            "meanError": 2.098634859231866,
-            "roundaboutSegs": 8
+            "meanError": 1.870991204865725,
+            "roundaboutSegs": 14,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7697,7 +8369,9 @@
             "rawStretchCount": 0,
             "rawMeters": 0,
             "meanError": 1.7486579509049056,
-            "roundaboutSegs": 7
+            "roundaboutSegs": 7,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7713,7 +8387,7 @@
           "variants": 7,
           "tripCount": 24,
           "stops": 36,
-          "lengthKm": 33.49,
+          "lengthKm": 33.53,
           "stats": {
             "observations": 1620,
             "matched": 1620,
@@ -7722,8 +8396,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5715469822670318,
-            "roundaboutSegs": 30
+            "meanError": 1.5469489062461161,
+            "roundaboutSegs": 34,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7732,7 +8408,7 @@
           "variants": 3,
           "tripCount": 17,
           "stops": 36,
-          "lengthKm": 32.91,
+          "lengthKm": 33.09,
           "stats": {
             "observations": 1643,
             "matched": 1643,
@@ -7741,8 +8417,10 @@
             "bridged": 0,
             "rawStretchCount": 1,
             "rawMeters": 20,
-            "meanError": 1.6023455618575633,
-            "roundaboutSegs": 25
+            "meanError": 1.5380595198309714,
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7758,7 +8436,7 @@
           "variants": 6,
           "tripCount": 974,
           "stops": 39,
-          "lengthKm": 16.8,
+          "lengthKm": 16.84,
           "stats": {
             "observations": 781,
             "matched": 781,
@@ -7767,8 +8445,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.5408105137018446,
-            "roundaboutSegs": 0
+            "meanError": 1.5139882315241435,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7777,7 +8457,7 @@
           "variants": 6,
           "tripCount": 967,
           "stops": 39,
-          "lengthKm": 17.05,
+          "lengthKm": 17.09,
           "stats": {
             "observations": 795,
             "matched": 795,
@@ -7786,8 +8466,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.6341322189793683,
-            "roundaboutSegs": 0
+            "meanError": 1.5296364316633295,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7803,7 +8485,7 @@
           "variants": 4,
           "tripCount": 820,
           "stops": 29,
-          "lengthKm": 13.87,
+          "lengthKm": 13.88,
           "stats": {
             "observations": 633,
             "matched": 633,
@@ -7812,8 +8494,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.8578891312837107,
-            "roundaboutSegs": 0
+            "meanError": 1.4352008142558514,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7822,7 +8506,7 @@
           "variants": 3,
           "tripCount": 820,
           "stops": 30,
-          "lengthKm": 13.99,
+          "lengthKm": 14.01,
           "stats": {
             "observations": 628,
             "matched": 628,
@@ -7831,8 +8515,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.438100384867694,
-            "roundaboutSegs": 0
+            "meanError": 1.8842021523875256,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7848,7 +8534,7 @@
           "variants": 6,
           "tripCount": 491,
           "stops": 34,
-          "lengthKm": 14.7,
+          "lengthKm": 14.71,
           "stats": {
             "observations": 654,
             "matched": 654,
@@ -7857,8 +8543,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.6979304732496843,
-            "roundaboutSegs": 0
+            "meanError": 1.554840450229319,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7876,8 +8564,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7270455107615044,
-            "roundaboutSegs": 0
+            "meanError": 1.241755274153966,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7902,8 +8592,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.284403712426282,
-            "roundaboutSegs": 0
+            "meanError": 1.5458849422393335,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7912,7 +8604,7 @@
           "variants": 7,
           "tripCount": 904,
           "stops": 40,
-          "lengthKm": 17.98,
+          "lengthKm": 18.04,
           "stats": {
             "observations": 795,
             "matched": 795,
@@ -7921,8 +8613,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.8234054377955131,
-            "roundaboutSegs": 0
+            "meanError": 1.4464479932565095,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7947,8 +8641,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.4891751814464367,
-            "roundaboutSegs": 0
+            "meanError": 1.4476894014363726,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -7957,7 +8653,7 @@
           "variants": 3,
           "tripCount": 993,
           "stops": 25,
-          "lengthKm": 9.95,
+          "lengthKm": 9.97,
           "stats": {
             "observations": 473,
             "matched": 473,
@@ -7966,8 +8662,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.391951812823701,
-            "roundaboutSegs": 0
+            "meanError": 1.3506748299376292,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -7983,7 +8681,7 @@
           "variants": 3,
           "tripCount": 777,
           "stops": 17,
-          "lengthKm": 6.67,
+          "lengthKm": 6.8,
           "stats": {
             "observations": 302,
             "matched": 302,
@@ -7992,8 +8690,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.3014794450067524,
-            "roundaboutSegs": 0
+            "meanError": 1.2280375027604975,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -8002,7 +8702,7 @@
           "variants": 3,
           "tripCount": 810,
           "stops": 17,
-          "lengthKm": 6.77,
+          "lengthKm": 6.9,
           "stats": {
             "observations": 321,
             "matched": 306,
@@ -8011,8 +8711,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 3.466484189802091,
-            "roundaboutSegs": 0
+            "meanError": 2.4748386382997145,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -8028,7 +8730,7 @@
           "variants": 3,
           "tripCount": 1024,
           "stops": 30,
-          "lengthKm": 13.71,
+          "lengthKm": 13.72,
           "stats": {
             "observations": 657,
             "matched": 635,
@@ -8037,8 +8739,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.194004946377492,
-            "roundaboutSegs": 0
+            "meanError": 1.8821336710427048,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -8047,7 +8751,7 @@
           "variants": 3,
           "tripCount": 1020,
           "stops": 30,
-          "lengthKm": 13.59,
+          "lengthKm": 13.61,
           "stats": {
             "observations": 650,
             "matched": 628,
@@ -8056,8 +8760,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.3497297197656413,
-            "roundaboutSegs": 0
+            "meanError": 1.9858682476103064,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -8073,7 +8779,7 @@
           "variants": 3,
           "tripCount": 473,
           "stops": 30,
-          "lengthKm": 13.78,
+          "lengthKm": 13.94,
           "stats": {
             "observations": 659,
             "matched": 659,
@@ -8082,8 +8788,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7992552237241284,
-            "roundaboutSegs": 0
+            "meanError": 1.6486796590581807,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -8092,7 +8800,7 @@
           "variants": 3,
           "tripCount": 451,
           "stops": 31,
-          "lengthKm": 13.89,
+          "lengthKm": 14.04,
           "stats": {
             "observations": 676,
             "matched": 661,
@@ -8101,8 +8809,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.964765219088877,
-            "roundaboutSegs": 0
+            "meanError": 2.013704201562509,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -8118,7 +8828,7 @@
           "variants": 5,
           "tripCount": 984,
           "stops": 48,
-          "lengthKm": 21.8,
+          "lengthKm": 21.82,
           "stats": {
             "observations": 990,
             "matched": 990,
@@ -8127,8 +8837,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.181230496181956,
-            "roundaboutSegs": 0
+            "meanError": 1.5178385133723795,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -8137,7 +8849,7 @@
           "variants": 4,
           "tripCount": 1000,
           "stops": 50,
-          "lengthKm": 21.78,
+          "lengthKm": 21.79,
           "stats": {
             "observations": 989,
             "matched": 989,
@@ -8146,8 +8858,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.9214226127550138,
-            "roundaboutSegs": 0
+            "meanError": 1.7534265032403311,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -8163,7 +8877,7 @@
           "variants": 2,
           "tripCount": 24,
           "stops": 31,
-          "lengthKm": 13,
+          "lengthKm": 13.02,
           "stats": {
             "observations": 614,
             "matched": 614,
@@ -8172,8 +8886,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.5606458904305966,
-            "roundaboutSegs": 0
+            "meanError": 1.5221709319602483,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -8182,7 +8898,7 @@
           "variants": 2,
           "tripCount": 24,
           "stops": 33,
-          "lengthKm": 13.56,
+          "lengthKm": 13.62,
           "stats": {
             "observations": 636,
             "matched": 636,
@@ -8191,8 +8907,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.9868363408711385,
-            "roundaboutSegs": 0
+            "meanError": 1.2614678351946322,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
@@ -8208,7 +8926,7 @@
           "variants": 1,
           "tripCount": 91,
           "stops": 35,
-          "lengthKm": 15.94,
+          "lengthKm": 15.98,
           "stats": {
             "observations": 728,
             "matched": 728,
@@ -8217,8 +8935,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 2.40794275479539,
-            "roundaboutSegs": 0
+            "meanError": 1.8461685096046645,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         },
         {
@@ -8227,7 +8947,7 @@
           "variants": 2,
           "tripCount": 91,
           "stops": 35,
-          "lengthKm": 15.97,
+          "lengthKm": 15.98,
           "stats": {
             "observations": 741,
             "matched": 741,
@@ -8236,8 +8956,10 @@
             "bridged": 0,
             "rawStretchCount": 0,
             "rawMeters": 0,
-            "meanError": 1.7888555229502348,
-            "roundaboutSegs": 0
+            "meanError": 1.562022460376755,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
           }
         }
       ]
