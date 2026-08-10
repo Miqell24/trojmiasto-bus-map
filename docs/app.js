@@ -245,9 +245,9 @@ async function init() {
   // (extra:1) exist only on very long avenues, emitted sparsely by the pipeline,
   // and rank BELOW the once-per-street anchors.
   const NUM_LAYERS = [
-    { id: 'street-numbers-low', minzoom: 11, maxzoom: 13, cond: ['all', ['!', ['has', 'extra']], ['!', ['has', 'expl']]] },
-    { id: 'street-numbers', minzoom: 13, cond: ['all', ['!', ['has', 'extra']], ['!', ['has', 'expl']]] },
-    { id: 'street-numbers-extra', minzoom: 13, cond: ['all', ['has', 'extra'], ['!', ['has', 'expl']]] },
+    { id: 'street-numbers-low', minzoom: 11, maxzoom: 13, cond: ['!', ['has', 'extra']] },
+    { id: 'street-numbers', minzoom: 13, cond: ['!', ['has', 'extra']] },
+    { id: 'street-numbers-extra', minzoom: 13, cond: ['has', 'extra'] },
   ];
   for (const d of NUM_LAYERS) {
     const def = {
@@ -260,17 +260,6 @@ async function init() {
     if (d.maxzoom) def.maxzoom = d.maxzoom;
     map.addLayer(def);
   }
-  // Reference lists ("A*: 124, 139, …") that explain the lettered markers on
-  // streets whose row would not fit. The whole point is that the full list is
-  // READABLE somewhere nearby, so the layer must not lose its spot to stop
-  // names — it is moved above them below. Wider wrap: the block reads flat.
-  map.addLayer({
-    id: 'street-numbers-refs', type: 'symbol', source: 'labels',
-    minzoom: 13,
-    filter: ['has', 'expl'],
-    layout: { ...numbersLayout, 'text-max-width': 16 },
-    paint: { ...numbersPaint },
-  });
 
   // STREET NAMES OF THE NETWORK, drawn from our own source instead of the base
   // tiles. The tiles carry minor-road names only from z13, publish them once
@@ -548,7 +537,6 @@ async function init() {
   for (const d of NUM_LAYERS) if (d.id !== 'street-numbers-extra') map.moveLayer(d.id);
   map.moveLayer('stops-names');
   map.moveLayer('stops-terminus-names');
-  map.moveLayer('street-numbers-refs'); // reference lists outrank even the names
   // Below z13 arterial names need to outrank even the numbers — the
   // wall-to-wall low-zoom number labels otherwise leave the city unnamed
   // (measured at z12.5: 36 arterial names in the tiles, 4 rendered). A CLONE
