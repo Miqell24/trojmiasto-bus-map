@@ -963,20 +963,82 @@ const metaLines = [];
     let ang = Math.atan2(-dy, dx) * 180 / Math.PI; // clockwise degrees, screen y downwards
     if (ang > 90) ang -= 180;   // normalization: text never upside down
     if (ang < -90) ang += 180;
-    return { c, ang };
+    return { c, ang, dx, dy };
   };
-  // A corridor label listing 50 lines is unreadable and kilometers long — the
-  // display caps at 12 + a "+N" tail (`arr` stays complete: the frontend
-  // filters and highlights on it).
-  const capList = (s) => {
-    const a = s.split(', ');
-    return a.length > 14 ? a.slice(0, 12).join(', ') + ' +' + (a.length - 12) : s;
-  };
-  for (const g of groups.values()) {
+  // A corridor label listing 20+ lines is unreadable, and the old cap
+  // ("… 503 +9") told nobody what the tail meant (user report, Karmelicka).
+  // Printed-map convention instead: the street carries a short REFERENCE
+  // marker (A*, B*, …) parallel to its axis, and the full list is printed
+  // FLAT (angle 0) beside the corridor as "A*: 124, 139, …" — once per
+  // reference every ~600 m, tagged extra:1 so it appears from z13 and ranks
+  // below the once-per-street markers. `arr` stays complete either way.
+  const REF_CAP = 14;
+  // The first cut lettered every exact list — a dual carriageway plus the set
+  // drifting by one line at each junction gave EIGHT letters with eight
+  // near-identical 20-number lists along one avenue, which read worse than the
+  // "+9" they replaced. So references are per STREET: the long-list groups of
+  // one name within 1.2 km share a letter, and the printed list is their
+  // union — still nothing but lines that really ride that street.
+  const refByPart = new Map(); // `${gKey}|L` / `${gKey}|B` → { mark, list }
+  {
+    const entries = [];
+    for (const [gKey, g] of groups) {
+      const p = g.best.f.properties;
+      const name = gKey.slice(0, gKey.indexOf('|'));
+      const mid = g.best.xy[Math.floor(g.best.xy.length / 2)];
+      for (const [part, list] of [['L', p.lines], ['B', p.busLines || '']]) {
+        if (!list || list.split(', ').length <= REF_CAP) continue;
+        entries.push({ key: gKey + '|' + part, name, mid, list });
+      }
+    }
+    const parent = entries.map((_, i) => i);
+    const find = (i) => (parent[i] === i ? i : (parent[i] = find(parent[i])));
+    for (let i = 0; i < entries.length; i++)
+      for (let j = i + 1; j < entries.length; j++) {
+        if (entries[i].name !== entries[j].name) continue;
+        if (Math.hypot(entries[i].mid[0] - entries[j].mid[0], entries[i].mid[1] - entries[j].mid[1]) < 1200)
+          parent[find(i)] = find(j);
+      }
+    const clusters = new Map();
+    entries.forEach((e, i) => {
+      const r = find(i);
+      if (!clusters.has(r)) clusters.set(r, []);
+      clusters.get(r).push(e);
+    });
+    let seq = 0;
+    for (const c of clusters.values()) {
+      const mark = (seq >= 26 ? String.fromCharCode(64 + Math.floor(seq / 26)) : '') + String.fromCharCode(65 + (seq % 26)) + '*';
+      seq++;
+      const union = [...new Set(c.flatMap((e) => e.list.split(', ')))].sort(numSort).join(', ');
+      for (const e of c) refByPart.set(e.key, { mark, list: union });
+    }
+  }
+  const refSpots = new Map(); // marker → XY points where its list is printed
+  for (const [gKey, g] of groups) {
     const p = g.best.f.properties;
     const arr = p.busLines ? [...p.lines.split(', '), ...p.busLines.split(', ')] : p.lines.split(', ');
-    const baseProps = { lines: capList(p.lines), color: p.color, mode: p.mode, arr };
-    if (p.busLines) baseProps.busLines = capList(p.busLines);
+    const refL = refByPart.get(gKey + '|L');
+    const refB = refByPart.get(gKey + '|B');
+    const baseProps = { lines: refL ? refL.mark : p.lines, color: p.color, mode: p.mode, arr };
+    if (p.busLines) baseProps.busLines = refB ? refB.mark : p.busLines;
+    const emitExpl = (placed) => {
+      for (const [ref, ownColor] of [[refL, p.color], [refB, null]]) {
+        if (!ref) continue;
+        const spots = refSpots.get(ref.mark) || [];
+        if (spots.some(([sx, sy]) => Math.hypot(sx - placed.c.x, sy - placed.c.y) < 600)) continue;
+        // the flat block sits 42 m to the side of the street axis
+        const L = Math.hypot(placed.dx, placed.dy) || 1;
+        const ex = placed.c.x - (placed.dy / L) * 42, ey = placed.c.y + (placed.dx / L) * 42;
+        const [elon, elat] = P.toLonLat(ex, ey);
+        // arr = the union, so a single-line filter keeps the list it is on
+        const props = { lines: ref.mark + ': ' + ref.list, mode: p.mode, arr: ref.list.split(', '), angle: 0, expl: 1 };
+        // the bus-part list keeps the frontend's default navy (no color prop)
+        if (ownColor) props.color = ownColor;
+        labelFeatures.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [round6(elon), round6(elat)] }, properties: props });
+        spots.push([ex, ey]);
+        refSpots.set(ref.mark, spots);
+      }
+    };
     const anchors = [];
     const emit = (placed, extra) => {
       const props = { ...baseProps, angle: Math.round(placed.ang * 10) / 10 };
@@ -1010,6 +1072,7 @@ const metaLines = [];
         if (!placed) continue;
         if (anchors.some(([ax, ay]) => Math.hypot(ax - placed.c.x, ay - placed.c.y) < MAIN_EXCL)) continue;
         emit(placed, false);
+        emitExpl(placed);
         labeled.push(e.xy);
         break;
       }
@@ -1026,7 +1089,8 @@ const metaLines = [];
   }
   const nShared = streetFeatures.filter((f) => f.properties.mode === 'tram' && f.properties.busLines).length;
   log(`Labels: ${nShared} shared bus+tram segments, ${busF.filter((o) => o.f.properties.nolabel).length} roadways hand their numbers to tracks, ` +
-      `${labelFeatures.length} number labels (${labelFeatures.filter((f) => f.properties.extra).length} zoom-in repeats)`);
+      `${labelFeatures.length} number labels (${labelFeatures.filter((f) => f.properties.extra).length} zoom-in repeats), ` +
+      `${new Set([...refByPart.values()].map((r) => r.mark)).size} list references (${labelFeatures.filter((f) => f.properties.expl).length} printed lists)`);
 }
 
 // ---------- 11) terminus line badges: grids fuse into one complex when they collide ----------
