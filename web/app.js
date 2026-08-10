@@ -219,8 +219,10 @@ async function init() {
     // 'auto' inherits pitch-alignment 'map', and that path in MapLibre 5.6 kills
     // rotated point symbols (0 rendered); the map has no pitch anyway
     'text-pitch-alignment': 'viewport',
-    'text-anchor': 'bottom',
-    'text-offset': [0, -0.6],
+    // both sides of the street are candidates: when a stop name (or another
+    // row) holds the preferred side, the row flips instead of dying
+    'text-variable-anchor': ['bottom', 'top'],
+    'text-radial-offset': 0.6,
     // Long rows WRAP into a stacked block (the printed-KMK convention). This
     // also matters for collisions: a symbol that rotates with the map is
     // reserved through the AXIS-ALIGNED ENVELOPE of its rotated box, so a wide
@@ -723,6 +725,14 @@ async function init() {
       let last = -1;
       st.layers.forEach((l, i) => { if (/^street-numbers/.test(l.id)) last = i; });
       st.layers.splice(last >= 0 ? last + 1 : st.layers.length, 0, lyr);
+    }
+    // Poster coexistence (user rule: the numbers AND the stop names must BOTH
+    // be on the sheet): trunk rows place first, so the names need room to
+    // dodge the rows' rotated envelopes — same 8 anchors, wider radius — and
+    // the rows themselves float farther off the axis, freeing the poles.
+    for (const l of st.layers) {
+      if (l.id === 'stops-names') l.layout = { ...l.layout, 'text-radial-offset': 2.0 };
+      if (l.id === 'big-number-rows') l.layout = { ...l.layout, 'text-radial-offset': 1.2 };
     }
     return st;
   };
