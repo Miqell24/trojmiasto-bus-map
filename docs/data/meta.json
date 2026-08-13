@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T08:09:11.086Z",
+  "generatedAt": "2026-08-12T21:00:33.356Z",
   "bbox": [
     18.214102,
     54.240732,
@@ -1858,9 +1858,9 @@
           }
         },
         {
-          "dir": "0",
+          "dir": "Karwiny Nowowiczlińska 03",
           "headsign": "Karwiny Nowowiczlińska 03",
-          "variants": 3,
+          "variants": 2,
           "tripCount": 32,
           "stops": 27,
           "lengthKm": 19.52,
@@ -1874,6 +1874,27 @@
             "rawMeters": 0,
             "meanError": 1.3734497494768365,
             "roundaboutSegs": 36,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Oliwa 08",
+          "headsign": "Oliwa 08",
+          "variants": 1,
+          "tripCount": 32,
+          "stops": 32,
+          "lengthKm": 19.63,
+          "stats": {
+            "observations": 981,
+            "matched": 981,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.3500436259171555,
+            "roundaboutSegs": 34,
             "extStart": 0,
             "extEnd": 0
           }
@@ -5267,9 +5288,30 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Kujawska 01",
+          "headsign": "Kujawska  01",
+          "variants": 1,
+          "tripCount": 2,
+          "stops": 18,
+          "lengthKm": 10.09,
+          "stats": {
+            "observations": 504,
+            "matched": 504,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.9007314968405207,
+            "roundaboutSegs": 73,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Reda Bosmańska 01",
           "headsign": "Reda Bosmańska 01",
-          "variants": 2,
+          "variants": 1,
           "tripCount": 27,
           "stops": 31,
           "lengthKm": 16.26,
@@ -5344,7 +5386,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Oksywie Dolne 04",
           "headsign": "Oksywie Dolne 04",
           "variants": 2,
           "tripCount": 3,
@@ -5470,7 +5512,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Chylonia Dworzec PKP 06",
           "headsign": "Chylonia Dworzec PKP 06",
           "variants": 3,
           "tripCount": 106,
@@ -5498,9 +5540,9 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Dworzec Morski - Muzeum Emigracji 03",
           "headsign": "Dworzec Morski - Muzeum Emigracji 03",
-          "variants": 4,
+          "variants": 3,
           "tripCount": 20,
           "stops": 25,
           "lengthKm": 11.79,
@@ -5514,6 +5556,27 @@
             "rawMeters": 0,
             "meanError": 1.0383777545204356,
             "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Wzgórze Św. Maksymiliana SKM 03",
+          "headsign": "Wzgórze Św. Maksymiliana SKM 03",
+          "variants": 1,
+          "tripCount": 1,
+          "stops": 18,
+          "lengthKm": 8.46,
+          "stats": {
+            "observations": 426,
+            "matched": 426,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.8985278157240246,
+            "roundaboutSegs": 32,
             "extStart": 0,
             "extEnd": 0
           }
@@ -5624,7 +5687,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Dom Marynarza 05",
           "headsign": "Dom Marynarza 05",
           "variants": 3,
           "tripCount": 68,
@@ -5652,9 +5715,9 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Dworzec Morski - Muzeum Emigracji 03",
           "headsign": "Dworzec Morski - Muzeum Emigracji 03",
-          "variants": 11,
+          "variants": 5,
           "tripCount": 45,
           "stops": 35,
           "lengthKm": 16.63,
@@ -5668,6 +5731,48 @@
             "rawMeters": 0,
             "meanError": 0.8070696682573227,
             "roundaboutSegs": 42,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Dworzec Morski - Muzeum Emigracji 05",
+          "headsign": "Dworzec Morski - Muzeum Emigracji 05",
+          "variants": 4,
+          "tripCount": 35,
+          "stops": 35,
+          "lengthKm": 16.63,
+          "stats": {
+            "observations": 833,
+            "matched": 833,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.8070696682573227,
+            "roundaboutSegs": 42,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Gdynia Dworzec Gł. PKP 04",
+          "headsign": "Gdynia Dworzec Gł. PKP 04",
+          "variants": 2,
+          "tripCount": 8,
+          "stops": 23,
+          "lengthKm": 10.63,
+          "stats": {
+            "observations": 533,
+            "matched": 533,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.7226705796151194,
+            "roundaboutSegs": 4,
             "extStart": 0,
             "extEnd": 0
           }
@@ -5925,9 +6030,9 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Osiedle Mickiewicza 01",
           "headsign": "Osiedle Mickiewicza 01",
-          "variants": 3,
+          "variants": 2,
           "tripCount": 22,
           "stops": 18,
           "lengthKm": 8.37,
@@ -5941,6 +6046,27 @@
             "rawMeters": 0,
             "meanError": 0.9985872381015677,
             "roundaboutSegs": 36,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Rynek Non-Stop 01",
+          "headsign": "Rynek Non-Stop 01",
+          "variants": 1,
+          "tripCount": 11,
+          "stops": 9,
+          "lengthKm": 4.23,
+          "stats": {
+            "observations": 211,
+            "matched": 211,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.9636849242908966,
+            "roundaboutSegs": 23,
             "extStart": 0,
             "extEnd": 0
           }
@@ -6198,7 +6324,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Wielki Kack Starodworcowa 02",
           "headsign": "Wielki Kack Starodworcowa 02",
           "variants": 4,
           "tripCount": 36,
@@ -6471,7 +6597,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Sanatorium Leśnik 01",
           "headsign": "Sanatorium Leśnik 01",
           "variants": 2,
           "tripCount": 30,
@@ -6646,9 +6772,9 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Kamienny Potok - Kujawska 01",
           "headsign": "Kamienny Potok - Kujawska 01",
-          "variants": 3,
+          "variants": 2,
           "tripCount": 24,
           "stops": 29,
           "lengthKm": 13.21,
@@ -6662,6 +6788,27 @@
             "rawMeters": 0,
             "meanError": 1.2572129974573323,
             "roundaboutSegs": 102,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Rynek Non-Stop 01",
+          "headsign": "Rynek Non-Stop 01",
+          "variants": 1,
+          "tripCount": 12,
+          "stops": 14,
+          "lengthKm": 6.82,
+          "stats": {
+            "observations": 340,
+            "matched": 340,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.044951102129528,
+            "roundaboutSegs": 66,
             "extStart": 0,
             "extEnd": 0
           }
@@ -6821,7 +6968,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Witomino Leśniczówka 02",
           "headsign": "Witomino Leśniczówka 02",
           "variants": 4,
           "tripCount": 24,
@@ -7094,7 +7241,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Mały Kack Sandomierska 03",
           "headsign": "Mały Kack Sandomierska 03",
           "variants": 1,
           "tripCount": 4,
@@ -7122,9 +7269,30 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Norwida 02",
+          "headsign": "Norwida 02",
+          "variants": 2,
+          "tripCount": 8,
+          "stops": 44,
+          "lengthKm": 19.06,
+          "stats": {
+            "observations": 953,
+            "matched": 953,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.0383210469161075,
+            "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Plac Kaszubski 03",
           "headsign": "Plac Kaszubski 03",
-          "variants": 4,
+          "variants": 2,
           "tripCount": 13,
           "stops": 19,
           "lengthKm": 8.6,
@@ -7199,7 +7367,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Norwida 02",
           "headsign": "Norwida 02",
           "variants": 2,
           "tripCount": 7,
@@ -7521,7 +7689,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Kacze Buki 01",
           "headsign": "Kacze Buki 01",
           "variants": 6,
           "tripCount": 16,
@@ -7549,7 +7717,7 @@
       "color": "#149a3f",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Grabówek SKM 02",
           "headsign": "Grabówek SKM 02",
           "variants": 19,
           "tripCount": 28,
@@ -7577,7 +7745,7 @@
       "color": "#149a3f",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Stocznia Gdynia 01",
           "headsign": "Stocznia Gdynia 01",
           "variants": 1,
           "tripCount": 7,
@@ -7605,9 +7773,30 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Gdynia Dworzec Gł. PKP 04",
+          "headsign": "Gdynia Dworzec Gł. PKP 04",
+          "variants": 5,
+          "tripCount": 12,
+          "stops": 31,
+          "lengthKm": 14.13,
+          "stats": {
+            "observations": 665,
+            "matched": 665,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.396981746941224,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Gdynia Dworzec Gł. PKP 09",
           "headsign": "Gdynia Dworzec Gł. PKP 09",
-          "variants": 7,
+          "variants": 2,
           "tripCount": 19,
           "stops": 9,
           "lengthKm": 4.33,
@@ -7633,7 +7822,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Węzeł Franciszki Cegielskiej 06",
           "headsign": "Węzeł Franciszki Cegielskiej 06",
           "variants": 2,
           "tripCount": 2,
@@ -7661,7 +7850,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Baza na Pogórzu Dolnym 01",
           "headsign": "Baza na Pogórzu Dolnym 01",
           "variants": 24,
           "tripCount": 16,
@@ -7934,7 +8123,7 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Kacze Buki 01",
           "headsign": "Kacze Buki 01",
           "variants": 5,
           "tripCount": 4,
@@ -7962,9 +8151,9 @@
       "color": "#0059a9",
       "dirs": [
         {
-          "dir": "0",
+          "dir": "Karwiny Nowowiczlińska 03",
           "headsign": "Karwiny Nowowiczlińska 03",
-          "variants": 4,
+          "variants": 3,
           "tripCount": 5,
           "stops": 36,
           "lengthKm": 18.2,
@@ -7978,6 +8167,27 @@
             "rawMeters": 0,
             "meanError": 1.7791931564781505,
             "roundaboutSegs": 49,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Morska - Estakada 04",
+          "headsign": "Morska - Estakada 04",
+          "variants": 1,
+          "tripCount": 2,
+          "stops": 43,
+          "lengthKm": 21.98,
+          "stats": {
+            "observations": 1085,
+            "matched": 1085,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.634487395094189,
+            "roundaboutSegs": 48,
             "extStart": 0,
             "extEnd": 0
           }
