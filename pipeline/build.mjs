@@ -73,13 +73,14 @@ const MODES = [{
   mode: 'bus', label: 'buses & trolleybuses (ZKM Gdynia)', gtfsDir: 'data/gtfs-gdynia', osmFile: 'data/osm/trojmiasto.json',
   graphMode: 'road', color: '#0059a9', colorDark: '#00294f', routeTypes: ['700', '800'],
   all: busAll, lines: busList.length ? busList : (busAll ? [] : ['170']),
-  // Line 34 (Węzeł Cegielskiej – Demptowo) is a trolleybus route run by PKT,
-  // but ZKM files it as route_type 700 — OSM has it as route=trolleybus and
-  // 76% of it sits under the wires (the Demptowo tail runs on battery, as the
-  // new trolleybuses do). Overridden here rather than in the feed; re-check on
-  // every refresh, the operator may fix the type upstream. (Its 181 and 740
-  // ARE buses despite the same operator — verified against OSM.)
-  trolleyExtra: ['34'],
+  // Lines 34 (Węzeł Cegielskiej – Demptowo) and 181 (Sopot – Gdynia Dworzec)
+  // are trolleybus routes run by PKT, but ZKM files both as route_type 700 —
+  // 34 is route=trolleybus in OSM with 76% of it under the wires, and 181 is
+  // worked by trolleybuses on the street (user's on-the-ground call; the wires
+  // cover 64% of it, the rest runs on battery as the new stock does).
+  // Overridden here rather than in the feed; re-check on every refresh, the
+  // operator may fix the types upstream.
+  trolleyExtra: ['34', '181'],
 }];
 const tramAll = tramLines.length === 1 && tramLines[0] === 'all';
 if (tramLines.length) MODES.push({
@@ -1003,11 +1004,23 @@ const metaLines = [];
     if (ang < -90) ang += 180;
     return { c, ang, dx, dy };
   };
+  // trolleybus numbers of every bus feed (only Gdynia runs them today)
+  const TSET = new Set(MODES.flatMap((m) => [...(m.trolleySet || [])]));
   for (const g of groups.values()) {
     const p = g.best.f.properties;
     const arr = p.busLines ? [...p.lines.split(', '), ...p.busLines.split(', ')] : p.lines.split(', ');
     const baseProps = { lines: p.lines, color: p.color, mode: p.mode, arr };
     if (p.busLines) baseProps.busLines = p.busLines;
+    // mixed bus+trolleybus roadway: the label keeps the trolleybus numbers
+    // GREEN in a two-colour row (user request, Athens pattern) — all-trolleybus
+    // sets already come out green whole via colorOf, so only true mixes split
+    if (p.mode === 'bus' && TSET.size) {
+      const tl = arr.filter((l) => TSET.has(l));
+      if (tl.length && tl.length < arr.length) {
+        baseProps.tLines = tl.join(', ');
+        baseProps.ntLines = arr.filter((l) => !TSET.has(l)).join(', ');
+      }
+    }
     const anchors = [];
     // The collision engine knows nothing about the STROKES, so on a dual
     // carriageway the row happily settles between the roadways — parked on

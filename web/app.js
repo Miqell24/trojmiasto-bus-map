@@ -206,7 +206,13 @@ async function init() {
       ['get', 'lines'], { 'text-color': railColor },
       '\n', {},
       ['get', 'busLines'], { 'text-color': KMK }],
-    ['format', ['get', 'lines'], {}]];
+    ['case', ['has', 'tLines'],
+      // mixed bus+trolleybus roadway: trolleybus numbers keep their green
+      ['format',
+        ['get', 'tLines'], { 'text-color': TROLLEY_GREEN },
+        '\n', {},
+        ['get', 'ntLines'], { 'text-color': KMK }],
+      ['format', ['get', 'lines'], {}]]];
   map.addSource('labels', { type: 'geojson', data: 'data/labels.geojson' });
   const numbersLayout = {
     'text-field': numberField,
@@ -647,7 +653,12 @@ async function init() {
   let densityMainCond = true; // sparsest step: one main row per same-content corridor chain
   const busOnlyNumbers = ['case', ['has', 'busLines'],
     ['format', ['get', 'busLines'], { 'text-color': KMK }],
-    ['format', ['get', 'lines'], {}]];
+    ['case', ['has', 'tLines'],
+      ['format',
+        ['get', 'tLines'], { 'text-color': TROLLEY_GREEN },
+        '\n', {},
+        ['get', 'ntLines'], { 'text-color': KMK }],
+      ['format', ['get', 'lines'], {}]]];
   const tramOnlyNumbers = ['format', ['get', 'lines'], {}];
   function applyFilters() {
     const modes = [state.bus ? 'bus' : null, state.tram ? 'tram' : null].filter(Boolean);
