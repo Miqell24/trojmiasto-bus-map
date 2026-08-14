@@ -73,6 +73,13 @@ const MODES = [{
   mode: 'bus', label: 'buses & trolleybuses (ZKM Gdynia)', gtfsDir: 'data/gtfs-gdynia', osmFile: 'data/osm/trojmiasto.json',
   graphMode: 'road', color: '#0059a9', colorDark: '#00294f', routeTypes: ['700', '800'],
   all: busAll, lines: busList.length ? busList : (busAll ? [] : ['170']),
+  // Line 34 (Węzeł Cegielskiej – Demptowo) is a trolleybus route run by PKT,
+  // but ZKM files it as route_type 700 — OSM has it as route=trolleybus and
+  // 76% of it sits under the wires (the Demptowo tail runs on battery, as the
+  // new trolleybuses do). Overridden here rather than in the feed; re-check on
+  // every refresh, the operator may fix the type upstream. (Its 181 and 740
+  // ARE buses despite the same operator — verified against OSM.)
+  trolleyExtra: ['34'],
 }];
 const tramAll = tramLines.length === 1 && tramLines[0] === 'all';
 if (tramLines.length) MODES.push({
@@ -171,6 +178,8 @@ async function processMode(cfg) {
   // the set also flags shared bus+trolleybus roadways for the dashed overlay
   if (cfg.mode === 'bus') {
     cfg.trolleySet = new Set(routes.filter((r) => ['11', '800'].includes(r.route_type)).map((r) => r.route_short_name));
+    // feed-side type errors corrected per operator (see MODES)
+    for (const L of cfg.trolleyExtra || []) if (routes.some((r) => r.route_short_name === L)) cfg.trolleySet.add(L);
     if (cfg.trolleySet.size) {
       cfg.lineColors = {}; cfg.lineColorsDark = {};
       for (const L of cfg.trolleySet) { cfg.lineColors[L] = TROLLEY_GREEN; cfg.lineColorsDark[L] = TROLLEY_DARK; }
