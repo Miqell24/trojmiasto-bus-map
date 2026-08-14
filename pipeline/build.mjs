@@ -34,7 +34,19 @@ const TROLLEY_DARK = '#0a5121';
 
 const t0 = Date.now();
 const log = (m) => console.log(`[${((Date.now() - t0) / 1000).toFixed(1)}s] ${m}`);
-const numSort = (a, b) => (Number(a) - Number(b)) || a.localeCompare(b);
+// Natural line order everywhere lists are composed (street number rows,
+// badge grids, meta): keys split into alpha prefix, numeric core and suffix,
+// so 9 < 10 holds inside every family (7 before 7N, M2 before M10) and the
+// letter families stay grouped after the bare numbers. The old Number()-based
+// compare left anything non-pure-numeric to lexicographic order.
+const keyParts = (s) => {
+  const m = /^(\D*)(\d*)(.*)$/.exec(s);
+  return [m[1], m[2] ? Number(m[2]) : Infinity, m[3]];
+};
+const numSort = (a, b) => {
+  const A = keyParts(a), B = keyParts(b);
+  return A[0].localeCompare(B[0]) || (A[1] - B[1]) || A[2].localeCompare(B[2]);
+};
 function round6(v) { return Math.round(v * 1e6) / 1e6; }
 
 // ---------- CLI ----------

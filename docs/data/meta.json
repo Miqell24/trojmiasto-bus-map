@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T21:00:33.356Z",
+  "generatedAt": "2026-08-13T16:03:56.132Z",
   "bbox": [
     18.214102,
     54.240732,
@@ -3764,104 +3764,6 @@
       ]
     },
     {
-      "line": "N14",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Olimpijska",
-          "variants": 3,
-          "tripCount": 60,
-          "stops": 51,
-          "lengthKm": 26.5,
-          "stats": {
-            "observations": 1313,
-            "matched": 1313,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.0863384069929856,
-            "roundaboutSegs": 11,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Żabianka SKM",
-          "variants": 3,
-          "tripCount": 60,
-          "stops": 50,
-          "lengthKm": 26.42,
-          "stats": {
-            "observations": 1296,
-            "matched": 1296,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.9766875531165164,
-            "roundaboutSegs": 19,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N16",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Warneńska",
-          "variants": 3,
-          "tripCount": 30,
-          "stops": 13,
-          "lengthKm": 6.66,
-          "stats": {
-            "observations": 333,
-            "matched": 333,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.7818636069787834,
-            "roundaboutSegs": 20,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Dworzec Główny",
-          "variants": 2,
-          "tripCount": 60,
-          "stops": 14,
-          "lengthKm": 7.18,
-          "stats": {
-            "observations": 359,
-            "matched": 359,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.8884026524206313,
-            "roundaboutSegs": 2,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
       "line": "N2",
       "mode": "bus",
       "color": "#0059a9",
@@ -4058,55 +3960,6 @@
       ]
     },
     {
-      "line": "N56",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Kolbudy Plac Kaszubski",
-          "variants": 3,
-          "tripCount": 2,
-          "stops": 24,
-          "lengthKm": 16.98,
-          "stats": {
-            "observations": 830,
-            "matched": 830,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.8972616341173842,
-            "roundaboutSegs": 56,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Dworzec Główny",
-          "variants": 3,
-          "tripCount": 2,
-          "stops": 26,
-          "lengthKm": 17.3,
-          "stats": {
-            "observations": 846,
-            "matched": 846,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.8873164546587926,
-            "roundaboutSegs": 61,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
       "line": "N6",
       "mode": "bus",
       "color": "#0059a9",
@@ -4149,55 +4002,6 @@
             "rawMeters": 0,
             "meanError": 0.9224368898142553,
             "roundaboutSegs": 39,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N78",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Olszynka Niwki",
-          "variants": 3,
-          "tripCount": 15,
-          "stops": 19,
-          "lengthKm": 9.08,
-          "stats": {
-            "observations": 453,
-            "matched": 453,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.627496495260571,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Dworzec Główny",
-          "variants": 1,
-          "tripCount": 30,
-          "stops": 19,
-          "lengthKm": 8.66,
-          "stats": {
-            "observations": 433,
-            "matched": 433,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.7463338923113355,
-            "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
           }
@@ -4254,55 +4058,6 @@
       ]
     },
     {
-      "line": "N89",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Starogardzka",
-          "variants": 2,
-          "tripCount": 75,
-          "stops": 16,
-          "lengthKm": 8.38,
-          "stats": {
-            "observations": 419,
-            "matched": 419,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.957736959840355,
-            "roundaboutSegs": 3,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Dworzec Główny",
-          "variants": 1,
-          "tripCount": 90,
-          "stops": 16,
-          "lengthKm": 7.44,
-          "stats": {
-            "observations": 374,
-            "matched": 374,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.8553299156344573,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
       "line": "N9",
       "mode": "bus",
       "color": "#0059a9",
@@ -4345,6 +4100,251 @@
             "rawMeters": 0,
             "meanError": 1.2800640840727249,
             "roundaboutSegs": 25,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "N14",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Olimpijska",
+          "variants": 3,
+          "tripCount": 60,
+          "stops": 51,
+          "lengthKm": 26.5,
+          "stats": {
+            "observations": 1313,
+            "matched": 1313,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.0863384069929856,
+            "roundaboutSegs": 11,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Żabianka SKM",
+          "variants": 3,
+          "tripCount": 60,
+          "stops": 50,
+          "lengthKm": 26.42,
+          "stats": {
+            "observations": 1296,
+            "matched": 1296,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.9766875531165164,
+            "roundaboutSegs": 19,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "N16",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Warneńska",
+          "variants": 3,
+          "tripCount": 30,
+          "stops": 13,
+          "lengthKm": 6.66,
+          "stats": {
+            "observations": 333,
+            "matched": 333,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.7818636069787834,
+            "roundaboutSegs": 20,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Dworzec Główny",
+          "variants": 2,
+          "tripCount": 60,
+          "stops": 14,
+          "lengthKm": 7.18,
+          "stats": {
+            "observations": 359,
+            "matched": 359,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.8884026524206313,
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "N56",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Kolbudy Plac Kaszubski",
+          "variants": 3,
+          "tripCount": 2,
+          "stops": 24,
+          "lengthKm": 16.98,
+          "stats": {
+            "observations": 830,
+            "matched": 830,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.8972616341173842,
+            "roundaboutSegs": 56,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Dworzec Główny",
+          "variants": 3,
+          "tripCount": 2,
+          "stops": 26,
+          "lengthKm": 17.3,
+          "stats": {
+            "observations": 846,
+            "matched": 846,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.8873164546587926,
+            "roundaboutSegs": 61,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "N78",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Olszynka Niwki",
+          "variants": 3,
+          "tripCount": 15,
+          "stops": 19,
+          "lengthKm": 9.08,
+          "stats": {
+            "observations": 453,
+            "matched": 453,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.627496495260571,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Dworzec Główny",
+          "variants": 1,
+          "tripCount": 30,
+          "stops": 19,
+          "lengthKm": 8.66,
+          "stats": {
+            "observations": 433,
+            "matched": 433,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.7463338923113355,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "N89",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Starogardzka",
+          "variants": 2,
+          "tripCount": 75,
+          "stops": 16,
+          "lengthKm": 8.38,
+          "stats": {
+            "observations": 419,
+            "matched": 419,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.957736959840355,
+            "roundaboutSegs": 3,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Dworzec Główny",
+          "variants": 1,
+          "tripCount": 90,
+          "stops": 16,
+          "lengthKm": 7.44,
+          "stats": {
+            "observations": 374,
+            "matched": 374,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.8553299156344573,
+            "roundaboutSegs": 0,
             "extStart": 0,
             "extEnd": 0
           }
