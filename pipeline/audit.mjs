@@ -368,6 +368,50 @@ if (nameless) flag('nameless', nameless, 'roadways with no numbers beside them',
 const greyNums = rows.features.filter((f) => /^#(41464e|4a4f57)$/i.test(f.properties.c0 || '')).length;
 if (greyNums) flag('grey-number', greyNums, 'clusters whose numbers fell back to grey');
 
+// ---------- 9. is each line's route in one piece? ----------
+// The check that was missing, and the one that mattered: everything above asks
+// whether the drawn metres are right, not whether they HANG TOGETHER. The
+// streets layer is built from the road segments a route used, and a segment
+// only enters it once enough of it was travelled — so a route that clips a long
+// segment briefly leaves a hole and the line falls into two pieces, each of them
+// perfectly drawn (user report: 700 at the Wielki Kack interchange).
+//
+// Runs are welded on SHARED VERTICES, not shared endpoints: one run routinely
+// ends against the middle of another, and testing endpoints alone reported 171
+// of 192 lines as torn when 4 were.
+head("9. CONTINUITY — is each line's route one connected piece?");
+{
+  const byLine = new Map();
+  for (const f of streets.features) for (const l of f.properties.arr) {
+    const k = f.properties.mode + '|' + l;
+    if (!byLine.has(k)) byLine.set(k, []);
+    byLine.get(k).push(f);
+  }
+  let torn2 = 0, orphanKm = 0, worstLine = null, worstKm = 0;
+  for (const [k, runs] of byLine) {
+    const at = new Map();
+    runs.forEach((f, i) => { for (const c of f.geometry.coordinates) {
+      const key = nk(c); if (!at.has(key)) at.set(key, []); at.get(key).push(i); } });
+    const seen = new Array(runs.length).fill(false);
+    const comps = [];
+    for (let i = 0; i < runs.length; i++) {
+      if (seen[i]) continue;
+      const mem = [], q = [i]; seen[i] = true;
+      while (q.length) { const j = q.pop(); mem.push(j);
+        for (const c of runs[j].geometry.coordinates) for (const n of (at.get(nk(c)) || [])) if (!seen[n]) { seen[n] = true; q.push(n); } }
+      comps.push(mem);
+    }
+    if (comps.length < 2) continue;
+    const lens = comps.map((mm) => mm.reduce((s2, j) => s2 + plen(runs[j].geometry.coordinates), 0)).sort((x, y) => y - x);
+    const o = lens.slice(1).reduce((x, y) => x + y, 0) / 1000;
+    torn2++; orphanKm += o;
+    if (o > worstKm) { worstKm = o; worstLine = k + ' (' + comps.length + ' pieces)'; }
+  }
+  console.log(`${byLine.size} lines — ${torn2} whose route falls into more than one piece (${orphanKm.toFixed(2)} km adrift)`);
+  if (worstLine) console.log(`  worst: ${worstLine}, ${worstKm.toFixed(2)} km cut off`);
+  if (torn2) flag('split-route', torn2, 'lines whose route is not one connected piece', worstLine);
+}
+
 // ---------- verdict ----------
 head('VERDICT');
 if (!problems.length) console.log('clean — nothing to fix');
