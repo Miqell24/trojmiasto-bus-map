@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T08:38:11.369Z",
+  "generatedAt": "2026-08-19T08:59:08.722Z",
   "maxSeparate": 4,
   "pitchRatio": 0.5,
   "palette": 66,
@@ -203,8 +203,7 @@
     "bundles": 1259,
     "strands": 32122,
     "corridors": 611,
-    "strandLabels": 6452,
-    "corridorRows": 1140,
+    "rows": 4214,
     "kmColoured": 1529,
     "kmGrey": 229
   }

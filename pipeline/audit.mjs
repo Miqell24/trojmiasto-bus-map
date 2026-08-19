@@ -22,7 +22,6 @@ const pct = (a, b) => (b ? (100 * a / b).toFixed(2) : '0.00') + '%';
 const streets = read('streets.geojson');
 const strands = read('lines-strands.geojson');
 const corridors = read('lines-corridors.geojson');
-const labels = read('lines-labels.geojson');
 const rows = read('lines-rows.geojson');
 const meta = JSON.parse(readFileSync(join(OUT, 'lines-meta.json'), 'utf8'));
 const MAXSEP = meta.maxSeparate;
@@ -233,20 +232,18 @@ turnScan(corridors, 'trunks', false);
 // ---------- 5. is everything named? ----------
 head('5. NAMES — can the reader tell what is what?');
 const drawnLines = new Set(strands.features.map((f) => f.properties.line));
-const labelled = new Set(labels.features.map((f) => f.properties.line));
-const missing = [...drawnLines].filter((l) => !labelled.has(l));
-console.log(`${drawnLines.size} lines drawn as their own strand, ${labelled.size} of them named beside it`);
+const inRows = new Set();
+for (const f of rows.features) for (const l of f.properties.arr) inRows.add(l);
+const missing = [...drawnLines].filter((l) => !inRows.has(l));
+console.log(`${drawnLines.size} lines drawn as their own strand, ${drawnLines.size - missing.length} of them named in a cluster`);
 if (missing.length) flag('unnamed', missing.length, 'strands with no number anywhere: ' + missing.join(', '));
-const rowLines = new Set();
-for (const f of rows.features) for (const l of f.properties.arr) rowLines.add(l);
+const rowLines = inRows;
 const trunkLines = new Set();
 for (const f of corridors.features) for (const l of f.properties.arr) trunkLines.add(l);
 const noRow = [...trunkLines].filter((l) => !rowLines.has(l));
 console.log(`${trunkLines.size} lines ride a grey trunk, ${rowLines.size} of them appear in a trunk's number row`);
 if (noRow.length) flag('unnamed-trunk', noRow.length, 'lines inside a trunk that no row names: ' + noRow.slice(0, 8).join(', '));
-const greyNumbers = rows.features.filter((f) => f.properties.c0 === undefined || /^#(41464e|4a4f57)$/i.test(f.properties.c0)).length;
-console.log(`${rows.features.length} trunk rows, ${greyNumbers} of them starting on a fallback grey number`);
-if (greyNumbers) flag('grey-number', greyNumbers, 'trunk rows whose numbers fell back to grey');
+
 
 // ---------- 6. does a drawn stroke still follow its street? ----------
 // Everything above checks how the pieces relate to EACH OTHER. This asks the
@@ -331,42 +328,45 @@ console.log(`${doubles} pieces drawn twice at the same offset, ${ghosts} at diff
 if (doubles) flag('double', doubles, 'pieces drawn twice over the same ground');
 if (ghosts) flag('ghost', ghosts, 'the same stretch drawn at two different offsets');
 
-// ---------- 8. is every number where its line is? ----------
-// A number placed off its own strand names the wrong stroke, which is worse
-// than no number at all.
-head('8. NUMBERS — is each one beside the line it names?');
-const strandGrid = new Map();
-for (const f of strands.features) {
-  const c = f.geometry.coordinates;
-  for (let i = 1; i < c.length; i++) {
-    const a2 = m(c[i - 1]), b2 = m(c[i]);
-    const [x0, y0] = [Math.round(a2[0] / SCELL), Math.round(a2[1] / SCELL)];
-    const [x1, y1] = [Math.round(b2[0] / SCELL), Math.round(b2[1] / SCELL)];
-    for (let x = Math.min(x0, x1) - 1; x <= Math.max(x0, x1) + 1; x++)
-      for (let y = Math.min(y0, y1) - 1; y <= Math.max(y0, y1) + 1; y++) {
-        const k = x + ',' + y;
-        if (!strandGrid.has(k)) strandGrid.set(k, []);
-        strandGrid.get(k).push({ a: a2, b: b2, line: f.properties.line, mode: f.properties.mode });
-      }
-  }
-}
-let far = 0, farWorst = 0, farAt = null;
-for (const f of labels.features) {
+// ---------- 8. does every roadway say which lines ride it? ----------
+// The numbers are one cluster per roadway now, so the question is no longer
+// "is this number beside its own strand" but "did any roadway end up with
+// nothing written next to it" — a stroke that names nothing is a stroke the
+// reader cannot use.
+head('8. NUMBERS — does every roadway carry its list?');
+const RCELL = 200;
+const rowGrid = new Map();
+for (const f of rows.features) {
   const p = m(f.geometry.coordinates);
-  const cx = Math.round(p[0] / SCELL), cy = Math.round(p[1] / SCELL);
-  let best = Infinity;
-  for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++)
-    for (const e of (strandGrid.get((cx + dx) + ',' + (cy + dy)) || [])) {
-      if (e.line !== f.properties.line || e.mode !== f.properties.mode) continue;
-      const d = segD(p, e.a, e.b);
-      if (d < best) best = d;
-    }
-  if (!isFinite(best)) { far++; continue; }
-  if (best > 6) { far++; if (best > farWorst) { farWorst = best; farAt = f.geometry.coordinates; } }
+  const k = Math.round(p[0] / RCELL) + ',' + Math.round(p[1] / RCELL);
+  if (!rowGrid.has(k)) rowGrid.set(k, []);
+  rowGrid.get(k).push({ p, arr: f.properties.arr });
 }
-console.log(`${labels.features.length} strand numbers — ${far} further than 6 m from their own line (${pct(far, labels.features.length)})`);
-if (farWorst) console.log(`  worst: ${farWorst.toFixed(1)} m at ${farAt.join(',')}`);
-if (far) flag('label-adrift', far, 'numbers placed away from the line they name', farAt && farAt.join(','));
+let nameless = 0, namelessKm = 0, namelessAt = null;
+for (const f of streets.features) {
+  // `nolabel` is build.mjs deciding NOT to print this run: on a dual carriageway
+  // only one side carries the row, so the other is named by its twin
+  if (f.properties.nolabel) continue;
+  const c = f.geometry.coordinates;
+  // junction stubs and roundabout arcs are read from the corridor they belong to
+  if (plen(c) < 60) continue;
+  const mid = m(c[Math.floor(c.length / 2)]);
+  const want = new Set(f.properties.arr);
+  const [cx, cy] = [Math.round(mid[0] / RCELL), Math.round(mid[1] / RCELL)];
+  let ok = false;
+  for (let dx = -1; dx <= 1 && !ok; dx++) for (let dy = -1; dy <= 1 && !ok; dy++)
+    for (const e of (rowGrid.get((cx + dx) + ',' + (cy + dy)) || [])) {
+      // the row has to be near AND to name at least what this roadway carries
+      if (d2(e.p, mid) < 400 && [...want].every((l) => e.arr.includes(l))) { ok = true; break; }
+    }
+  if (!ok) { nameless++; namelessKm += plen(c) / 1000; if (!namelessAt) namelessAt = c[0]; }
+}
+console.log(`${streets.features.length} roadways, ${rows.features.length} number clusters`);
+console.log(`${nameless} roadways over 60 m with no cluster naming their lines within 400 m (${namelessKm.toFixed(2)} km)`);
+if (namelessAt) console.log(`  first: ${namelessAt.join(',')}`);
+if (nameless) flag('nameless', nameless, 'roadways with no numbers beside them', namelessAt && namelessAt.join(','));
+const greyNums = rows.features.filter((f) => /^#(41464e|4a4f57)$/i.test(f.properties.c0 || '')).length;
+if (greyNums) flag('grey-number', greyNums, 'clusters whose numbers fell back to grey');
 
 // ---------- verdict ----------
 head('VERDICT');

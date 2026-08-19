@@ -485,8 +485,8 @@ for (const c of bundles) for (const line of c.arr) {
   byLine.get(line).push(c);
 }
 
-const strandF = [], labelF = [];
-let swings = 0, funnels = 0, stations = 0, welded = 0, runsOut = 0;
+const strandF = [];
+let swings = 0, funnels = 0, welded = 0, runsOut = 0;
 // self-check: a strand's pieces must tile its run, and every stroke arriving at
 // a junction must arrive on the same physical side as the others
 let holes = 0, holeM = 0, holeWhere = null;
@@ -590,45 +590,6 @@ for (const [line, mem] of byLine) {
   }
 }
 
-// NUMBERS. Stations spread along each chain and handed round-robin to its
-// strands, so all four lines get named instead of the widest one taking every
-// spot. They stay clear of the chain ends, where the strands may be swinging.
-for (const c of bundles) {
-  const base = c.sm;
-  const total = chainLen(base);
-  const margin = Math.min(total * 0.1, 14);
-  const a0 = margin, a1 = total - margin;
-  const span = Math.max(0, a1 - a0);
-  const count = Math.max(c.n, Math.round(span / LABEL_EVERY));
-  // The first number a line gets on a chain is its anchor; the rest are repeats
-  // along the same stretch, ordinal-tagged so the density row can thin them the
-  // way it thins the trunk rows — on a lone suburban line one number every
-  // 150 m is more than anyone asked for.
-  const seenOn = new Map();
-  for (let s2 = 0; s2 < count; s2++) {
-    const target = span ? a0 + span * (s2 + 0.5) / count : total / 2;
-    let acc = 0, at = null;
-    for (let i = 1; i < base.length; i++) {
-      const d = dist(base[i - 1], base[i]);
-      if (acc + d >= target) { const t = (target - acc) / d; at = { p: [base[i - 1][0] + (base[i][0] - base[i - 1][0]) * t, base[i - 1][1] + (base[i][1] - base[i - 1][1]) * t], a: base[i - 1], b: base[i] }; break; }
-      acc += d;
-    }
-    if (!at) continue;
-    const line = c.arr[s2 % c.n];
-    // the text angle that reads ALONG the strand, normalised so it never stands
-    // on its head (the ±90° convention build.mjs uses for the trunk rows)
-    let ang = Math.atan2(at.b[0] - at.a[0], at.b[1] - at.a[1]) * 180 / Math.PI - 90;
-    while (ang > 90) ang -= 180;
-    while (ang < -90) ang += 180;
-    stations++;
-    const seen = seenOn.get(line) || 0;
-    seenOn.set(line, seen + 1);
-    const props = { line, mode: c.mode, color: colour.get(line).hex, angle: Math.round(ang * 10) / 10, n: c.n };
-    if (seen) { props.extra = 1; props.ei = seen - 1; }
-    labelF.push({ type: 'Feature', properties: props, geometry: { type: 'Point', coordinates: toDeg(at.p) } });
-  }
-}
-
 // trunks arrive on their own centreline, so they land in the same ledger at 0
 for (const c of chains) if (c.n > MAX_SEPARATE) for (const line of c.arr) {
   arriveAt(c.headKey, c.mode, line, 0, [c.sm[1][0] - c.sm[0][0], c.sm[1][1] - c.sm[0][1]], 'trunk', true);
@@ -666,7 +627,6 @@ if (holes) log(`!! ${holes} strands do not tile their run — ${(holeM / 1000).t
 log(`${welded} chain-to-chain welds: ${bundles.length} bundles became ${runsOut} unbroken strand runs`);
 log(`${strandF.length} strand pieces drawn line by line`);
 log(`${swings} slot handovers smoothed at junctions, ${funnels} of them funnelling into a grey trunk`);
-log(`${stations} numbers placed beside the strands (round-robin, every line on every bundle)`);
 
 // ---------- 6. grey corridors ----------
 // One stroke, one grey, whatever rides there. The line list stays on the
@@ -680,10 +640,13 @@ const corridorF = chains.filter((c) => c.n > MAX_SEPARATE).map((c) => ({
 }));
 log(`${corridorF.length} grey trunks (widest carries ${Math.max(...corridorF.map((f) => f.properties.n))} lines)`);
 
-// ---------- 7. the numbers that name a grey trunk ----------
-// The trunk cannot say which lines ride it, so the list beside it must — and it
-// says so in THE LINES' OWN COLOURS. Grey there would drop the colour code at
-// the one place the reader needs it most: where the coloured strands go in.
+// ---------- 7. the numbers, one cluster per roadway ----------
+// EVERY roadway gets one row of numbers beside it — the coloured bundles as
+// much as the grey trunks — and every number is written in its line's colour.
+// The first version put a number beside each strand instead, round-robin along
+// the corridor; it scattered "700" and "Z" down a street that only needed to say
+// "700, Z" once (user report). One cluster reads faster and the colours still
+// say which strand is which.
 //
 // MapLibre paints one colour per text SECTION, and a `format` expression can
 // carry many — but the sections have to be enumerated in the style, so the row
@@ -695,7 +658,6 @@ const rowF = [];
 let maxSlots = 0;
 for (const f of rawLabels.features) {
   const list = f.properties.arr;
-  if (list.length <= MAX_SEPARATE) continue;
   maxSlots = Math.max(maxSlots, list.length);
   const props = { lines: f.properties.lines, arr: list, mode: f.properties.mode, angle: f.properties.angle };
   if (f.properties.side !== undefined) props.side = f.properties.side;
@@ -726,7 +688,6 @@ for (const f of rawLabels.features) {
   }
   let added = 0;
   for (const c of chains) {
-    if (c.n <= MAX_SEPARATE) continue;
     const total = chainLen(c.sm);
     let acc = 0, at = null;
     for (let i = 1; i < c.sm.length; i++) {
@@ -756,15 +717,14 @@ for (const f of rawLabels.features) {
     anchors.get(k).push(at.p);
     added++;
   }
-  if (added) log(`${added} trunks had no numbers anywhere along them — a row added at each midpoint`);
+  if (added) log(`${added} roadways had no numbers anywhere along them — a row added at each midpoint`);
 }
-log(`${rowF.length} trunk number rows, every number carrying its own line colour (widest row: ${maxSlots})`);
+log(`${rowF.length} number rows, one cluster per roadway, every number in its line's colour (widest row: ${maxSlots})`);
 
 // ---------- 8. write (new files only) ----------
 const fc = (features) => JSON.stringify({ type: 'FeatureCollection', features });
 writeFileSync(join(OUT, 'lines-strands.geojson'), fc(strandF));
 writeFileSync(join(OUT, 'lines-corridors.geojson'), fc(corridorF));
-writeFileSync(join(OUT, 'lines-labels.geojson'), fc(labelF));
 writeFileSync(join(OUT, 'lines-rows.geojson'), fc(rowF));
 writeFileSync(join(OUT, 'lines-meta.json'), JSON.stringify({
   generatedAt: new Date().toISOString(),
@@ -775,9 +735,9 @@ writeFileSync(join(OUT, 'lines-meta.json'), JSON.stringify({
   colors: Object.fromEntries([...colour].map(([l, c]) => [l, c.hex])),
   stats: {
     chains: chains.length, bundles: bundles.length, strands: strandF.length,
-    corridors: corridorF.length, strandLabels: labelF.length, corridorRows: rowF.length,
+    corridors: corridorF.length, rows: rowF.length,
     kmColoured: Math.round(bundles.reduce((s, c) => s + c.len * c.n / 1000, 0)),
     kmGrey: Math.round(chains.filter((c) => c.n > MAX_SEPARATE).reduce((s, c) => s + c.len / 1000, 0)),
   },
 }, null, 2));
-log('written: lines-strands, lines-corridors, lines-labels, lines-rows, lines-meta');
+log('written: lines-strands, lines-corridors, lines-rows, lines-meta');
