@@ -15,6 +15,32 @@ Sixth city of the family, alongside
 [gzm-bus-map](https://github.com/Miqell24/gzm-bus-map) — same pipeline and same
 visual system, different city and feeds.
 
+## Two views of the same network
+
+The panel's first control switches how the strokes are drawn. Both views are
+built from the same files and the switch is layers and paint, never a reload —
+position, zoom, the picked line and the label sizes all survive it.
+
+- **Corridors** (default, the map as it has always been) — one stroke per
+  roadway whatever rides there, the whole network in three mode colours, with
+  the aggregated number row beside every street.
+- **Lines** — the same data drawn line by line, on a flat grey base: a roadway
+  carrying **up to 4 lines** is drawn once **per line**, four coloured strands
+  side by side with each number beside its own strand; a roadway carrying
+  **5 or more** collapses to **one grey trunk** whose numbers still keep each
+  line's colour, because that is where the reader loses the strands. On this
+  network that is 77 % of the length coloured (1259 bundles) and 23 % grey
+  (611 trunks); 191 of the 192 lines appear as their own strand somewhere.
+  Picking a line repaints the trunks it rides through in its colour, so it stays
+  traceable end to end.
+
+`npm run lines` builds the second view (`pipeline/lines.mjs`, ~20 s, reads the
+finished network and writes only new `lines-*` files — it never rewrites
+anything `build.mjs` produced). `npm run audit` checks the result against the
+source: coverage per line, offsets at every handover, strokes that stop where the
+line goes on, corners an offset stroke would fold over, and whether everything is
+named.
+
 ## Features
 
 - GTFS matched onto the OSM road and tram network — weighted mean error

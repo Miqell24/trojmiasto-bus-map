@@ -3,6 +3,10 @@
 const KMK = '#0059a9';
 const KMK_DARK = '#00294f';
 const TROLLEY_GREEN = '#149a3f';
+// The LINES view spends all of its colour on the lines themselves, so its base,
+// its stops and its street names are pure neutral ink — nothing else may spend
+// a hue there or it competes with a strand for the same meaning.
+const STOP_INK = '#464c55';
 // Narrow label face. Arial Narrow itself cannot be used: MapLibre text comes from
 // pre-rendered glyph PBFs on a font server, and no server hosts that licensed
 // font — Roboto Condensed is the hosted narrow equivalent (with Greek coverage).
@@ -88,6 +92,54 @@ async function init() {
     'highway-name-major': { 'text-color': '#2b2924', 'text-halo-color': '#ffffff', 'text-halo-width': 2.8, 'text-halo-blur': 0.3 },
     'highway-name-path': { 'text-color': '#8a8171', 'text-halo-color': '#ffffff', 'text-halo-width': 1.8 },
   };
+  // THE SECOND BASE. In the lines view the city is printed flat grey, so every
+  // colour positron declares is flattened to its own luminance and faded toward
+  // white — layers nobody thought about still come out grey. The few that carry
+  // meaning (the bay, the parks, the built-up ground) are named by hand below.
+  const gctx = document.createElement('canvas').getContext('2d');
+  const greyOf = (col, keepInk) => {
+    gctx.fillStyle = '#000000';
+    gctx.fillStyle = col;
+    const t = gctx.fillStyle;
+    let r, g, b, al = 1;
+    if (t[0] === '#') { r = parseInt(t.slice(1, 3), 16); g = parseInt(t.slice(3, 5), 16); b = parseInt(t.slice(5, 7), 16); }
+    else { const mm = (t.match(/[\d.]+/g) || ['0', '0', '0']).map(Number); [r, g, b] = mm; if (mm[3] !== undefined) al = mm[3]; }
+    const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    // text keeps its full darkness; fills and strokes are pulled 28 % toward
+    // white, which is the headroom the coloured strands need to read as ink
+    const v = Math.round(Math.max(0, Math.min(255, keepInk ? lum : 255 - (255 - lum) * 0.72)));
+    return al < 1 ? `rgba(${v},${v},${v},${al})` : '#' + [v, v, v].map((x) => x.toString(16).padStart(2, '0')).join('');
+  };
+  const COLOR_PROPS = ['background-color', 'fill-color', 'fill-outline-color', 'line-color',
+    'text-color', 'text-halo-color', 'icon-color', 'icon-halo-color', 'circle-color', 'fill-extrusion-color'];
+  const greyDeep = (v, keepInk) => {
+    if (typeof v === 'string') return greyOf(v, keepInk);
+    if (Array.isArray(v)) return v.map((x, i) => (i === 0 ? x : greyDeep(x, keepInk)));
+    return v;
+  };
+  const GREY_RECOLOR = {
+    background: { 'background-color': '#eeeeee' },
+    landuse_residential: { 'fill-color': '#e7e7e7' },
+    park: { 'fill-color': '#e1e1e1' },
+    landcover_wood: { 'fill-color': '#dbdbdb' },
+    water: { 'fill-color': '#cfcfcf' },
+    waterway: { 'line-color': '#cfcfcf' },
+    building: { 'fill-color': '#e3e3e3', 'fill-outline-color': '#d7d7d7' },
+    highway_minor: { 'line-color': '#fbfbfb' },
+    highway_major_casing: { 'line-color': '#dadada' },
+    highway_major_inner: { 'line-color': '#fdfdfd' },
+    highway_motorway_casing: { 'line-color': '#d0d0d0' },
+    highway_motorway_inner: { 'line-color': '#f6f6f6' },
+    railway: { 'line-color': '#c6c6c6' },
+    railway_transit: { 'line-color': '#c6c6c6' },
+    'highway-name-minor': { 'text-color': '#4f4f4f', 'text-halo-color': '#ffffff', 'text-halo-width': 2.4, 'text-halo-blur': 0.3 },
+    'highway-name-major': { 'text-color': '#3c3c3c', 'text-halo-color': '#ffffff', 'text-halo-width': 2.8, 'text-halo-blur': 0.3 },
+    'highway-name-path': { 'text-color': '#8c8c8c', 'text-halo-color': '#ffffff', 'text-halo-width': 1.8 },
+  };
+  // both palettes, per layer and per property, captured while the style is still
+  // a plain object — switching views is then a loop of setPaintProperty
+  const BASE_PAINT = [];
+
   // Stock positron holds street names back (minor z15+, major z12.2) — far too
   // late for a transit map, where the streets carry the content. Pull them in
   // earlier (minor stays at 13: the tiles only carry minor names from there)
@@ -99,8 +151,18 @@ async function init() {
   for (const l of style.layers) {
     const tf = l.layout && l.layout['text-font'];
     if (Array.isArray(tf)) l.layout['text-font'] = tf.map((f) => FONT_MAP[f] || f);
-    const o = BASE_RECOLOR[l.id];
+    const o = BASE_RECOLOR[l.id], g = GREY_RECOLOR[l.id];
     if (o) l.paint = { ...l.paint, ...o };
+    if (l.paint) for (const k of COLOR_PROPS) {
+      if (l.paint[k] === undefined) continue;
+      BASE_PAINT.push({ id: l.id, prop: k, paper: l.paint[k],
+        grey: (g && g[k] !== undefined) ? g[k] : greyDeep(l.paint[k], k === 'text-color' || k === 'icon-color') });
+    }
+    // halo widths differ too, and they are not colours
+    if (g) for (const k of ['text-halo-width', 'text-halo-blur']) {
+      if (g[k] === undefined) continue;
+      BASE_PAINT.push({ id: l.id, prop: k, paper: (l.paint && l.paint[k]) ?? (k === 'text-halo-width' ? 1 : 0), grey: g[k] });
+    }
     if (BASE_MINZOOM[l.id]) l.minzoom = BASE_MINZOOM[l.id];
     if (BASE_SPACING[l.id]) l.layout = { ...l.layout, 'symbol-spacing': BASE_SPACING[l.id] };
     // road-number shields (433, S11…) read as line badges on a transit map
@@ -119,8 +181,10 @@ async function init() {
   map.addControl(new maplibregl.ScaleControl({ maxWidth: 120 }), 'bottom-left');
   map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS ZTM Gdańsk · ZKM Gdynia' }));
 
-  const [meta] = await Promise.all([
+  const [meta, linesMeta] = await Promise.all([
     fetch('data/meta.json').then((r) => r.json()),
+    // small (a colour per line + the geometry constants the lines view needs)
+    fetch('data/lines-meta.json').then((r) => r.json()).catch(() => null),
     // Do not hang on 'load' (one stuck tile blocks it forever) —
     // a loaded style is enough, tiles catch up in the background.
     new Promise((res) => {
@@ -143,9 +207,28 @@ async function init() {
   const nTram = meta.lines.filter((l) => l.mode === 'tram').length;
   document.getElementById('count').textContent = `(${nBus} bus/trolleybus · ${nTram} tram)`;
   document.getElementById('stamp').textContent = new Date(meta.generatedAt).toLocaleDateString('en-GB');
-  document.getElementById('chips').innerHTML = meta.lines
-    .map((l) => `<button class="chip" data-line="${esc(l.line)}" style="background:${esc(l.color)}">${esc(l.line)}</button>`)
-    .join(' ');
+  // In the corridor view a chip carries its MODE's colour (navy bus, green
+  // trolleybus, red tram); in the lines view it carries the colour that line is
+  // actually drawn in, and the cloud doubles as the legend.
+  const LINE_COLORS = (linesMeta && linesMeta.colors) || {};
+  const CORRIDOR_INK = '#6f757e';
+  const lineColor = (l) => LINE_COLORS[l] || CORRIDOR_INK;
+  const LINE_COLOR_MATCH = ['match', ['get', 'line'],
+    ...Object.entries(LINE_COLORS).flatMap(([l, c]) => [l, c]), CORRIDOR_INK];
+  const paintChips = (linesView) => {
+    document.getElementById('chips').innerHTML = meta.lines
+      .map((l) => `<button class="chip${l.line === state.selected ? ' active' : ''}" data-line="${esc(l.line)}" ` +
+        `style="background:${esc(linesView ? lineColor(l.line) : l.color)}">${esc(l.line)}</button>`)
+      .join(' ');
+  };
+
+  // Panel state. `view` is the big one: 'corridors' is this map as it has always
+  // been — one stroke per roadway, the whole network in three mode colours —
+  // and 'lines' redraws the same data line by line, up to four coloured strands
+  // side by side, everything busier as one grey trunk. Both views are built from
+  // the same files; the switch is layers and paint, never a reload.
+  const state = { bus: true, tram: true, selected: null, journey: null, view: 'corridors' };
+  paintChips(false);
 
   // Line layers go below the base style labels (street names stay readable).
   const firstSymbol = map.getStyle().layers.find((l) => l.type === 'symbol')?.id;
@@ -194,6 +277,82 @@ async function init() {
     },
   }, firstSymbol);
 
+  // ---- THE LINES VIEW's strokes, built now and hidden until it is asked for.
+  // Same data, drawn line by line: a roadway with up to 4 lines arrives as one
+  // feature PER LINE (its slot baked in as `oi`), anything busier as a single
+  // grey trunk. The pipeline (pipeline/lines.mjs) decides which is which; here
+  // they are two more layers.
+  const linesOK = !!linesMeta;
+  // The sources start EMPTY and are filled the first time the lines view is
+  // asked for. Its files are the heavy ones (the swings alone are megabytes of
+  // short pieces), and the corridor view — the default, the one most readers
+  // will only ever see — has no business paying for them.
+  const EMPTY = { type: 'FeatureCollection', features: [] };
+  let linesLoaded = false;
+  const loadLines = () => {
+    if (linesLoaded) return;
+    linesLoaded = true;
+    map.getSource('corridors').setData('data/lines-corridors.geojson');
+    map.getSource('strands').setData('data/lines-strands.geojson');
+    map.getSource('strand-labels').setData('data/lines-labels.geojson');
+  };
+  if (linesOK) {
+    map.addSource('corridors', { type: 'geojson', data: EMPTY });
+    map.addSource('strands', { type: 'geojson', data: EMPTY });
+  }
+  // Strand spacing, and the ONE proportion that ties the numbers to it: the text
+  // is sized PITCH / pitchRatio at every zoom, so a number offset sideways by
+  // half a slot in EMS lands beside its own strand at every zoom too.
+  const R = (linesMeta && linesMeta.pitchRatio) || 0.5;
+  const [P11, P14, P17] = [2.4, 4.4, 7.4];
+  const zoomStops = (a, b, c) => ['interpolate', ['linear'], ['zoom'], 11, a, 14, b, 17, c];
+  const STRAND_TEXT = zoomStops(P11 / R, P14 / R, P17 / R);
+  const STRAND_W = zoomStops(1.0, 2.2, 3.9);
+  // the casing stays a touch narrower than the pitch — that difference IS the
+  // white gap between neighbours, and without it four strands read as one band
+  const STRAND_CASE = zoomStops(1.8, 3.0, 4.9);
+  const CORRIDOR_W = zoomStops(2.0, 4.4, 7.6);
+  // NOT ['*', ['get','oi'], PITCH]: MapLibre only accepts a zoom expression at
+  // the TOP level of interpolate/step, so the slot multiplies inside each stop.
+  const SLOT_OFFSET = zoomStops(['*', ['get', 'oi'], P11], ['*', ['get', 'oi'], P14], ['*', ['get', 'oi'], P17]);
+  // how far a number stands off the CENTRE of its bundle to clear it: half the
+  // bundle, plus half a stroke, plus a gap — in ems, divided by the label-size
+  // factor because the text grows with it and the strands do not
+  const radialFor = (f) => ['match', ['get', 'n'],
+    1, 0.5, 2, 0.5 * R / f + 0.5, 3, 1.0 * R / f + 0.5, 4, 1.5 * R / f + 0.5, 0.6];
+  if (linesOK) {
+    map.addLayer({
+      id: 'corridor-casing', type: 'line', source: 'corridors',
+      layout: { 'line-join': 'round', 'line-cap': 'round', visibility: 'none' },
+      paint: { 'line-color': '#ffffff', 'line-width': zoomStops(3.4, 6.4, 10.6) },
+    }, firstSymbol);
+    map.addLayer({
+      id: 'corridor-line', type: 'line', source: 'corridors',
+      layout: { 'line-join': 'round', 'line-cap': 'round', visibility: 'none' },
+      paint: { 'line-color': CORRIDOR_INK, 'line-width': CORRIDOR_W },
+    }, firstSymbol);
+    // every casing first, then every colour: a casing drawn after its
+    // neighbour's colour would eat the strand next to it
+    map.addLayer({
+      id: 'strand-casing', type: 'line', source: 'strands',
+      // no casing on the pieces of a swing — see pipeline/lines.mjs
+      filter: ['!=', ['get', 'sw'], 1],
+      // BUTT caps, not round. A strand is cut into pieces wherever its offset
+      // changes, and a round cap sticks out half a stroke width SIDEWAYS from
+      // the piece that follows it — ten of those along one swing serrate the
+      // edge of the line. Butt caps meet flush inside the 0.4 m overlap the
+      // pipeline leaves between pieces. (Joins stay round: those are corners
+      // inside a piece, where round is what keeps a bend smooth.)
+      layout: { 'line-join': 'round', 'line-cap': 'butt', visibility: 'none' },
+      paint: { 'line-color': '#ffffff', 'line-width': STRAND_CASE, 'line-offset': SLOT_OFFSET },
+    }, firstSymbol);
+    map.addLayer({
+      id: 'strand-line', type: 'line', source: 'strands',
+      layout: { 'line-join': 'round', 'line-cap': 'butt', visibility: 'none' },
+      paint: { 'line-color': ['get', 'color'], 'line-width': STRAND_W, 'line-offset': SLOT_OFFSET },
+    }, firstSymbol);
+  }
+
   // Line numbers: pipeline points carry the street bearing (angle) — the text is
   // rotated PARALLEL to the road and offset sideways in text space (anchor bottom
   // + offset), so it stands BESIDE the roadway along its course, never on the stroke.
@@ -201,7 +360,19 @@ async function init() {
   // own color — M1 green, M2 red, M3 azure, tram purple) above the bus row.
   const TRAM_RED = '#d6212b';
   const railColor = ['coalesce', ['get', 'color'], TRAM_RED];
-  const numberField = ['case', ['has', 'busLines'],
+  // The row source is SWAPPED between the two views (labels.geojson ↔
+  // lines-rows.geojson) rather than duplicated, so one set of layers, one
+  // collision ladder and one density control serve both. The rows of the lines
+  // view carry their numbers one per property (l0/c0, l1/c1 …) because MapLibre
+  // paints one colour per `format` SECTION and there every number keeps its own
+  // line's colour — grey there would drop the colour code at the one place the
+  // reader needs it, where the coloured strands disappear into the trunk.
+  const TRUNK_INK = '#41464e';
+  const colouredRow = ['format'];
+  for (let i = 0; i < ((linesMeta && linesMeta.rowSlots) || 41); i++) {
+    colouredRow.push(['coalesce', ['get', 'l' + i], ''], { 'text-color': ['coalesce', ['get', 'c' + i], TRUNK_INK] });
+  }
+  const corridorRow = ['case', ['has', 'busLines'],
     ['format',
       ['get', 'lines'], { 'text-color': railColor },
       '\n', {},
@@ -213,6 +384,8 @@ async function init() {
         '\n', {},
         ['get', 'ntLines'], { 'text-color': KMK }],
       ['format', ['get', 'lines'], {}]]];
+  // one field for both: a row that carries l0 came from the lines view
+  const numberField = ['case', ['has', 'l0'], colouredRow, corridorRow];
   map.addSource('labels', { type: 'geojson', data: 'data/labels.geojson' });
   const numbersLayout = {
     'text-field': numberField,
@@ -289,6 +462,37 @@ async function init() {
     layout: { ...numbersLayout, 'text-variable-anchor': v.anchors },
     paint: { ...numbersPaint },
   });
+
+  // NUMBERS BESIDE THE STRANDS (lines view). A bundle's stations are handed
+  // round-robin to its strands by the pipeline, so all four lines get named
+  // instead of the widest one taking every spot. The number is rotated to read
+  // ALONG the bundle and set BESIDE it, by the same mechanism the trunk rows
+  // use — except the offset has to clear the whole bundle, which is why it
+  // depends on how many strands that bundle has.
+  // Not symbol-placement 'line': every strand of a bundle shares one geometry,
+  // so line placement piles them all onto the same anchors (8 of 30 labelled).
+  if (linesOK) {
+    map.addSource('strand-labels', { type: 'geojson', data: EMPTY });
+    map.addLayer({
+      id: 'strand-numbers', type: 'symbol', source: 'strand-labels',
+      minzoom: 12.5,
+      layout: {
+        visibility: 'none',
+        'text-field': ['get', 'line'],
+        'text-font': [NARROW_BOLD],
+        'text-size': STRAND_TEXT,
+        'text-rotate': ['get', 'angle'],
+        'text-rotation-alignment': 'map',
+        // 'auto' inherits pitch-alignment 'map', and that path in MapLibre 5.6
+        // kills rotated point symbols — the same trap as the number rows
+        'text-pitch-alignment': 'viewport',
+        'text-variable-anchor': ['bottom', 'top'],
+        'text-radial-offset': radialFor(1),
+        'text-padding': 1,
+      },
+      paint: { 'text-color': ['get', 'color'], 'text-halo-color': '#ffffff', 'text-halo-width': 1.9, 'text-halo-blur': 0.2 },
+    });
+  }
 
   // STREET NAMES OF THE NETWORK, drawn from our own source instead of the base
   // tiles. The tiles carry minor-road names only from z13, publish them once
@@ -565,6 +769,9 @@ async function init() {
   map.moveLayer('street-numbers-extra-flip');
   map.moveLayer('transit-street-names');
   for (const d of NUM_LAYERS) if (d.id !== 'street-numbers-extra') for (const v of SIDE_VARIANTS) map.moveLayer(d.id + v.suf);
+  // a strand without its number is an anonymous coloured line — this ranks with
+  // the trunk rows, above the street names it runs alongside
+  if (linesOK) map.moveLayer('strand-numbers');
   map.moveLayer('stops-names');
   map.moveLayer('stops-terminus-names');
   for (const v of SIDE_VARIANTS) map.moveLayer('big-number-rows' + v.suf); // trunk rows above even the names
@@ -594,7 +801,7 @@ async function init() {
     .filter((l) => l.type === 'symbol')
     .map((l) => ({
       id: l.id,
-      grp: /^(street-numbers|big-number-rows|stops-)/.test(l.id) ? 't' : 's',
+      grp: /^(street-numbers|big-number-rows|strand-numbers|stops-)/.test(l.id) ? 't' : 's',
       // an omitted text-size means MapLibre's default of 16 — scale that too
       size: (l.layout && l.layout['text-size']) ?? 16,
       halo: l.paint ? l.paint['text-halo-width'] : undefined,
@@ -618,6 +825,9 @@ async function init() {
       // kept near full width around quarter-size glyphs swallows them.
       const h = f < 1 ? f : Math.sqrt(f);
       map.setLayoutProperty(t.id, 'text-size', scaleOut(t.size, f));
+      // the stand-off is in ems and half of it is pinned to the strand pitch,
+      // so bigger text has to mean a proportionally smaller offset
+      if (t.id === 'strand-numbers' && !state.selected) map.setLayoutProperty(t.id, 'text-radial-offset', radialFor(f));
       if (t.halo !== undefined) map.setPaintProperty(t.id, 'text-halo-width', scaleOut(t.halo, h));
     }
     for (const g of Object.keys(SCALE_UI)) {
@@ -648,7 +858,6 @@ async function init() {
 
   // Mode filters (bus/tram) + line selection: clicking a chip shows only that
   // line's route with all of its stops (properties.arr carry the line lists).
-  const state = { bus: true, tram: true, selected: null, journey: null };
   let densityCond = true; // repeat-thinning condition, set by the Number density row below
   let densityMainCond = true; // sparsest step: one main row per same-content corridor chain
   const busOnlyNumbers = ['case', ['has', 'busLines'],
@@ -671,6 +880,27 @@ async function init() {
     map.setFilter('route-casing', ['all', modeC, selC]);
     map.setFilter('route-line', ['all', modeC, selC]);
     map.setFilter('route-trolley-dash', ['all', ['==', ['get', 'trolley'], 'mix'], modeC, selC]);
+    if (linesOK) {
+      // A picked line keeps only its own strands, and they step back onto the
+      // roadway centre: a slot is only meaningful inside a bundle being drawn.
+      const strandSel = state.journey ? false
+        : state.selected ? ['==', ['get', 'line'], state.selected] : true;
+      map.setFilter('strand-casing', ['all', ['!=', ['get', 'sw'], 1], modeC, strandSel]);
+      map.setFilter('strand-line', ['all', modeC, strandSel]);
+      // repeats thin with the density row, exactly like the trunk rows
+      map.setFilter('strand-numbers', ['all', modeC, strandSel,
+        ['case', ['has', 'extra'], densityCond, densityMainCond]]);
+      for (const id of ['strand-casing', 'strand-line'])
+        map.setPaintProperty(id, 'line-offset', state.selected ? 0 : SLOT_OFFSET);
+      map.setLayoutProperty('strand-numbers', 'text-radial-offset', state.selected ? 0.6 : radialFor(labelScale.t));
+      // The trunks are grey for the whole network, but a picked line is
+      // repainted in its own colour exactly where it rides through them — so the
+      // line reads end to end and the grey never swallows it.
+      map.setFilter('corridor-casing', ['all', modeC, selC]);
+      map.setFilter('corridor-line', ['all', modeC, selC]);
+      map.setPaintProperty('corridor-line', 'line-color', state.selected ? lineColor(state.selected) : CORRIDOR_INK);
+      map.setPaintProperty('corridor-line', 'line-width', state.selected ? STRAND_W : CORRIDOR_W);
+    }
     map.setFilter('stops-dots', ['all', modeC, selC]);
     // with a line selected, names of ALL its stops (no label clustering)
     const lblC = state.selected || state.journey ? true : ['==', ['get', 'label'], 1];
@@ -717,6 +947,57 @@ async function init() {
       map.setLayoutProperty('big-number-rows' + v.suf, 'text-field', numField);
     }
   }
+  // ---- VIEW SWITCH ----
+  // Everything either view needs is already in the style; switching is paint and
+  // visibility, never a reload — so the position, the zoom, the picked line and
+  // both label-size settings all survive it.
+  const CORRIDOR_ONLY = ['route-casing', 'route-line', 'route-trolley-dash'];
+  const LINES_ONLY = ['corridor-casing', 'corridor-line', 'strand-casing', 'strand-line', 'strand-numbers'];
+  function applyView() {
+    const linesView = state.view === 'lines' && linesOK;
+    if (linesView) loadLines();
+    for (const id of CORRIDOR_ONLY) map.setLayoutProperty(id, 'visibility', linesView ? 'none' : 'visible');
+    for (const id of LINES_ONLY) if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', linesView ? 'visible' : 'none');
+    // the base: paper-cream districts and blue water, or flat grey
+    for (const b of BASE_PAINT) {
+      if (!map.getLayer(b.id)) continue;
+      map.setPaintProperty(b.id, b.prop, linesView ? b.grey : b.paper);
+    }
+    // our own street names sit on top of the strokes in both views
+    for (const id of ['transit-street-names', 'transit-street-names-low'])
+      if (map.getLayer(id)) map.setPaintProperty(id, 'text-color', linesView ? '#3c3c3c' : '#2b2924');
+    // A stop belongs to every line passing it, so on a map where colour means
+    // "which line" it has to go neutral; in the corridor view it keeps the mode
+    // colour it has always had.
+    map.setLayoutProperty('stops-dots', 'icon-image', ['concat',
+      ['case', ['any', ['==', ['get', 'metro'], 1], ['==', ['get', 'terminus'], 1]], 'dot-', 'stop-'],
+      linesView ? STOP_INK : ['coalesce', ['get', 'color'], KMK],
+      ['case', ['==', ['get', 'terminus'], 1], '-t', '']]);
+    for (const id of BADGE_LAYERS) {
+      map.setLayoutProperty(id, 'icon-image', ['concat', 'badge-', linesView ? LINE_COLOR_MATCH : ['coalesce', ['get', 'color'], KMK]]);
+      map.setPaintProperty(id, 'text-color', linesView ? '#1e2126' : ['coalesce', ['get', 'colorDark'], KMK_DARK]);
+    }
+    // the rows come from a different file in each view — same layers, same
+    // collision ladder, same density control
+    map.getSource('labels').setData(linesView ? 'data/lines-rows.geojson' : 'data/labels.geojson');
+    paintChips(linesView);
+    document.body.classList.toggle('lines-view', linesView);
+    for (const b of document.querySelectorAll('#view-switch button'))
+      b.classList.toggle('on', (b.dataset.view === 'lines') === linesView);
+    applyFilters();
+  }
+  const sw = document.getElementById('view-switch');
+  if (sw) {
+    if (!linesOK) sw.hidden = true;
+    sw.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b || b.dataset.view === state.view) return;
+      state.view = b.dataset.view;
+      applyView();
+    });
+  }
+  applyView();
+
   document.getElementById('chips').addEventListener('click', (e) => {
     const b = e.target.closest('.chip');
     if (!b) return;

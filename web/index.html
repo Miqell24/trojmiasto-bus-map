@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tricity Public Transport — interactive map</title>
 <link rel="stylesheet" href="vendor/maplibre-gl.css">
-<link rel="stylesheet" href="style.css?v=20260815a">
+<link rel="stylesheet" href="style.css?v=20260818g">
 </head>
 <body>
 <div id="map"></div>
@@ -70,10 +70,20 @@
 
     </nav>
   </details>
+  <div id="view-switch" class="viewsw" role="group" aria-label="Map view">
+    <button type="button" data-view="corridors" class="on">Corridors</button>
+    <button type="button" data-view="lines">Lines</button>
+  </div>
+  <p class="hint viewhint corridor-only">One stroke per roadway, the whole network in three colours.</p>
+  <p class="hint viewhint lines-only">Every line drawn on its own, in its own colour — up to four side by side.</p>
   <ul class="legend">
-    <li><label><input type="checkbox" id="toggle-bus" checked> <span class="sw line"></span> Bus &amp; trolleybus routes</label></li>
-    <li class="sublegend"><span class="mini" style="background:#149a3f"></span>trolleybus (Gdynia)</li>
-    <li><label><input type="checkbox" id="toggle-tram" checked> <span class="sw line tram"></span> Tram routes</label></li>
+    <li class="corridor-only"><span class="sw line"></span> Bus &amp; trolleybus routes</li>
+    <li class="sublegend corridor-only"><span class="mini" style="background:#149a3f"></span>trolleybus (Gdynia)</li>
+    <li class="corridor-only"><span class="sw line tram"></span> Tram routes</li>
+    <li class="lines-only"><span class="sw bundle"><i></i><i></i><i></i><i></i></span> Up to 4 lines: each on its own, in its own colour</li>
+    <li class="lines-only"><span class="sw trunk"></span> 5 or more: one grey stroke, its numbers beside it</li>
+    <li><label><input type="checkbox" id="toggle-bus" checked> Buses &amp; trolleybuses</label></li>
+    <li><label><input type="checkbox" id="toggle-tram" checked> Trams</label></li>
     <li><span class="sw stop"></span> Stop</li>
     <li><span class="sw terminus"></span> Terminus</li>
   </ul>
@@ -109,6 +119,6 @@
   <label class="debug"><input type="checkbox" id="toggle-shape"> show raw GTFS shapes (QA)</label>
 </aside>
 <script src="vendor/maplibre-gl.js"></script>
-<script src="app.js?v=20260815a"></script>
+<script src="app.js?v=20260818g"></script>
 </body>
 </html>
