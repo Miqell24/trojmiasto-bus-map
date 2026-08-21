@@ -5,7 +5,8 @@
 #
 # Tricity quirk: TWO feeds (two operators under the MZKZG umbrella) cover one
 # agglomeration — ZTM Gdańsk (buses route_type 700, trams 900) and ZKM Gdynia
-# (buses 700, trolleybuses 800). build.mjs runs one cfg per feed; line numbers
+# (buses 3, trolleybuses 11 since the 18.08.2026 feed; 700/800 before that —
+# build.mjs accepts both). build.mjs runs one cfg per feed; line numbers
 # are coordinated between operators (only "171" exists in both).
 set -euo pipefail
 cd "$(dirname "$0")/.."

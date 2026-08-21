@@ -1,8 +1,8 @@
 # trojmiasto-bus-map
 
 Interactive web map of Tricity (Gdańsk–Sopot–Gdynia) public transport in the
-visual logic of a classic printed network map: **163 bus lines,
-17 trolleybus lines and 11 tram lines (ZTM Gdańsk + ZKM
+visual logic of a classic printed network map: **161 bus lines,
+19 trolleybus lines and 12 tram lines (ZTM Gdańsk + ZKM
 Gdynia)** drawn exactly along roadways and tram tracks (own HMM/Viterbi map
 matching on an OSM graph), line numbers written parallel to every street they
 use, labeled stops, true roundabout arcs.
@@ -44,13 +44,19 @@ named.
 ## Features
 
 - GTFS matched onto the OSM road and tram network — weighted mean error
-  **1.21 m** over 4 820 km of drawn route.
+  **1.01 m** over 5 306 km of drawn route.
 - **Two operators, one map**: ZTM Gdańsk (buses `route_type` 700, trams 900)
-  and ZKM Gdynia (buses 700, trolleybuses 800) are separate feeds under the
+  and ZKM Gdynia (buses 3, trolleybuses 11 since the 18.08.2026 feed; 700/800
+  before that, and the cfg still accepts both) are separate feeds under the
   MZKZG umbrella; the pipeline runs one cfg per feed into the same shared
   files, and geometric stop/badge clustering fuses the operators at the Sopot
   seam. Line numbering is coordinated between them (only "171" exists in both).
   Trolleybus lines are drawn green; trams match on `railway=tram`.
+- **Longest regular pattern per direction**, not the busiest one: a line's most
+  frequent shape is usually a peak-hour short-turn (ZKM's 86 runs 13 trips over
+  a 4.2 km stub and 4 over the full 16.4 km to Kosakowo), so the drawn variant
+  is the longest one still worked by at least 15% of the direction's trips —
+  depot runs and one-offs stay out, and the map shows where a line goes.
 - KMK-style rendering: one stroke per roadway, aggregated line numbers rotated
   parallel to streets, shared bus+tram corridors get a two-color number row,
   half-disc stops turned to their side of the street, termini with boxed line

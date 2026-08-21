@@ -15,11 +15,14 @@ import { iterCsv, readCsv } from './lib/csv.mjs';
 import { makeProj, resample, nearestOnPolyline, polylineLength } from './lib/geo.mjs';
 import { buildGraph } from './lib/graph.mjs';
 import { matchShape, extendToStops } from './lib/hmm.mjs';
+import { collapseCorridors } from './lib/corridor.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-// m — longer jumps between shape points are GTFS data gaps. The Tricity feeds
-// sample shapes at ~13 m median (p90 56 m, holes up to 5.7 km), so the threshold
-// sits above the normal spacing; inside a real gap the HMM bridges by routing
+// m — longer jumps between shape points are GTFS data gaps. ZTM Gdańsk samples
+// shapes at 16 m median (p90 58 m); the 18.08.2026 ZKM Gdynia feed is coarser —
+// 33 m median, p90 134 m, p99 395 m — because it publishes 451 deduplicated
+// shapes instead of the 3020 near-duplicates of the old one. The threshold still
+// sits well above both spacings; inside a real gap the HMM bridges by routing
 // instead of interpolating observations, which would fabricate straight-line
 // detours through side streets.
 const GAP_MIN = 250;
@@ -28,6 +31,28 @@ const GAP_MIN = 250;
 // the right-hand rule (see the stop pass). Named after the case that set it:
 // both direction poles of Dąb Silesia City Center share one point.
 const SIDE_CORRIDOR = 6;
+
+// Korytarze rysowane jedną linią mimo dwóch jezdni (patrz lib/corridor.mjs).
+// Trasa Kaszubska w Gdyni: jezdnie 13–20 m od siebie, 700 i Z jadą po
+// przeciwnych, więc trasa obejmowała pusty pas rozdziału zamiast iść drogą, a
+// w węźle Wielki Kack kierunek NE→SW wchodzi jeszcze na łącznicę zbierającą S7,
+// 40 m dalej na zewnątrz — stąd hak i nieprzypasowany kawałek. Lista jest ręczna
+// i ma zostać ręczna: w Trójmieście 43% długości sieci ma gdzieś równoległego
+// bliźniaka i automat przerysowałby wszystkie główne arterie.
+const CORRIDORS = [{
+  label: 'Trasa Kaszubska (Gdynia)',
+  mode: 'bus',
+  name: 'Trasa Kaszubska – Kaszëbskô Darga',
+  lines: ['700', 'Z'],
+  // jezdnia NE→SW (od węzła z Chwaszczyńską do węzła Karwiny)
+  a: [1110548090, 1363724783, 1106287650, 1099731671, 1110548089,
+      1082683617, 183552639, 1394204353, 1394204352, 1111108872],
+  // jezdnia SW→NE
+  b: [289084254, 1113091705, 1106289708, 1106287666, 289099456,
+      1108267849, 176704908, 1338963281, 1363724784, 965828815],
+  maxSep: 24,  // m — powyżej jezdnie rozjeżdżają się na łącznice węzła, oś się kończy
+  buffer: 90,  // m od osi — łącznica zbierająca S7 odbiega maks. 72 m
+}];
 
 const TROLLEY_GREEN = '#149a3f';
 const TROLLEY_DARK = '#0a5121';
@@ -61,25 +86,30 @@ if (ti >= 0) {
 const busAll = busArgs.includes('--all');
 const busList = busArgs.filter((a) => a !== '--all');
 
-// Both feeds use extended GTFS route types: 700 = bus, 800 = trolleybus
-// (Gdynia), 900 = tram (Gdańsk). One bus cfg per operator — the results land
-// in the same shared files, and badge/stop clustering downstream is geometric,
-// so the two operators fuse at the Sopot seam like any two lines would.
+// ZTM Gdańsk ships extended GTFS route types (700 = bus, 900 = tram). ZKM
+// Gdynia used to as well (700 = bus, 800 = trolleybus) but switched to the base
+// codes with the 18.08.2026 feed (3 = bus, 11 = trolleybus), so its cfg accepts
+// BOTH encodings — the feed carries nothing but buses and trolleybuses, so a
+// wider whitelist cannot mislabel anything, and the map survives the operator
+// flipping back. One bus cfg per operator — the results land in the same shared
+// files, and badge/stop clustering downstream is geometric, so the two
+// operators fuse at the Sopot seam like any two lines would.
 const MODES = [{
   mode: 'bus', label: 'buses (ZTM Gdańsk)', gtfsDir: 'data/gtfs-gdansk', osmFile: 'data/osm/trojmiasto.json',
   graphMode: 'road', color: '#0059a9', colorDark: '#00294f', routeTypes: ['700'],
   all: busAll, lines: busList.length ? busList : (busAll ? [] : ['112']),
 }, {
   mode: 'bus', label: 'buses & trolleybuses (ZKM Gdynia)', gtfsDir: 'data/gtfs-gdynia', osmFile: 'data/osm/trojmiasto.json',
-  graphMode: 'road', color: '#0059a9', colorDark: '#00294f', routeTypes: ['700', '800'],
+  graphMode: 'road', color: '#0059a9', colorDark: '#00294f', routeTypes: ['3', '11', '700', '800'],
   all: busAll, lines: busList.length ? busList : (busAll ? [] : ['170']),
-  // Lines 34 (Węzeł Cegielskiej – Demptowo) and 181 (Sopot – Gdynia Dworzec)
-  // are trolleybus routes run by PKT, but ZKM files both as route_type 700 —
+  // Lines 34 (Węzeł Cegielskiej – Demptowo) and 181 (Sopot – Kacze Buki) are
+  // trolleybus routes that the pre-18.08.2026 feed filed as route_type 700 —
   // 34 is route=trolleybus in OSM with 76% of it under the wires, and 181 is
   // worked by trolleybuses on the street (user's on-the-ground call; the wires
-  // cover 64% of it, the rest runs on battery as the new stock does).
-  // Overridden here rather than in the feed; re-check on every refresh, the
-  // operator may fix the types upstream.
+  // cover 64% of it, the rest runs on battery as the new stock does). The
+  // 18.08.2026 feed types both as 11 on its own, so this list is now a no-op —
+  // kept as the fallback for a feed that reverts, not as a live correction.
+  // Re-check on every refresh.
   trolleyExtra: ['34', '181'],
 }];
 const tramAll = tramLines.length === 1 && tramLines[0] === 'all';
@@ -233,6 +263,43 @@ async function processMode(cfg) {
     e.count++;
     if (e.trips.length < tripCap) e.trips.push({ trip_id: t.trip_id, headsign: t.trip_headsign });
   }
+  // Length per variant, for the pick below. One streaming pass keeping only a
+  // running total and the previous point per shape — Gdańsk's shapes.txt is
+  // 45 MB / 880 k points and materialising it here would double peak memory.
+  // Both Tricity feeds write it sorted by shape_pt_sequence; a feed that does
+  // not says so in the log instead of silently under-measuring.
+  const shapeM = new Map();
+  if (hasShapes) {
+    const needed = new Set();
+    for (const dirs of byLineDir.values()) for (const m of dirs.values()) for (const sh of m.keys()) needed.add(sh);
+    const prev = new Map();
+    let unsorted = 0;
+    for await (const s of iterCsv(join(ROOT, cfg.gtfsDir, 'shapes.txt'))) {
+      if (!needed.has(s.shape_id)) continue;
+      const lat = Number(s.shape_pt_lat), lon = Number(s.shape_pt_lon), seq = Number(s.shape_pt_sequence);
+      const p = prev.get(s.shape_id);
+      if (p) {
+        if (seq <= p[2]) unsorted++;
+        const k = Math.PI / 180 * 6371008.8;
+        shapeM.set(s.shape_id, (shapeM.get(s.shape_id) || 0) +
+          Math.hypot((lon - p[1]) * k * Math.cos(lat * Math.PI / 180), (lat - p[0]) * k));
+      }
+      prev.set(s.shape_id, [lat, lon, seq]);
+    }
+    if (unsorted) log(`WARNING: shapes.txt not sorted by shape_pt_sequence (${unsorted} rows) — variant lengths approximate`);
+  }
+
+  // The busiest shape of a line+direction is very often a peak-hour short-turn:
+  // ZKM's 86 runs 13 trips over a 4.2 km stub and 4 over the full 16.4 km to
+  // Kosakowo, ZTM's 126 splits 294/144 between a 16.8 and a 24.7 km pattern.
+  // A network map has to show where a line goes, so the representative is the
+  // LONGEST pattern that still runs regularly — at least REP_MIN_SHARE of the
+  // busiest pattern's trips, and never a lone trip, which keeps depot runs and
+  // one-offs out. The busiest shape always clears its own bar, so this can only
+  // lengthen a drawn line, never shorten it. Stops follow the shape (candTrips
+  // are that shape's own trips), so termini, badges and headsign stay in step.
+  const REP_MIN_SHARE = 0.15;
+  let longerReps = 0, longerM = 0;
   let reps = [];
   for (const L of LINES) {
     const dirs = byLineDir.get(L);
@@ -241,6 +308,19 @@ async function processMode(cfg) {
       const m = dirs.get(dir);
       let best = null;
       for (const [shapeId, e] of m) if (!best || e.count > best.e.count) best = { shapeId, e };
+      if (hasShapes && m.size > 1) {
+        const floor = Math.max(2, best.e.count * REP_MIN_SHARE);
+        const lenOf = (id) => shapeM.get(id) || 0;
+        let pick = best;
+        for (const [shapeId, e] of m) {
+          if (e.count >= floor && lenOf(shapeId) > lenOf(pick.shapeId)) pick = { shapeId, e };
+        }
+        if (pick.shapeId !== best.shapeId) {
+          longerReps++;
+          longerM += lenOf(pick.shapeId) - lenOf(best.shapeId);
+          best = pick;
+        }
+      }
       reps.push({
         line: L, dir, shapeId: best.shapeId,
         headsign: best.e.trips[0]?.headsign || '',
@@ -249,6 +329,7 @@ async function processMode(cfg) {
       });
     }
   }
+  if (longerReps) log(`Representative variant: ${longerReps} line-directions moved off the busiest short-turn onto the longest regular pattern (+${(longerM / 1000).toFixed(0)} km drawn)`);
 
   // ---------- 3) stop_times.txt (streaming) → stop sequences ----------
   const allTripIds = new Set();
@@ -689,7 +770,7 @@ async function processMode(cfg) {
     return flags;
   };
   const mergedRuns = mergeRuns(runs);
-  const streetFeatures = mergedRuns.map((r) => {
+  let streetFeatures = mergedRuns.map((r) => {
     const arr = r.linesKey.split(', ');
     return {
       type: 'Feature',
@@ -761,6 +842,11 @@ async function processMode(cfg) {
     geometry: { type: 'LineString', coordinates: r.shapeLatLon.map(([lat, lon]) => [lon, lat]) },
     properties: { line: r.line, dir: r.dir, mode: cfg.mode },
   }));
+  streetFeatures = collapseCorridors(CORRIDORS, {
+    graph, proj, streetFeatures, routeFeatures, mode: cfg.mode,
+    colorOf, runFlags, numSort, round6, log,
+  });
+
   // HOLES IN THE STREETS LAYER. That layer is built from the road SEGMENTS a
   // route travelled, and a segment only enters it once at least 25 m or half of
   // it was used — a sensible rule that keeps glancing touches out, and one that
