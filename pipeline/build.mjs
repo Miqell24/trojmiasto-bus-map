@@ -119,6 +119,21 @@ if (tramLines.length) MODES.push({
   all: tramAll, lines: tramAll ? [] : tramLines,
 });
 
+// Cfgs that ride the SAME graph (the two bus operators) pour their
+// segment→lines sets into one shared store, and only the last cfg of the
+// group turns the union into street features. Without this, ground shared by
+// both feeds is drawn once per operator: line 171 (the one number that lives
+// in both) had its whole route stacked twice, and every street at the Sopot
+// seam carried two strokes and two number rows. buildGraph is deterministic
+// over one OSM file, so segment indices agree between the passes.
+const streetGroups = new Map();
+for (const cfg of MODES) {
+  const k = cfg.mode + '|' + cfg.osmFile + '|' + cfg.graphMode;
+  if (!streetGroups.has(k)) streetGroups.set(k, { segLines: new Map(), segIv: new Map(), rawRuns: [], last: null });
+  cfg.streetStore = streetGroups.get(k);
+  cfg.streetStore.last = cfg;
+}
+
 function mergeRuns(all) {
   const merged = [];
   const byKey = new Map();
@@ -403,12 +418,14 @@ async function processMode(cfg) {
   log(`Graph (${cfg.graphMode}): ${graph.nodes.size} nodes, ${graph.segs.length} segments, ${graph.ways.size} ways`);
 
   // ---------- 7) map matching per line+direction ----------
-  const segLines = new Map();
+  // segment→lines and the t-envelopes accumulate in the store shared by every
+  // cfg on this graph (see streetGroups above)
+  const segLines = cfg.streetStore.segLines;
   // traveled t-envelope per segment across ALL lines — the street stroke of a
   // long straight segment is later clipped to it at run ends (dangling stubs
   // past U-turn tips / route ends)
-  const segIv = new Map();
-  const rawRunsAll = [];
+  const segIv = cfg.streetStore.segIv;
+  const rawRunsAll = cfg.streetStore.rawRuns;
   for (const r of reps) {
     const xy = r.shapeLatLon.map(([lat, lon]) => proj.toXY(lat, lon));
     let sampled, opts;
@@ -471,10 +488,14 @@ async function processMode(cfg) {
       let len = 0;
       for (let i = 1; i < raw.length; i++) len += Math.hypot(raw[i][0] - raw[i - 1][0], raw[i][1] - raw[i - 1][1]);
       const mid = raw[Math.floor(raw.length / 2)];
-      let g = rawRunsAll.find((g) => Math.hypot(g.x - mid[0], g.y - mid[1]) < 60 && Math.abs(g.len - len) < Math.max(60, len * 0.3));
+      // the store is shared between cfgs with different projection centers, so
+      // the midpoint is kept in lon/lat and re-projected for the distance test
+      const [midLon, midLat] = proj.toLonLat(mid[0], mid[1]);
+      const nearMid = (g) => { const [gx, gy] = proj.toXY(g.midLat, g.midLon); return Math.hypot(gx - mid[0], gy - mid[1]) < 60; };
+      let g = rawRunsAll.find((g) => nearMid(g) && Math.abs(g.len - len) < Math.max(60, len * 0.3));
       if (g) g.lines.add(r.line);
       else rawRunsAll.push({
-        x: mid[0], y: mid[1], len,
+        midLon, midLat, len,
         lines: new Set([r.line]),
         coords: raw.map(([x, y]) => { const [lon, lat] = proj.toLonLat(x, y); return [round6(lon), round6(lat)]; }),
       });
@@ -710,9 +731,13 @@ async function processMode(cfg) {
   log(`Termini: ${badgeAnchors.length} loops with line badges`);
 
   // ---------- 9) streets/tracks: runs merged per line set ----------
+  // only the last cfg of the graph group emits — over the UNION of every
+  // operator's segment sets (see streetGroups above)
+  const emitStreets = cfg === cfg.streetStore.last;
+  if (!emitStreets) log(`streets deferred — this graph's union is emitted by "${cfg.streetStore.last.label}"`);
   const byWay = new Map();
   const posSeg = new Map();
-  for (const [si, lines] of segLines) {
+  for (const [si, lines] of (emitStreets ? segLines : new Map())) {
     const s = graph.segs[si];
     let m = byWay.get(s.wayId);
     if (!m) byWay.set(s.wayId, (m = new Map()));
@@ -809,7 +834,7 @@ async function processMode(cfg) {
     return best;
   };
   let rawJoined = 0;
-  for (const g of rawRunsAll) {
+  for (const g of (emitStreets ? rawRunsAll : [])) {
     const arr = [...g.lines].sort(numSort);
     const xy = g.coords.map(([lon, lat]) => proj.toXY(lat, lon));
     for (const end of [0, 1]) {
@@ -828,7 +853,7 @@ async function processMode(cfg) {
     });
   }
   if (rawJoined) log(`  ${rawJoined} ends of unrouted stretches pulled onto the runs beside them`);
-  log(`Runs: ${runs.length} → ${mergedRuns.length} after merging` +
+  if (emitStreets) log(`Runs: ${runs.length} → ${mergedRuns.length} after merging` +
       (rawRunsAll.length ? ` (+${rawRunsAll.length} outside OSM)` : ''));
 
   const toLonLat = (xy) => xy.map(([x, y]) => { const [lon, lat] = proj.toLonLat(x, y); return [round6(lon), round6(lat)]; });
@@ -842,7 +867,7 @@ async function processMode(cfg) {
     geometry: { type: 'LineString', coordinates: r.shapeLatLon.map(([lat, lon]) => [lon, lat]) },
     properties: { line: r.line, dir: r.dir, mode: cfg.mode },
   }));
-  streetFeatures = collapseCorridors(CORRIDORS, {
+  if (emitStreets) streetFeatures = collapseCorridors(CORRIDORS, {
     graph, proj, streetFeatures, routeFeatures, mode: cfg.mode,
     colorOf, runFlags, numSort, round6, log,
   });

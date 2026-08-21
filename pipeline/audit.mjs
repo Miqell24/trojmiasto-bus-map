@@ -314,7 +314,10 @@ const sig = new Map();
 for (const f of strands.features) {
   const c = f.geometry.coordinates;
   if (c.length < 2) continue;
-  const key = [f.properties.line, f.properties.mode, nk(c[0]), nk(c[c.length - 1])].join('|');
+  // endpoints alone are not identity: two one-way roadways of a short split
+  // street share BOTH end nodes (Zakręt do Oksywia, carriageways 6 m apart) —
+  // a true double also shares its middle vertex
+  const key = [f.properties.line, f.properties.mode, nk(c[0]), nk(c[Math.floor((c.length - 1) / 2)]), nk(c[c.length - 1])].join('|');
   if (!sig.has(key)) sig.set(key, []);
   sig.get(key).push(f.properties.oi);
 }
