@@ -231,7 +231,7 @@ async function init() {
   // and 'lines' redraws the same data line by line, up to four coloured strands
   // side by side, everything busier as one grey trunk. Both views are built from
   // the same files; the switch is layers and paint, never a reload.
-  const state = { bus: true, tram: true, selected: null, journey: null, view: 'corridors' };
+  const state = { bus: true, tram: true, selected: null, journey: null, view: 'corridors', bg: 'auto' };
   paintChips(false);
 
   // Line layers go below the base style labels (street names stay readable).
@@ -307,7 +307,12 @@ async function init() {
   // is sized PITCH / pitchRatio at every zoom, so a number offset sideways by
   // half a slot in EMS lands beside its own strand at every zoom too.
   const R = (linesMeta && linesMeta.pitchRatio) || 0.5;
-  const [P11, P14, P17] = [2.4, 4.4, 7.4];
+  // pitch barely above the stroke width (1.0 / 2.2 / 3.9): neighbours nearly
+  // touch, separated by a ~half-pixel hairline of casing (user request
+  // 21.08.2026 — "chcę aby linie były bliżej siebie, prawie się stykały").
+  // The Line width buttons scale stroke AND pitch together, so the proportion
+  // holds at every thickness.
+  const [P11, P14, P17] = [1.45, 2.7, 4.5];
   const zoomStops = (a, b, c) => ['interpolate', ['linear'], ['zoom'], 11, a, 14, b, 17, c];
   const STRAND_W = zoomStops(1.0, 2.2, 3.9);
   // the casing stays a touch narrower than the pitch — that difference IS the
@@ -819,6 +824,45 @@ async function init() {
   window.__labelScale = (f, g) => { if (g) labelScale[g] = f; else { labelScale.t = f; labelScale.s = f; } applyLabelScale(); };
   applyLabelScale();
 
+  // ---- route stroke width (the − / + row; user request 21.08.2026) ----
+  // One factor scales the drawn network in BOTH views: the corridor strokes,
+  // the per-line strands, their white casings and the trolleybus dash. In the
+  // lines view the SLOT PITCH scales with it — fatter strands on the original
+  // pitch would swallow the white gaps that keep neighbours apart. The number
+  // rows keep their pipeline-baked offsets: at 2× the digits sit closer to the
+  // outer strand, which is the same trade-off the label buttons already hand
+  // to the reader. The PNG exports clone the live style, so sheets inherit it.
+  const WIDTH_LAYERS = ['route-casing', 'route-line', 'route-trolley-dash',
+    'corridor-casing', 'corridor-line', 'strand-casing', 'strand-line'];
+  const WIDTH_BASE = WIDTH_LAYERS.filter((id) => map.getLayer(id))
+    .map((id) => ({ id, w: map.getPaintProperty(id, 'line-width') }));
+  const WIDTH_SCALES = [0.6, 0.8, 1, 1.25, 1.6, 2];
+  let lineScale = 1;
+  const slotOffset = () => scaleOut(SLOT_OFFSET, lineScale);
+  function applyLineWidth() {
+    for (const b of WIDTH_BASE) map.setPaintProperty(b.id, 'line-width', scaleOut(b.w, lineScale));
+    for (const id of ['strand-casing', 'strand-line'])
+      if (map.getLayer(id)) map.setPaintProperty(id, 'line-offset', state.selected ? 0 : slotOffset());
+    const out = document.getElementById('width-val');
+    if (out) out.textContent = Math.round(lineScale * 100) + '%';
+    const i = WIDTH_SCALES.indexOf(lineScale);
+    for (const [id, dir] of [['width-smaller', -1], ['width-bigger', 1]]) {
+      const b = document.getElementById(id);
+      if (b) b.disabled = (i + dir < 0 || i + dir >= WIDTH_SCALES.length);
+    }
+  }
+  for (const [id, dir] of [['width-smaller', -1], ['width-bigger', 1]]) {
+    const b = document.getElementById(id);
+    if (b) b.addEventListener('click', () => {
+      const i = WIDTH_SCALES.indexOf(lineScale);
+      lineScale = WIDTH_SCALES[Math.min(WIDTH_SCALES.length - 1, Math.max(0, i + dir))];
+      applyLineWidth();
+    });
+  }
+  // test hook
+  window.__lineScale = (f) => { lineScale = f; applyLineWidth(); };
+  applyLineWidth();
+
   // Mode filters (bus/tram) + line selection: clicking a chip shows only that
   // line's route with all of its stops (properties.arr carry the line lists).
   let densityCond = true; // repeat-thinning condition, set by the Number density row below
@@ -851,7 +895,7 @@ async function init() {
       map.setFilter('strand-casing', ['all', ['!=', ['get', 'sw'], 1], modeC, strandSel]);
       map.setFilter('strand-line', ['all', modeC, strandSel]);
       for (const id of ['strand-casing', 'strand-line'])
-        map.setPaintProperty(id, 'line-offset', state.selected ? 0 : SLOT_OFFSET);
+        map.setPaintProperty(id, 'line-offset', state.selected ? 0 : slotOffset());
         // The trunks are grey for the whole network, but a picked line is
       // repainted in its own colour exactly where it rides through them — so the
       // line reads end to end and the grey never swallows it.
@@ -917,14 +961,19 @@ async function init() {
     if (linesView) loadLines();
     for (const id of CORRIDOR_ONLY) map.setLayoutProperty(id, 'visibility', linesView ? 'none' : 'visible');
     for (const id of LINES_ONLY) if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', linesView ? 'visible' : 'none');
-    // the base: paper-cream districts and blue water, or flat grey
+    // the base: paper-cream districts and blue water, or flat grey. The view
+    // only supplies the DEFAULT — a click on the base switch decouples them,
+    // and the choice then holds in both views (user request 21.08.2026).
+    const greyBase = state.bg === 'auto' ? linesView : state.bg === 'grey';
     for (const b of BASE_PAINT) {
       if (!map.getLayer(b.id)) continue;
-      map.setPaintProperty(b.id, b.prop, linesView ? b.grey : b.paper);
+      map.setPaintProperty(b.id, b.prop, greyBase ? b.grey : b.paper);
     }
     // our own street names sit on top of the strokes in both views
     for (const id of ['transit-street-names', 'transit-street-names-low'])
-      if (map.getLayer(id)) map.setPaintProperty(id, 'text-color', linesView ? '#3c3c3c' : '#2b2924');
+      if (map.getLayer(id)) map.setPaintProperty(id, 'text-color', greyBase ? '#3c3c3c' : '#2b2924');
+    for (const b of document.querySelectorAll('#base-switch button'))
+      b.classList.toggle('on', (b.dataset.bg === 'grey') === greyBase);
     // A stop belongs to every line passing it, so on a map where colour means
     // "which line" it has to go neutral; in the corridor view it keeps the mode
     // colour it has always had.
@@ -955,6 +1004,13 @@ async function init() {
       applyView();
     });
   }
+  const bsw = document.getElementById('base-switch');
+  if (bsw) bsw.addEventListener('click', (e) => {
+    const b = e.target.closest('button');
+    if (!b || b.dataset.bg === state.bg) return;
+    state.bg = b.dataset.bg;
+    applyView();
+  });
   applyView();
 
   document.getElementById('chips').addEventListener('click', (e) => {

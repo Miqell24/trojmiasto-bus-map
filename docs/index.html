@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tricity Public Transport — interactive map</title>
 <link rel="stylesheet" href="vendor/maplibre-gl.css">
-<link rel="stylesheet" href="style.css?v=20260819a">
+<link rel="stylesheet" href="style.css?v=20260821b">
 </head>
 <body>
 <div id="map"></div>
@@ -49,6 +49,9 @@
       <span class="current">Tricity (Gdańsk–Gdynia–Sopot)</span>
       <a href="https://miqell24.github.io/grodzisk-bus-map/">Grodzisk Mazowiecki Region</a>
       <a href="https://miqell24.github.io/vienna-bus-map/">Vienna</a>
+      <a href="https://miqell24.github.io/budapest-bus-map/">Budapest</a>
+      <a href="https://miqell24.github.io/paris-bus-map/">Paris</a>
+      <a href="https://miqell24.github.io/copenhagen-bus-map/">Copenhagen</a>
       <a href="https://miqell24.github.io/bucharest-bus-map/">Bucharest &amp; Ilfov</a>
       <a href="https://miqell24.github.io/cluj-bus-map/">Cluj-Napoca</a>
       <a href="https://miqell24.github.io/timisoara-bus-map/">Timișoara</a>
@@ -73,6 +76,11 @@
   <div id="view-switch" class="viewsw" role="group" aria-label="Map view">
     <button type="button" data-view="corridors" class="on">Corridors</button>
     <button type="button" data-view="lines">Lines</button>
+  </div>
+  <div id="base-switch" class="viewsw basesw" role="group" aria-label="Base map colours"
+       title="The base map underneath the network: the paper look or the flat grey. Your pick holds in both views.">
+    <button type="button" data-bg="paper">Paper base</button>
+    <button type="button" data-bg="grey">Grey base</button>
   </div>
   <p class="hint viewhint corridor-only">One stroke per roadway, the whole network in three colours.</p>
   <p class="hint viewhint lines-only">Every line drawn on its own, in its own colour — up to four side by side.</p>
@@ -110,6 +118,12 @@
     <span id="density-val">100%</span>
     <button id="density-bigger" aria-label="Denser number rows">+</button>
   </div>
+  <div class="labelsize" title="Scales the drawn route strokes in both views — the corridor strokes, the per-line strands and their white casing. The PNG exports use this too.">
+    <span class="lbl">Line width</span>
+    <button id="width-smaller" aria-label="Thinner route lines">&minus;</button>
+    <span id="width-val">100%</span>
+    <button id="width-bigger" aria-label="Thicker route lines">+</button>
+  </div>
   <div class="export">
     <button id="export-png" title="Renders the visible view as a large print-quality PNG — street and stop names become legible as you zoom into the image">Export PNG — current view</button>
     <button id="export-area" title="Drag a rectangle on the map; that area is rendered as a large print-quality PNG">Export PNG — select area</button>
@@ -119,6 +133,6 @@
   <label class="debug"><input type="checkbox" id="toggle-shape"> show raw GTFS shapes (QA)</label>
 </aside>
 <script src="vendor/maplibre-gl.js"></script>
-<script src="app.js?v=20260819a"></script>
+<script src="app.js?v=20260821b"></script>
 </body>
 </html>

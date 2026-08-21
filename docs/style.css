@@ -51,6 +51,11 @@ body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
   color: var(--kmk); background: #fff; border: 0; cursor: pointer;
 }
 .viewsw button + button { border-left: 1px solid var(--kmk); }
+.basesw { margin-top: -4px; border-color: #9aa4b1; }
+.basesw button { color: #4a5158; }
+.basesw button + button { border-left-color: #9aa4b1; }
+.basesw button:hover { background: #f0f1f3; }
+.basesw button.on { background: #6f757e; color: #fff; }
 .viewsw button:hover { background: #eef4fb; }
 .viewsw button.on { background: var(--kmk); color: #fff; }
 .viewhint { margin: 0 0 8px; }
