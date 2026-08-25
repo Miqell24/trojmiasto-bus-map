@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
-  "description": "Interactive map of Poznań public transport (ZTM) — GTFS + OSM + HMM map matching",
+  "description": "Interactive map of Tricity public transport (ZTM Gdańsk buses/trams, ZKM Gdynia buses/trolleybuses) — GTFS + OSM + HMM map matching",
   "scripts": {
     "download": "bash pipeline/download.sh",
     "build": "node --max-old-space-size=6144 pipeline/build.mjs --all --tram all",
