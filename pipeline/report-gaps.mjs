@@ -15,11 +15,11 @@ const t0 = Date.now();
 const log = (m) => console.log(`[${((Date.now() - t0) / 1000).toFixed(1)}s] ${m}`);
 
 // ---------- feed_info + routes + trips ----------
-const feedInfo = (await readCsv(join(ROOT, 'data/gtfs/feed_info.txt')))[0] || {};
-const routes = await readCsv(join(ROOT, 'data/gtfs/routes.txt'));
+const feedInfo = (await readCsv(join(ROOT, 'data/gtfs-gdansk/feed_info.txt')))[0] || {};
+const routes = await readCsv(join(ROOT, 'data/gtfs-gdansk/routes.txt'));
 const routeToLine = new Map(routes.map((r) => [r.route_id, r.route_short_name]));
 const shapeLines = new Map(); // shape_id -> Set(line)
-for await (const t of iterCsv(join(ROOT, 'data/gtfs/trips.txt'))) {
+for await (const t of iterCsv(join(ROOT, 'data/gtfs-gdansk/trips.txt'))) {
   const L = routeToLine.get(t.route_id);
   if (!L || !t.shape_id) continue;
   let s = shapeLines.get(t.shape_id);
@@ -30,7 +30,7 @@ log(`shapes in use: ${shapeLines.size}`);
 
 // ---------- shapes.txt: gap detection ----------
 const pts = new Map();
-for await (const s of iterCsv(join(ROOT, 'data/gtfs/shapes.txt'))) {
+for await (const s of iterCsv(join(ROOT, 'data/gtfs-gdansk/shapes.txt'))) {
   if (!shapeLines.has(s.shape_id)) continue;
   let a = pts.get(s.shape_id);
   if (!a) pts.set(s.shape_id, (a = []));
@@ -69,7 +69,7 @@ log(`locations after grouping: ${clusters.length}`);
 
 // ---------- nearest named OSM street (approximate) ----------
 log('Indexing named OSM streets…');
-const osm = JSON.parse(readFileSync(join(ROOT, 'data/osm/poznan.json'), 'utf8'));
+const osm = JSON.parse(readFileSync(join(ROOT, 'data/osm/trojmiasto.json'), 'utf8'));
 const CELL = 250;
 const nameGrid = new Map();
 for (const el of osm.elements) {
