@@ -383,3 +383,19 @@ details.journey .beta {
   margin: 0;
   font-size: 16px;
 }
+
+/* City-switch filter — type a city instead of scrolling the list */
+.city-switch nav .city-filter {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 4px 8px;
+  margin-bottom: 3px;
+  border: 1px solid #ccd6e4;
+  border-radius: 6px;
+  background: #fff;
+  color: #223;
+}
+.city-switch nav .city-filter:focus { outline: none; border-color: var(--kmk); box-shadow: 0 0 0 2px rgba(0, 89, 169, 0.2); }
+@media (pointer: coarse) { .city-switch nav .city-filter { font-size: 16px; } }
