@@ -221,7 +221,8 @@ async function init() {
     ...Object.entries(LINE_COLORS).flatMap(([l, c]) => [l, c]), CORRIDOR_INK];
   const paintChips = (linesView) => {
     document.getElementById('chips').innerHTML = meta.lines
-      .map((l) => `<button class="chip${l.line === state.selected ? ' active' : ''}" data-line="${esc(l.line)}" ` +
+      .map((l) => `<button class="chip${l.line === state.selected && l.mode === state.selectedMode ? ' active' : ''}" ` +
+        `data-line="${esc(l.line)}" data-mode="${esc(l.mode)}" ` +
         `style="background:${esc(linesView ? lineColor(l.line) : l.color)}">${esc(l.line)}</button>`)
       .join(' ');
   };
@@ -231,7 +232,10 @@ async function init() {
   // and 'lines' redraws the same data line by line, up to four coloured strands
   // side by side, everything busier as one grey trunk. Both views are built from
   // the same files; the switch is layers and paint, never a reload.
-  const state = { bus: true, tram: true, selected: null, journey: null, view: 'corridors', bg: 'auto' };
+  // selectedMode rides along with selected: MZK Wejherowo's buses 1–13 repeat
+  // Gdańsk's tram numbers, so a bare key would light both networks at once
+  // (the Naples E6 case — same fix).
+  const state = { bus: true, tram: true, selected: null, selectedMode: null, journey: null, view: 'corridors', bg: 'auto' };
   paintChips(false);
 
   // Line layers go below the base style labels (street names stay readable).
@@ -883,7 +887,8 @@ async function init() {
     // line's return run and the rest of its route were noise) — the ride is
     // drawn complete by the journey overlay: legs, via stops, numbers
     const selC = state.journey ? false
-      : state.selected ? ['in', state.selected, ['get', 'arr']] : true;
+      : state.selected ? ['all', ['in', state.selected, ['get', 'arr']],
+                                 ['==', ['get', 'mode'], state.selectedMode]] : true;
     map.setFilter('route-casing', ['all', modeC, selC]);
     map.setFilter('route-line', ['all', modeC, selC]);
     map.setFilter('route-trolley-dash', ['all', ['==', ['get', 'trolley'], 'mix'], modeC, selC]);
@@ -891,7 +896,8 @@ async function init() {
       // A picked line keeps only its own strands, and they step back onto the
       // roadway centre: a slot is only meaningful inside a bundle being drawn.
       const strandSel = state.journey ? false
-        : state.selected ? ['==', ['get', 'line'], state.selected] : true;
+        : state.selected ? ['all', ['==', ['get', 'line'], state.selected],
+                                   ['==', ['get', 'mode'], state.selectedMode]] : true;
       map.setFilter('strand-casing', ['all', ['!=', ['get', 'sw'], 1], modeC, strandSel]);
       map.setFilter('strand-line', ['all', modeC, strandSel]);
       for (const id of ['strand-casing', 'strand-line'])
@@ -914,7 +920,8 @@ async function init() {
     BADGE_LAYERS.forEach((id, b) => {
       map.setFilter(id, ['all', bandC(b), ['has', 'line'], modeC,
         state.journey ? false
-          : state.selected ? ['==', ['get', 'line'], state.selected] : true]);
+          : state.selected ? ['all', ['==', ['get', 'line'], state.selected],
+                                    ['==', ['get', 'mode'], state.selectedMode]] : true]);
     });
     // complex name rows follow: shown while any of the complex's modes is on
     // ('in' does substring search on the "bus,tram" string), and with a line
@@ -925,7 +932,8 @@ async function init() {
     BADGE_NAME_LAYERS.forEach((id, b) => {
       map.setFilter(id, ['all', bandC(b), ['has', 'name'], nameModeC,
         state.journey ? false
-          : state.selected ? ['in', state.selected, ['get', 'arr']] : true]);
+          : state.selected ? ['all', ['in', state.selected, ['get', 'arr']],
+                                    ['in', state.selectedMode, ['get', 'modes']]] : true]);
     });
     let numC, numField;
     if (state.bus && !state.tram) {
@@ -1016,8 +1024,11 @@ async function init() {
   document.getElementById('chips').addEventListener('click', (e) => {
     const b = e.target.closest('.chip');
     if (!b) return;
-    state.selected = state.selected === b.dataset.line ? null : b.dataset.line;
-    document.querySelectorAll('#chips .chip').forEach((c) => c.classList.toggle('active', c.dataset.line === state.selected));
+    const same = state.selected === b.dataset.line && state.selectedMode === b.dataset.mode;
+    state.selected = same ? null : b.dataset.line;
+    state.selectedMode = same ? null : b.dataset.mode;
+    document.querySelectorAll('#chips .chip').forEach((c) =>
+      c.classList.toggle('active', c.dataset.line === state.selected && c.dataset.mode === state.selectedMode));
     applyFilters();
   });
   for (const [id, key] of [['toggle-bus', 'bus'], ['toggle-tram', 'tram']]) {

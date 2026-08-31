@@ -111,6 +111,17 @@ const MODES = [{
   // kept as the fallback for a feed that reverts, not as a live correction.
   // Re-check on every refresh.
   trolleyExtra: ['34', '181'],
+}, {
+  // MZK Wejherowo — the city network of Wejherowo, Reda and the villages west
+  // of them (Bolszewo, Gościcino, Orle, Kębłowo, Gniewowo, Kąpino, Gowino);
+  // ZKM Gdynia's J only brushes the town, this is the local grid. The numbers
+  // 1–19 repeat Gdańsk's TRAM numbers, never a bus — modes keep them apart
+  // (selection is line+mode in the app, exactly the Naples E6 case).
+  mode: 'bus', label: 'buses (MZK Wejherowo)', gtfsDir: 'data/gtfs-wejherowo', osmFile: 'data/osm/trojmiasto.json',
+  graphMode: 'road', color: '#0059a9', colorDark: '#00294f', routeTypes: ['3'],
+  all: busAll, lines: busList.length ? busList : (busAll ? [] : ['3']),
+  // 701 is the depot shuttle ("Zjazd do zajezdni"), a working, not a city line
+  exclude: new Set(['701']),
 }];
 const tramAll = tramLines.length === 1 && tramLines[0] === 'all';
 if (tramLines.length) MODES.push({
@@ -215,11 +226,13 @@ async function processMode(cfg) {
   const allRoutes = await readCsv(join(ROOT, cfg.gtfsDir, 'routes.txt'));
   // one feed, two modes: keep only this mode's route_type (see MODES above), so a
   // tram and a bus that share a line number never end up in the same mode either
-  const routes = cfg.routeTypes
+  let routes = cfg.routeTypes
     ? allRoutes.filter((r) => cfg.routeTypes.includes(r.route_type))
     : allRoutes;
   // feed quirk: some short names carry stray whitespace ("14 " vs "14")
   for (const r of routes) r.route_short_name = (r.route_short_name || '').trim();
+  // depot workings excluded per operator (see MODES) — they are runs, not lines
+  if (cfg.exclude) routes = routes.filter((r) => !cfg.exclude.has(r.route_short_name));
   // trolleybuses (GTFS route_type 11) ride the same roads but get their own color;
   // the set also flags shared bus+trolleybus roadways for the dashed overlay
   if (cfg.mode === 'bus') {
@@ -369,10 +382,12 @@ async function processMode(cfg) {
   const stopsById = new Map();
   for (const s of await readCsv(join(ROOT, cfg.gtfsDir, 'stops.txt'))) {
     // feed names carry double spaces here and there — collapse for clean labels.
-    // Both Tricity feeds name every pole individually ("Oliwa 07", "Śląska 02");
-    // the trailing two-digit pole number is dropped so the poles of one stop
-    // share a label and cluster like on the printed map.
-    const name = (s.stop_name || '').replace(/\s+/g, ' ').trim().replace(/\s\d{2}$/, '')
+    // All three feeds name every pole individually ("Oliwa 07", "Śląska 02");
+    // MZK Wejherowo additionally flags request stops ("Równa 01 n/ż"). The
+    // marker and the trailing two-digit pole number are dropped so the poles
+    // of one stop share a label and cluster like on the printed map.
+    const name = (s.stop_name || '').replace(/\s+/g, ' ').trim()
+      .replace(/\s+n\/ż$/, '').replace(/\s\d{2}$/, '')
       // ZTM Gdańsk city-prefixes Sopot stops whose names already start with
       // "Sopot" ("Sopot Sopot PKP") — collapse the doubled word
       .replace(/^(\S+) \1( |$)/, '$1$2');

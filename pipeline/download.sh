@@ -49,12 +49,21 @@ if [ ! -f data/gtfs-gdynia/routes.txt ]; then
   unzip -o data/zkm_gdynia_gtfs.zip -d data/gtfs-gdynia
 fi
 
-# 2) OSM — roadways over both networks (GTFS stops extent + margin: ZKM lines
-#    reach Wejherowo and Reda in the north-west, ZTM lines reach Pruszcz
-#    Gdański in the south), incl. highway=construction
+# 1c) GTFS — MZK Wejherowo (city buses of Wejherowo/Reda + villages west);
+#     the operator publishes no GTFS of its own — mkuran.pl generates one
+if [ ! -f data/gtfs-wejherowo/routes.txt ]; then
+  echo "== MZK Wejherowo GTFS =="
+  curl -fL --retry 3 --max-time 600 -o data/mzk_wejherowo_gtfs.zip \
+    "https://mkuran.pl/gtfs/wejherowo.zip"
+  unzip -o data/mzk_wejherowo_gtfs.zip -d data/gtfs-wejherowo
+fi
+
+# 2) OSM — roadways over the three networks (GTFS stops extent + margin: MZK
+#    lines reach Gościcino, Orle, Kębłowo and Gowino west of Wejherowo, ZTM
+#    lines reach Pruszcz Gdański in the south), incl. highway=construction
 if [ ! -f data/osm/trojmiasto.json ]; then
   echo "== Overpass (roads) =="
-  Q='[out:json][timeout:900];way(54.21,18.18,54.66,18.97)["highway"~"^(motorway|trunk|primary|secondary|tertiary|unclassified|residential|living_street|service|busway|construction|motorway_link|trunk_link|primary_link|secondary_link|tertiary_link)$"];out geom;'
+  Q='[out:json][timeout:900];way(54.21,18.04,54.66,18.97)["highway"~"^(motorway|trunk|primary|secondary|tertiary|unclassified|residential|living_street|service|busway|construction|motorway_link|trunk_link|primary_link|secondary_link|tertiary_link)$"];out geom;'
   ok=0
   for EP in "https://overpass-api.de/api/interpreter" \
             "https://maps.mail.ru/osm/tools/overpass/api/interpreter" \

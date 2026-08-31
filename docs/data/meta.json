@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-21T08:50:02.940Z",
+  "generatedAt": "2026-08-31T08:00:56.073Z",
   "bbox": [
-    18.214102,
+    18.097293,
     54.237541,
     18.934286,
-    54.632634
+    54.640968
   ],
   "badgeBands": [
     [
@@ -37,6 +37,11 @@
     {
       "mode": "bus",
       "label": "buses & trolleybuses (ZKM Gdynia)",
+      "color": "#0059a9"
+    },
+    {
+      "mode": "bus",
+      "label": "buses (MZK Wejherowo)",
       "color": "#0059a9"
     },
     {
@@ -8650,6 +8655,818 @@
             "rawMeters": 0,
             "meanError": 1.236816169907856,
             "roundaboutSegs": 48,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "1",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Os. Fenikowskiego",
+          "variants": 10,
+          "tripCount": 31,
+          "stops": 28,
+          "lengthKm": 15.27,
+          "stats": {
+            "observations": 710,
+            "matched": 710,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5150363616637047,
+            "roundaboutSegs": 27,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Góra Szkolna",
+          "variants": 6,
+          "tripCount": 30,
+          "stops": 29,
+          "lengthKm": 15.9,
+          "stats": {
+            "observations": 748,
+            "matched": 748,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5662057410843173,
+            "roundaboutSegs": 20,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "2",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "Wejherowo Szpital",
+          "headsign": "Wejherowo Szpital",
+          "variants": 4,
+          "tripCount": 154,
+          "stops": 29,
+          "lengthKm": 11.39,
+          "stats": {
+            "observations": 558,
+            "matched": 558,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.6078861021392312,
+            "roundaboutSegs": 70,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "3",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Os. Sikorskiego",
+          "variants": 2,
+          "tripCount": 103,
+          "stops": 26,
+          "lengthKm": 12.27,
+          "stats": {
+            "observations": 599,
+            "matched": 599,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5018240875614194,
+            "roundaboutSegs": 39,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Gościcino Cmentarz",
+          "variants": 4,
+          "tripCount": 96,
+          "stops": 27,
+          "lengthKm": 12.8,
+          "stats": {
+            "observations": 615,
+            "matched": 615,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5445924805144973,
+            "roundaboutSegs": 44,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "4",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Os. Fenikowskiego",
+          "variants": 10,
+          "tripCount": 6,
+          "stops": 31,
+          "lengthKm": 14.9,
+          "stats": {
+            "observations": 735,
+            "matched": 735,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.655829652696411,
+            "roundaboutSegs": 120,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Orle Łąkowa",
+          "variants": 5,
+          "tripCount": 21,
+          "stops": 30,
+          "lengthKm": 14.72,
+          "stats": {
+            "observations": 712,
+            "matched": 712,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.6132668063482603,
+            "roundaboutSegs": 116,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "5",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Szpital",
+          "variants": 10,
+          "tripCount": 71,
+          "stops": 22,
+          "lengthKm": 10.1,
+          "stats": {
+            "observations": 493,
+            "matched": 493,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5319428964241849,
+            "roundaboutSegs": 31,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Orle Łąkowa",
+          "variants": 9,
+          "tripCount": 66,
+          "stops": 21,
+          "lengthKm": 10,
+          "stats": {
+            "observations": 489,
+            "matched": 489,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5113386405222413,
+            "roundaboutSegs": 31,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "6",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Szpital",
+          "variants": 4,
+          "tripCount": 24,
+          "stops": 13,
+          "lengthKm": 5.87,
+          "stats": {
+            "observations": 295,
+            "matched": 295,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.7180129094185005,
+            "roundaboutSegs": 37,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Wejherowo Os. Fenikowskiego",
+          "variants": 2,
+          "tripCount": 25,
+          "stops": 13,
+          "lengthKm": 5.6,
+          "stats": {
+            "observations": 281,
+            "matched": 281,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.747292294477953,
+            "roundaboutSegs": 44,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "7",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Cegielnia",
+          "variants": 10,
+          "tripCount": 4,
+          "stops": 18,
+          "lengthKm": 9.41,
+          "stats": {
+            "observations": 467,
+            "matched": 467,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.8077293022015436,
+            "roundaboutSegs": 41,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Gościcino Szkoła",
+          "variants": 8,
+          "tripCount": 4,
+          "stops": 17,
+          "lengthKm": 10.06,
+          "stats": {
+            "observations": 504,
+            "matched": 504,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.743491013313869,
+            "roundaboutSegs": 48,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "8",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Szpital",
+          "variants": 6,
+          "tripCount": 22,
+          "stops": 35,
+          "lengthKm": 17.44,
+          "stats": {
+            "observations": 830,
+            "matched": 830,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.6376167984852873,
+            "roundaboutSegs": 47,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Rumia C.H. „Port Rumia”",
+          "variants": 10,
+          "tripCount": 19,
+          "stops": 30,
+          "lengthKm": 17.05,
+          "stats": {
+            "observations": 813,
+            "matched": 813,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.6388026314701692,
+            "roundaboutSegs": 41,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "9",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Reda Rekowo Lipowa",
+          "variants": 6,
+          "tripCount": 103,
+          "stops": 22,
+          "lengthKm": 11.71,
+          "stats": {
+            "observations": 586,
+            "matched": 586,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.4418339507819089,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Rumia Dworzec PKP",
+          "variants": 4,
+          "tripCount": 103,
+          "stops": 24,
+          "lengthKm": 11.53,
+          "stats": {
+            "observations": 551,
+            "matched": 551,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.48348886273969943,
+            "roundaboutSegs": 20,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "10",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Pomorska",
+          "variants": 6,
+          "tripCount": 47,
+          "stops": 20,
+          "lengthKm": 13.3,
+          "stats": {
+            "observations": 635,
+            "matched": 635,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.7836735432207449,
+            "roundaboutSegs": 2,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Kębłowo Wiejska",
+          "variants": 10,
+          "tripCount": 43,
+          "stops": 22,
+          "lengthKm": 13.82,
+          "stats": {
+            "observations": 645,
+            "matched": 645,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.8286341086600374,
+            "roundaboutSegs": 3,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "11",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Krofeya",
+          "variants": 5,
+          "tripCount": 25,
+          "stops": 25,
+          "lengthKm": 13.62,
+          "stats": {
+            "observations": 671,
+            "matched": 671,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5513353592790186,
+            "roundaboutSegs": 71,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Gniewowo Spacerowa",
+          "variants": 8,
+          "tripCount": 21,
+          "stops": 27,
+          "lengthKm": 13.26,
+          "stats": {
+            "observations": 653,
+            "matched": 653,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5706582555399201,
+            "roundaboutSegs": 65,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "12",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Kąpino Parkowa",
+          "variants": 8,
+          "tripCount": 44,
+          "stops": 23,
+          "lengthKm": 14.08,
+          "stats": {
+            "observations": 706,
+            "matched": 706,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.9178920581387203,
+            "roundaboutSegs": 26,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Gowino Brzozowa",
+          "variants": 6,
+          "tripCount": 45,
+          "stops": 22,
+          "lengthKm": 14.54,
+          "stats": {
+            "observations": 715,
+            "matched": 715,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.9539865600799338,
+            "roundaboutSegs": 34,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "13",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "Wejherowo Szpital",
+          "headsign": "Wejherowo Szpital",
+          "variants": 3,
+          "tripCount": 5,
+          "stops": 16,
+          "lengthKm": 6.19,
+          "stats": {
+            "observations": 312,
+            "matched": 312,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.6320716813927629,
+            "roundaboutSegs": 54,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "16",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wejherowo Os. Sikorskiego",
+          "variants": 4,
+          "tripCount": 63,
+          "stops": 17,
+          "lengthKm": 6.7,
+          "stats": {
+            "observations": 337,
+            "matched": 337,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.6099287338003899,
+            "roundaboutSegs": 44,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Wejherowo Krofeya",
+          "variants": 2,
+          "tripCount": 76,
+          "stops": 16,
+          "lengthKm": 6.79,
+          "stats": {
+            "observations": 329,
+            "matched": 329,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5437773355960969,
+            "roundaboutSegs": 50,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "17",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Reda Pieleszewo Karłowicza",
+          "variants": 9,
+          "tripCount": 8,
+          "stops": 21,
+          "lengthKm": 10.32,
+          "stats": {
+            "observations": 503,
+            "matched": 503,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5803771466830224,
+            "roundaboutSegs": 58,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Reda Gniewowska - Cmentarz",
+          "variants": 7,
+          "tripCount": 9,
+          "stops": 22,
+          "lengthKm": 10.16,
+          "stats": {
+            "observations": 494,
+            "matched": 494,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.6019968648647356,
+            "roundaboutSegs": 35,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "18",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "Reda Ciechocino",
+          "headsign": "Reda Ciechocino",
+          "variants": 2,
+          "tripCount": 2,
+          "stops": 24,
+          "lengthKm": 9.97,
+          "stats": {
+            "observations": 501,
+            "matched": 501,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5681543371814547,
+            "roundaboutSegs": 52,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Reda Dworzec PKP",
+          "headsign": "Reda Dworzec PKP",
+          "variants": 2,
+          "tripCount": 12,
+          "stops": 34,
+          "lengthKm": 14.44,
+          "stats": {
+            "observations": 725,
+            "matched": 725,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5644864328445376,
+            "roundaboutSegs": 60,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Rumia C.H. „Port Rumia”",
+          "headsign": "Rumia C.H. „Port Rumia”",
+          "variants": 4,
+          "tripCount": 12,
+          "stops": 32,
+          "lengthKm": 14.57,
+          "stats": {
+            "observations": 731,
+            "matched": 731,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5435519975158208,
+            "roundaboutSegs": 53,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ]
+    },
+    {
+      "line": "19",
+      "mode": "bus",
+      "color": "#0059a9",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Reda Os. Konopnickiej",
+          "variants": 1,
+          "tripCount": 22,
+          "stops": 17,
+          "lengthKm": 9.61,
+          "stats": {
+            "observations": 470,
+            "matched": 470,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.558276829283027,
+            "roundaboutSegs": 51,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Rumia Derdowskiego - Przychodnia",
+          "variants": 1,
+          "tripCount": 22,
+          "stops": 17,
+          "lengthKm": 9.16,
+          "stats": {
+            "observations": 421,
+            "matched": 421,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.5668483053100235,
+            "roundaboutSegs": 64,
             "extStart": 0,
             "extEnd": 0
           }
