@@ -8742,6 +8742,585 @@
       "rank": 1
     },
     {
+      "line": "2",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Strzyża PKM",
+          "variants": 15,
+          "tripCount": 120,
+          "stops": 48,
+          "lengthKm": 20.82,
+          "stats": {
+            "observations": 933,
+            "matched": 917,
+            "noCandidates": 16,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.835135768666486,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Lawendowe Wzgórze",
+          "variants": 15,
+          "tripCount": 660,
+          "stops": 39,
+          "lengthKm": 17.09,
+          "stats": {
+            "observations": 795,
+            "matched": 795,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.5296364316633295,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "3",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Łostowice Świętokrzyska",
+          "variants": 12,
+          "tripCount": 130,
+          "stops": 37,
+          "lengthKm": 16.91,
+          "stats": {
+            "observations": 810,
+            "matched": 788,
+            "noCandidates": 22,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.492810827120449,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Nowy Port Zajezdnia",
+          "variants": 7,
+          "tripCount": 160,
+          "stops": 37,
+          "lengthKm": 16.76,
+          "stats": {
+            "observations": 791,
+            "matched": 768,
+            "noCandidates": 23,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.049063825566383,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "5",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Nowy Port Oliwska",
+          "variants": 18,
+          "tripCount": 380,
+          "stops": 34,
+          "lengthKm": 14.71,
+          "stats": {
+            "observations": 654,
+            "matched": 654,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.554840450229319,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Obrońców Westerplatte",
+          "variants": 14,
+          "tripCount": 93,
+          "stops": 34,
+          "lengthKm": 14.42,
+          "stats": {
+            "observations": 676,
+            "matched": 654,
+            "noCandidates": 22,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.3582932372040066,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "6",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Jelitkowo",
+          "variants": 16,
+          "tripCount": 710,
+          "stops": 40,
+          "lengthKm": 18.07,
+          "stats": {
+            "observations": 801,
+            "matched": 801,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.5458849422393335,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Łostowice Świętokrzyska",
+          "variants": 17,
+          "tripCount": 650,
+          "stops": 40,
+          "lengthKm": 18.04,
+          "stats": {
+            "observations": 795,
+            "matched": 795,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.4464479932565095,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "7",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "Nowy Port Zajezdnia",
+          "headsign": "Nowy Port Zajezdnia",
+          "variants": 1,
+          "tripCount": 14,
+          "stops": 24,
+          "lengthKm": 10.83,
+          "stats": {
+            "observations": 497,
+            "matched": 497,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.9758517272722864,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "8",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Dworzec Główny",
+          "variants": 17,
+          "tripCount": 740,
+          "stops": 25,
+          "lengthKm": 10.24,
+          "stats": {
+            "observations": 486,
+            "matched": 486,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.4476894014363726,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Jelitkowo",
+          "variants": 8,
+          "tripCount": 750,
+          "stops": 25,
+          "lengthKm": 9.97,
+          "stats": {
+            "observations": 473,
+            "matched": 473,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.3506748299376292,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "9",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Dworzec Główny",
+          "variants": 9,
+          "tripCount": 580,
+          "stops": 17,
+          "lengthKm": 6.8,
+          "stats": {
+            "observations": 302,
+            "matched": 302,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.2280375027604975,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Strzyża PKM",
+          "variants": 9,
+          "tripCount": 610,
+          "stops": 17,
+          "lengthKm": 6.9,
+          "stats": {
+            "observations": 321,
+            "matched": 306,
+            "noCandidates": 15,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.4748386382997145,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "10",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Brętowo PKM",
+          "variants": 9,
+          "tripCount": 760,
+          "stops": 30,
+          "lengthKm": 13.72,
+          "stats": {
+            "observations": 657,
+            "matched": 635,
+            "noCandidates": 22,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.8821336710427048,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Nowy Port Zajezdnia",
+          "variants": 9,
+          "tripCount": 760,
+          "stops": 30,
+          "lengthKm": 13.61,
+          "stats": {
+            "observations": 650,
+            "matched": 628,
+            "noCandidates": 22,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.9858682476103064,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "11",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Lawendowe Wzgórze",
+          "variants": 6,
+          "tripCount": 430,
+          "stops": 30,
+          "lengthKm": 13.94,
+          "stats": {
+            "observations": 659,
+            "matched": 659,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.6486796590581807,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Strzyża PKM",
+          "variants": 6,
+          "tripCount": 410,
+          "stops": 31,
+          "lengthKm": 14.04,
+          "stats": {
+            "observations": 676,
+            "matched": 661,
+            "noCandidates": 15,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.013704201562509,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "12",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Zaspa",
+          "variants": 13,
+          "tripCount": 730,
+          "stops": 48,
+          "lengthKm": 21.82,
+          "stats": {
+            "observations": 990,
+            "matched": 990,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.5178385133723795,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Ujeścisko",
+          "variants": 11,
+          "tripCount": 750,
+          "stops": 50,
+          "lengthKm": 21.79,
+          "stats": {
+            "observations": 989,
+            "matched": 989,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.7534265032403311,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "60",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Nowy Port Oliwska",
+          "variants": 2,
+          "tripCount": 24,
+          "stops": 31,
+          "lengthKm": 13.02,
+          "stats": {
+            "observations": 614,
+            "matched": 614,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.5221709319602483,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Oliwa",
+          "variants": 2,
+          "tripCount": 8,
+          "stops": 35,
+          "lengthKm": 14.01,
+          "stats": {
+            "observations": 680,
+            "matched": 658,
+            "noCandidates": 22,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.3766361967300682,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "line": "63",
+      "mode": "tram",
+      "color": "#d6212b",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Brzeźno Dom Zdrojowy",
+          "variants": 1,
+          "tripCount": 91,
+          "stops": 35,
+          "lengthKm": 15.98,
+          "stats": {
+            "observations": 728,
+            "matched": 728,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.8461685096046645,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Ujeścisko",
+          "variants": 2,
+          "tripCount": 91,
+          "stops": 35,
+          "lengthKm": 15.98,
+          "stats": {
+            "observations": 741,
+            "matched": 741,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.562022460376755,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 1
+    },
+    {
       "line": "N1",
       "mode": "bus",
       "color": "#000000",
@@ -9669,585 +10248,6 @@
         }
       ],
       "rank": 2
-    },
-    {
-      "line": "2",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Strzyża PKM",
-          "variants": 15,
-          "tripCount": 120,
-          "stops": 48,
-          "lengthKm": 20.82,
-          "stats": {
-            "observations": 933,
-            "matched": 917,
-            "noCandidates": 16,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.835135768666486,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Lawendowe Wzgórze",
-          "variants": 15,
-          "tripCount": 660,
-          "stops": 39,
-          "lengthKm": 17.09,
-          "stats": {
-            "observations": 795,
-            "matched": 795,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.5296364316633295,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "3",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Łostowice Świętokrzyska",
-          "variants": 12,
-          "tripCount": 130,
-          "stops": 37,
-          "lengthKm": 16.91,
-          "stats": {
-            "observations": 810,
-            "matched": 788,
-            "noCandidates": 22,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.492810827120449,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Nowy Port Zajezdnia",
-          "variants": 7,
-          "tripCount": 160,
-          "stops": 37,
-          "lengthKm": 16.76,
-          "stats": {
-            "observations": 791,
-            "matched": 768,
-            "noCandidates": 23,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.049063825566383,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "5",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Nowy Port Oliwska",
-          "variants": 18,
-          "tripCount": 380,
-          "stops": 34,
-          "lengthKm": 14.71,
-          "stats": {
-            "observations": 654,
-            "matched": 654,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.554840450229319,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Obrońców Westerplatte",
-          "variants": 14,
-          "tripCount": 93,
-          "stops": 34,
-          "lengthKm": 14.42,
-          "stats": {
-            "observations": 676,
-            "matched": 654,
-            "noCandidates": 22,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.3582932372040066,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "6",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Jelitkowo",
-          "variants": 16,
-          "tripCount": 710,
-          "stops": 40,
-          "lengthKm": 18.07,
-          "stats": {
-            "observations": 801,
-            "matched": 801,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.5458849422393335,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Łostowice Świętokrzyska",
-          "variants": 17,
-          "tripCount": 650,
-          "stops": 40,
-          "lengthKm": 18.04,
-          "stats": {
-            "observations": 795,
-            "matched": 795,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.4464479932565095,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "7",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "Nowy Port Zajezdnia",
-          "headsign": "Nowy Port Zajezdnia",
-          "variants": 1,
-          "tripCount": 14,
-          "stops": 24,
-          "lengthKm": 10.83,
-          "stats": {
-            "observations": 497,
-            "matched": 497,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.9758517272722864,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "8",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Dworzec Główny",
-          "variants": 17,
-          "tripCount": 740,
-          "stops": 25,
-          "lengthKm": 10.24,
-          "stats": {
-            "observations": 486,
-            "matched": 486,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.4476894014363726,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Jelitkowo",
-          "variants": 8,
-          "tripCount": 750,
-          "stops": 25,
-          "lengthKm": 9.97,
-          "stats": {
-            "observations": 473,
-            "matched": 473,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.3506748299376292,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "9",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Dworzec Główny",
-          "variants": 9,
-          "tripCount": 580,
-          "stops": 17,
-          "lengthKm": 6.8,
-          "stats": {
-            "observations": 302,
-            "matched": 302,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.2280375027604975,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Strzyża PKM",
-          "variants": 9,
-          "tripCount": 610,
-          "stops": 17,
-          "lengthKm": 6.9,
-          "stats": {
-            "observations": 321,
-            "matched": 306,
-            "noCandidates": 15,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.4748386382997145,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "10",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Brętowo PKM",
-          "variants": 9,
-          "tripCount": 760,
-          "stops": 30,
-          "lengthKm": 13.72,
-          "stats": {
-            "observations": 657,
-            "matched": 635,
-            "noCandidates": 22,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.8821336710427048,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Nowy Port Zajezdnia",
-          "variants": 9,
-          "tripCount": 760,
-          "stops": 30,
-          "lengthKm": 13.61,
-          "stats": {
-            "observations": 650,
-            "matched": 628,
-            "noCandidates": 22,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.9858682476103064,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "11",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Lawendowe Wzgórze",
-          "variants": 6,
-          "tripCount": 430,
-          "stops": 30,
-          "lengthKm": 13.94,
-          "stats": {
-            "observations": 659,
-            "matched": 659,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.6486796590581807,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Strzyża PKM",
-          "variants": 6,
-          "tripCount": 410,
-          "stops": 31,
-          "lengthKm": 14.04,
-          "stats": {
-            "observations": 676,
-            "matched": 661,
-            "noCandidates": 15,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.013704201562509,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "12",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Zaspa",
-          "variants": 13,
-          "tripCount": 730,
-          "stops": 48,
-          "lengthKm": 21.82,
-          "stats": {
-            "observations": 990,
-            "matched": 990,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.5178385133723795,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Ujeścisko",
-          "variants": 11,
-          "tripCount": 750,
-          "stops": 50,
-          "lengthKm": 21.79,
-          "stats": {
-            "observations": 989,
-            "matched": 989,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.7534265032403311,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "60",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Nowy Port Oliwska",
-          "variants": 2,
-          "tripCount": 24,
-          "stops": 31,
-          "lengthKm": 13.02,
-          "stats": {
-            "observations": 614,
-            "matched": 614,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.5221709319602483,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Oliwa",
-          "variants": 2,
-          "tripCount": 8,
-          "stops": 35,
-          "lengthKm": 14.01,
-          "stats": {
-            "observations": 680,
-            "matched": 658,
-            "noCandidates": 22,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.3766361967300682,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
-    },
-    {
-      "line": "63",
-      "mode": "tram",
-      "color": "#d6212b",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Brzeźno Dom Zdrojowy",
-          "variants": 1,
-          "tripCount": 91,
-          "stops": 35,
-          "lengthKm": 15.98,
-          "stats": {
-            "observations": 728,
-            "matched": 728,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.8461685096046645,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Ujeścisko",
-          "variants": 2,
-          "tripCount": 91,
-          "stops": 35,
-          "lengthKm": 15.98,
-          "stats": {
-            "observations": 741,
-            "matched": 741,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.562022460376755,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ],
-      "rank": 1
     }
   ]
 }

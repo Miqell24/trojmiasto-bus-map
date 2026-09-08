@@ -1601,4 +1601,4 @@ log(`Wrote data/out/{route,streets,labels,street-names,stops,badges,gtfs-shape}.
 
 // Night lines print black, and sort last where the lists carry no rank
 // (user rule 8.09.2026): a post-pass over the written outputs, see night.mjs.
-await (await import('./night.mjs')).nightPass(outDir, /^N\d/, { sort: false });
+await (await import('./night.mjs')).nightPass(outDir, /^N\d/, { sort: true });
