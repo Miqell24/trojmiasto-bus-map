@@ -8744,7 +8744,7 @@
     {
       "line": "N1",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -8794,7 +8794,7 @@
     {
       "line": "N2",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -8844,7 +8844,7 @@
     {
       "line": "N3",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -8894,7 +8894,7 @@
     {
       "line": "N4",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -8944,7 +8944,7 @@
     {
       "line": "N5",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -8994,7 +8994,7 @@
     {
       "line": "N6",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9044,7 +9044,7 @@
     {
       "line": "N8",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9094,7 +9094,7 @@
     {
       "line": "N9",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9144,7 +9144,7 @@
     {
       "line": "N10",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "Kacze Buki",
@@ -9173,7 +9173,7 @@
     {
       "line": "N14",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9223,7 +9223,7 @@
     {
       "line": "N16",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9273,7 +9273,7 @@
     {
       "line": "N20",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "Karwiny Nowowiczlińska",
@@ -9323,7 +9323,7 @@
     {
       "line": "N30",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9373,7 +9373,7 @@
     {
       "line": "N40",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9423,7 +9423,7 @@
     {
       "line": "N56",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9473,7 +9473,7 @@
     {
       "line": "N65",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9523,7 +9523,7 @@
     {
       "line": "N78",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9573,7 +9573,7 @@
     {
       "line": "N89",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
@@ -9623,7 +9623,7 @@
     {
       "line": "N94",
       "mode": "bus",
-      "color": "#0059a9",
+      "color": "#000000",
       "dirs": [
         {
           "dir": "0",
