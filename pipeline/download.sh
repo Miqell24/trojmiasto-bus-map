@@ -33,6 +33,42 @@ except Exception:
 PYEOF
 }
 
+# 0) OSM from the Geofabrik pomorskie extract (17.09.2026, when every public
+#    Overpass mirror answered 504): roads, the Gdańsk tram tracks and the heavy
+#    rail the SKM runs on, cut by pipeline/pbf-cut.py (needs `pip install osmium`)
+#    into the same JSON the Overpass steps below write — those then skip.
+if [ ! -f data/osm/trojmiasto.json ] || [ ! -f data/osm/trojmiasto-tram.json ] || [ ! -f data/osm/trojmiasto-rail.json ]; then
+  if [ ! -f data/pomorskie-latest.osm.pbf ]; then
+    echo "== Geofabrik pomorskie-latest.osm.pbf =="
+    curl -fL --retry 5 --retry-delay 5 -C - --max-time 3600 -o data/pomorskie-latest.osm.pbf \
+      "https://download.geofabrik.de/europe/poland/pomorskie-latest.osm.pbf"
+  fi
+  [ -f data/osm/trojmiasto.json ] || python3 pipeline/pbf-cut.py data/pomorskie-latest.osm.pbf road:data/osm/trojmiasto.json:54.21,18.04,54.66,18.97
+  if [ ! -f data/osm/trojmiasto-tram.json ] || [ ! -f data/osm/trojmiasto-rail.json ]; then
+    python3 pipeline/pbf-cut.py data/pomorskie-latest.osm.pbf rail:data/osm/trojmiasto-railall.json:54.05,16.95,54.72,18.97
+    python3 - <<'PYEOF'
+import json
+j = json.load(open('data/osm/trojmiasto-railall.json'))
+inT = lambda e: any(54.29 <= g['lat'] <= 54.45 and 18.53 <= g['lon'] <= 18.71 for g in e['geometry'])
+tram = [e for e in j['elements'] if e['tags'].get('railway') in ('tram', 'light_rail') and inT(e)]
+rail = [e for e in j['elements'] if e['tags'].get('railway') == 'rail']
+json.dump({'version': 0.6, 'generator': 'pbf-cut.py (Geofabrik pomorskie) tram|light_rail', 'elements': tram}, open('data/osm/trojmiasto-tram.json', 'w'))
+json.dump({'version': 0.6, 'generator': 'pbf-cut.py (Geofabrik pomorskie) rail', 'elements': rail}, open('data/osm/trojmiasto-rail.json', 'w'))
+print('tram', len(tram), 'rail', len(rail))
+PYEOF
+    rm -f data/osm/trojmiasto-railall.json
+  fi
+fi
+
+# 1s) GTFS — PKP SKM w Trójmieście (the SKM, drawn as metro): the operator's own
+#     feed, linked from bip.skm.pkp.pl/c60/rozklad-jazdy, refreshed daily
+if [ ! -f data/gtfs-skm/routes.txt ]; then
+  echo "== PKP SKM GTFS =="
+  mkdir -p data/gtfs-skm
+  curl -fL --retry 3 --max-time 600 -A "Mozilla/5.0" -o data/skm-gtfs.zip "https://www.skm.pkp.pl/gtfs-mi-kpd.zip"
+  unzip -o data/skm-gtfs.zip -d data/gtfs-skm
+fi
+
 # 1a) GTFS — ZTM Gdańsk (buses + trams)
 if [ ! -f data/gtfs-gdansk/routes.txt ]; then
   echo "== ZTM Gdańsk GTFS =="

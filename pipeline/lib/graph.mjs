@@ -30,7 +30,12 @@ const RAIL_OK = new Set(['subway', 'tram', 'light_rail', 'rail']);
 function tramAccess(tags) {
   if (!tags || !RAIL_OK.has(tags.railway)) return null;
   const s = tags.service;
-  if (s === 'yard' || s === 'siding' || s === 'spur' || s === 'crossover') return null;
+  // Crossovers are how a train changes track at a junction, and a platform
+  // track through a station throat is often tagged siding: heavy rail (the SKM)
+  // keeps both — without them Koleje Śląskie tore apart at 148 station throats
+  // (GZM, 9.09.2026). Tram sidings, yards and spurs (depot tracks) stay out.
+  if (s === 'yard' || s === 'spur') return null;
+  if ((s === 'siding' || s === 'crossover') && tags.railway !== 'rail') return null;
   return { restricted: false, driveway: false };
 }
 

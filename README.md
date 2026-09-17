@@ -100,3 +100,7 @@ rm -rf data/gtfs-gdansk data/gtfs-gdynia data/*.zip && npm run download && npm r
 
 Map data © OpenStreetMap contributors · tiles by OpenFreeMap · timetables: GTFS
 ZTM Gdańsk (ckan.multimediagdansk.pl) · ZKM Gdynia (api.zdiz.gdynia.pl).
+
+## 17.09.2026 — requested fixes
+
+- **SKM, drawn as the metro.** PKP Szybka Kolej Miejska from its own GTFS (`skm.pkp.pl/gtfs-mi-kpd.zip`): Gdańsk Śródmieście – Sopot – Gdynia – Wejherowo – Lębork as one line `SKM`, a wide ribbon in the operator's yellow with full-disc stations, on the heavy-rail graph cut from the Geofabrik pomorskie extract (`trojmiasto-rail.json`). OSM for the whole map now comes from that extract (`pipeline/pbf-cut.py`), as Overpass was down.

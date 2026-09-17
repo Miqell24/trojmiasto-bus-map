@@ -232,7 +232,25 @@ addNb(soft, 12);
 const allLines = meta.lines.map((l) => l.line);
 const weightOf = (l) => (nbOf.get(l) || []).reduce((s, e) => s + e.w, 0);
 const colour = new Map(), used = new Map();
+// The SKM keeps the operator's yellow here too (drawn as the metro, 17.09.2026):
+// pinned before the palette runs, so the lines sharing its bundles move away from it.
+const hex2lab = (h) => {
+  const c = [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255)
+    .map((u) => (u <= 0.04045 ? u / 12.92 : ((u + 0.055) / 1.055) ** 2.4));
+  const X = (0.4124 * c[0] + 0.3576 * c[1] + 0.1805 * c[2]) / 0.95047;
+  const Y = 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  const Z = (0.0193 * c[0] + 0.1192 * c[1] + 0.9505 * c[2]) / 1.08883;
+  const f = (t) => (t > (6 / 29) ** 3 ? Math.cbrt(t) : t / (3 * (6 / 29) ** 2) + 4 / 29);
+  return [116 * f(Y) - 16, 500 * (f(X) - f(Y)), 200 * (f(Y) - f(Z))];
+};
+const PINNED = new Set();
+for (const l of meta.lines) {
+  if (l.line !== 'SKM' || !/^#[0-9a-f]{6}$/i.test(l.color || '')) continue;
+  colour.set(l.line, { hex: l.color.toLowerCase(), lab: hex2lab(l.color) });
+  PINNED.add(l.line);
+}
 for (const l of allLines.slice().sort((a, b) => weightOf(b) - weightOf(a) || numSort(a, b))) {
+  if (PINNED.has(l)) continue;
   let best = null, bestScore = Infinity;
   for (const p of PALETTE) {
     let score = (used.get(p.hex) || 0) * 1e-3;   // spread the palette when nothing is at stake
@@ -263,6 +281,7 @@ const penaltyOf = (l, p) => {
 for (let sweep = 0; sweep < 8; sweep++) {
   let moved = 0;
   for (const l of allLines) {
+    if (PINNED.has(l)) continue;
     const cur = penaltyOf(l, colour.get(l));
     let best = colour.get(l), bestScore = cur;
     for (const p of PALETTE) {

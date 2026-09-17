@@ -399,3 +399,6 @@ details.journey .beta {
 }
 .city-switch nav .city-filter:focus { outline: none; border-color: var(--kmk); box-shadow: 0 0 0 2px rgba(0, 89, 169, 0.2); }
 @media (pointer: coarse) { .city-switch nav .city-filter { font-size: 16px; } }
+
+/* SKM, drawn as the metro: the operator's yellow ribbon (17.09.2026) */
+.sw.line.skm { background: #e9b800; opacity: 0.6; height: 7px; }

@@ -183,7 +183,7 @@ async function init() {
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
   map.addControl(new maplibregl.GeolocateControl({ positionOptions: { enableHighAccuracy: true }, trackUserLocation: true, showUserHeading: true, fitBoundsOptions: { maxZoom: 15.5 } }), 'top-right');
   map.addControl(new maplibregl.ScaleControl({ maxWidth: 120 }), 'bottom-left');
-  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS ZTM Gdańsk · ZKM Gdynia' }));
+  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: GTFS ZTM Gdańsk · ZKM Gdynia · MZK Wejherowo · PKP SKM' }));
 
   const [meta, linesMeta] = await Promise.all([
     fetch('data/meta.json').then((r) => r.json()),
@@ -209,7 +209,8 @@ async function init() {
   // Panel (English, minimal): legend + mode toggles + expandable clickable line list.
   const nBus = meta.lines.filter((l) => l.mode === 'bus').length;
   const nTram = meta.lines.filter((l) => l.mode === 'tram').length;
-  document.getElementById('count').textContent = `(${nBus} bus/trolleybus · ${nTram} tram)`;
+  const nSkm = meta.lines.filter((l) => l.mode === 'tram' && l.line === 'SKM').length;
+  document.getElementById('count').textContent = `(${nBus} bus/trolleybus · ${nTram - nSkm} tram${nSkm ? ' · SKM' : ''})`;
   document.getElementById('stamp').textContent = new Date(meta.generatedAt).toLocaleDateString('en-GB');
   // In the corridor view a chip carries its MODE's colour (navy bus, green
   // trolleybus, red tram); in the lines view it carries the colour that line is
@@ -223,7 +224,7 @@ async function init() {
     document.getElementById('chips').innerHTML = meta.lines
       .map((l) => `<button class="chip${l.line === state.selected && l.mode === state.selectedMode ? ' active' : ''}" ` +
         `data-line="${esc(l.line)}" data-mode="${esc(l.mode)}" ` +
-        `style="background:${esc(linesView ? lineColor(l.line) : l.color)}">${esc(l.line)}</button>`)
+        `style="background:${esc(linesView ? lineColor(l.line) : l.color)}${l.line === 'SKM' && !linesView ? ';color:#083277' : ''}">${esc(l.line)}</button>`)
       .join(' ');
   };
 
@@ -268,7 +269,9 @@ async function init() {
         10, ['case', metroC, 3, 1.1],
         14, ['case', metroC, 7, 2.3],
         17, ['case', metroC, 14, 4.5]],
-      'line-opacity': ['case', metroC, 0.4, 1],
+      // the SKM's yellow at the Athens metro's 0.4 melted into the yellow main
+      // roads of the paper base (17.09.2026) — the ribbon stays translucent, but denser
+      'line-opacity': ['case', metroC, 0.8, 1],
     },
   }, firstSymbol);
   // Shared bus+trolleybus roadways: green dashes over the navy stroke, so the

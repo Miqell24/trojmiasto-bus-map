@@ -136,8 +136,24 @@ const tramAll = tramLines.length === 1 && tramLines[0] === 'all';
 if (tramLines.length) MODES.push({
   mode: 'tram', label: 'trams (ZTM Gdańsk)', gtfsDir: 'data/gtfs-gdansk', osmFile: 'data/osm/trojmiasto-tram.json',
   graphMode: 'tram', color: '#d6212b', colorDark: '#7c1116', routeTypes: ['900'],
-  all: tramAll, lines: tramAll ? [] : tramLines,
+  all: tramAll, lines: tramAll ? [] : tramLines.filter((l) => l !== 'SKM'),
 });
+// SKM — PKP Szybka Kolej Miejska, the Tricity's rapid transit from Gdańsk
+// Śródmieście through Sopot and Gdynia to Wejherowo and Lębork (user
+// 17.09.2026: "brakuje linii SKM (jako metro)"). Its own open GTFS
+// (skm.pkp.pl/gtfs-mi-kpd.zip, linked from bip.skm.pkp.pl, refreshed daily):
+// every trip pattern is a route of its own under the one name "SKM", with
+// shapes and without direction_id, so the headsign splits the directions.
+// Drawn the metro way — the wide ribbon and full-disc stations the engine
+// keeps for metro lines — in the operator's yellow, on the heavy-rail graph
+// cut from the Geofabrik pomorskie extract (data/osm/trojmiasto-rail.json).
+if (tramLines.length) MODES.push({
+  mode: 'tram', label: 'SKM (PKP Szybka Kolej Miejska)', gtfsDir: 'data/gtfs-skm', osmFile: 'data/osm/trojmiasto-rail.json',
+  graphMode: 'tram', color: '#e9b800', colorDark: '#083277', routeTypes: ['2'],
+  all: tramAll || tramLines.includes('SKM'), lines: [],
+});
+// the metro class: keys M… (Athens lineage) and the SKM
+const isMetroKey = (l) => l.startsWith('M') || l === 'SKM';
 
 // Cfgs that ride the SAME graph (the two bus operators) pour their
 // segment→lines sets into one shared store, and only the last cfg of the
@@ -557,7 +573,7 @@ async function processMode(cfg) {
   // interchanges) platform records into a single entry keyed by name — one disc,
   // one label (user report: Irini drawn twice, once off the tracks).
   if (cfg.mode === 'tram') {
-    const isMetroEntry = (e) => [...e.lines].every((l) => l.startsWith('M'));
+    const isMetroEntry = (e) => [...e.lines].every(isMetroKey);
     const byStation = new Map();
     for (const [id, e] of stopAgg) {
       if (!isMetroEntry(e)) continue;
@@ -586,7 +602,7 @@ async function processMode(cfg) {
   const farNames = [];
   for (const e of stopAgg.values()) {
     const [sx, sy] = proj.toXY(e.lat, e.lon);
-    const isMetroStop = cfg.mode === 'tram' && [...e.lines].every((l) => l.startsWith('M'));
+    const isMetroStop = cfg.mode === 'tram' && [...e.lines].every(isMetroKey);
     let best = null, bestRun = null;
     // candidates are ONLY the runs that actually call at this pole: on a
     // double-track street the pole of one direction can lie nearer the
@@ -815,7 +831,7 @@ async function processMode(cfg) {
       if (n === arr.length) flags.trolley = 'all';
       else if (n > 0) flags.trolley = 'mix';
     }
-    if (cfg.mode === 'tram' && arr.every((l) => l.startsWith('M'))) flags.metro = 1;
+    if (cfg.mode === 'tram' && arr.every(isMetroKey)) flags.metro = 1;
     return flags;
   };
   const mergedRuns = mergeRuns(runs);
